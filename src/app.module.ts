@@ -13,6 +13,7 @@ import {
   CookieResolver,
 } from 'nestjs-i18n';
 import { join } from 'path';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -56,6 +57,7 @@ import { join } from 'path';
       ],
     }),
     ConfigModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
