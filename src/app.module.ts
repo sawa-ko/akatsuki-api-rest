@@ -14,6 +14,7 @@ import {
 } from 'nestjs-i18n';
 import { join } from 'path';
 import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -58,6 +59,7 @@ import { UserModule } from './modules/user/user.module';
     }),
     ConfigModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
