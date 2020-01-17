@@ -9,12 +9,14 @@ import {
   Get,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { I18nService, I18nLang } from 'nestjs-i18n';
 import { UserModel } from 'src/modules/user/models/user.model';
 import { SignInDto } from './dto/signin.dto';
 import { SecurityDto } from './dto/security.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
@@ -44,6 +46,7 @@ export class AuthController {
     });
   }
 
+  @UseGuards(AuthGuard())
   @Get('/signin')
   public async SignIn(@Body() user: SignInDto) {
     return await this.authService.SignIn(user);

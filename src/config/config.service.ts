@@ -20,7 +20,13 @@ export class ConfigService {
       this.envConfig = parse(readFileSync(envFilePath));
     } else {
       this.envConfig = {
-        PORT: process.env.PORT,
+        PORT_API: process.env.PORT,
+        TOKEN_SECRET: 'S9SDNXC9SM',
+        EMAIL_HOST:
+          'smtp://saturnoxspace@outlook.com:efhdmhtdxblafvjj@smtp.office365.com',
+        EMAIL_FROM: '"Akatsuki Network" <saturnoxspace@outlook.com>',
+        DB_HOST: 'mongodb://localhost:27017/akatsuki',
+        SERVER_HOST: 'https://api.akatsukiapp.com:3678/v1',
       };
     }
   }

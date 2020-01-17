@@ -12,6 +12,7 @@ import { ConfigurationEnum } from '../keys/configuration.enum';
 
 @Module({
   imports: [
+    PassportModule,
     TypegooseModule.forFeature([UserModel]),
     PassportModule.register({
       defaultStrategy: 'jwt',
@@ -30,7 +31,7 @@ import { ConfigurationEnum } from '../keys/configuration.enum';
       },
     }),
   ],
-  providers: [AuthService, ConfigService],
+  providers: [AuthService, ConfigService, JwtStrategy],
   controllers: [AuthController],
   exports: [JwtStrategy, PassportModule],
 })
