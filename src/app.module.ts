@@ -6,6 +6,13 @@ import { ConfigService } from './config/config.service';
 import { ConfigurationEnum } from './keys/configuration.enum';
 import { TypegooseModule } from 'nestjs-typegoose';
 import { MailerModule, HandlebarsAdapter } from '@nest-modules/mailer';
+import {
+  I18nModule,
+  QueryResolver,
+  HeaderResolver,
+  CookieResolver,
+} from 'nestjs-i18n';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -36,6 +43,17 @@ import { MailerModule, HandlebarsAdapter } from '@nest-modules/mailer';
           },
         },
       }),
+    }),
+    I18nModule.forRoot({
+      path: join(__dirname, '/i18n'),
+      filePattern: '*.json',
+      fallbackLanguage: 'en_US',
+      saveMissing: false,
+      resolvers: [
+        new QueryResolver(['lang', 'locale', 'l']),
+        new HeaderResolver(),
+        new CookieResolver(['lang', 'locale', 'l']),
+      ],
     }),
     ConfigModule,
   ],
