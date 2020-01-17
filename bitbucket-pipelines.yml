@@ -8,6 +8,26 @@ image: atlassian/default-image:2
 pipelines:
   default:
     - step:
-        name: Deploy the code,
+        name: Install NestJs Cli,
+        script:
+          - npm i -g @nestjs/cli
+    - step:
+        name: Install npm packages,
+        script:
+          - npm i
+    - step:
+        name: Test API,
+        script:
+          - npm run test
+    - step:
+        name: Test e2e API,
+        script:
+          - npm run test:e2e
+    - step:
+        name: Test coverage API,
+        script:
+          - npm run test:cov
+    - step:
+        name: Start API with NestsJs framework,
         script:
           - npm run start:dev
