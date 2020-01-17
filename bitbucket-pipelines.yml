@@ -14,14 +14,7 @@ pipelines:
           - npm i
           - npm run test
           - npm run test:cov
-          - npm run test:debug
           - npm run test:e2e
-    - step:
-        name: Start API with NestsJs framework,
-        script:
-          - npm i -g @nestjs/cli
-          - npm i
-          - npm run start
     - step:
         name: Build API with NestsJs framework,
         script:
