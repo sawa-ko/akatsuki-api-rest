@@ -12,11 +12,9 @@ import { ConfigurationEnum } from '../keys/configuration.enum';
 
 @Module({
   imports: [
-    PassportModule,
     TypegooseModule.forFeature([UserModel]),
     PassportModule.register({
       defaultStrategy: 'jwt',
-      session: true,
     }),
     JwtModule.registerAsync({
       imports: [ConfigModule],
