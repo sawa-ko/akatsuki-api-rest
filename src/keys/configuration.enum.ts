@@ -1,3 +1,8 @@
-export enum Configuration {
-  PORT = 'PORT',
+export enum ConfigurationEnum {
+  PORT_API = 'PORT_API',
+  TOKEN_SECRET = 'TOKEN_SECRET',
+  EMAIL_HOST = 'EMAIL_HOST',
+  EMAIL_FROM = 'EMAIL_FROM',
+  DB_HOST = 'DB_HOST',
+  SERVER_HOST = 'SERVER_HOST',
 }
