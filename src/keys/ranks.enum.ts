@@ -1,0 +1,6 @@
+export enum RanksEnum {
+  ADMINISTRATOR = 'ADMINISTRATOR',
+  MODERATOR = 'MODERATOR',
+  PREMIUM = 'PREMIUM',
+  SELLER = 'SELLER',
+}
