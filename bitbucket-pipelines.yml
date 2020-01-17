@@ -16,17 +16,9 @@ pipelines:
         script:
           - npm i
     - step:
-        name: Test API,
+        name: Lint code,
         script:
-          - npm run test
-    - step:
-        name: Test e2e API,
-        script:
-          - npm run test:e2e
-    - step:
-        name: Test coverage API,
-        script:
-          - npm run test:cov
+          - npm run lint
     - step:
         name: Start API with NestsJs framework,
         script:
