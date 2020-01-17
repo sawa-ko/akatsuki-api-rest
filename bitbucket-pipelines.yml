@@ -10,12 +10,13 @@ pipelines:
     - step:
         name: Install NestJs Cli,
         script:
-          - yarn global add @nestjs/cli
+          - npm i -g @nestjs/cli
     - step:
         name: Install npm packages,
         script:
-          - yarn install
+          - npm i
     - step:
         name: Start API with NestsJs framework,
         script:
-          - yarn start
+          - npm i -g @nestjs/cli
+          - npm start
