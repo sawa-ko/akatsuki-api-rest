@@ -16,10 +16,6 @@ pipelines:
         script:
           - npm i
     - step:
-        name: Lint code,
-        script:
-          - npm run lint
-    - step:
         name: Start API with NestsJs framework,
         script:
           - npm run start:dev
