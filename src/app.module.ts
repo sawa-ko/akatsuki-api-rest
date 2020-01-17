@@ -5,6 +5,7 @@ import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 import { ConfigurationEnum } from './keys/configuration.enum';
 import { TypegooseModule } from 'nestjs-typegoose';
+import { MailerModule, HandlebarsAdapter } from '@nest-modules/mailer';
 
 @Module({
   imports: [
@@ -17,6 +18,23 @@ import { TypegooseModule } from 'nestjs-typegoose';
         useUnifiedTopology: true,
         useCreateIndex: true,
         useFindAndModify: false,
+      }),
+    }),
+    MailerModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({
+        transport: configService.get(ConfigurationEnum.EMAIL_HOST),
+        defaults: {
+          from: configService.get(ConfigurationEnum.EMAIL_FROM),
+        },
+        template: {
+          dir: __dirname + '/views/email/',
+          adapter: new HandlebarsAdapter(),
+          options: {
+            strict: true,
+          },
+        },
       }),
     }),
     ConfigModule,
