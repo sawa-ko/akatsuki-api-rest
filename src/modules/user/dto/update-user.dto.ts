@@ -8,6 +8,7 @@ export class UpdateUserDto {
   @IsString()
   @IsNotEmpty()
   readonly key: string;
+
   @IsNotEmpty()
   readonly value: string | number | Date | boolean;
 }
