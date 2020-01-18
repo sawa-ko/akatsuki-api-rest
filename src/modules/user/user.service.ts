@@ -109,7 +109,9 @@ export class UserService {
 
     if (blockKey.includes(key)) {
       throw new ForbiddenException(
-        'La cuenta no tiene permisos suficientes para completar esta accion.',
+        this.i18nService.translate(
+          'translations.general.account_no_permission',
+        ),
       );
     }
 
@@ -119,7 +121,7 @@ export class UserService {
       })
       .catch(() => {
         throw new BadRequestException(
-          'Ocurrio un problema al procesar la solicitud.',
+          this.i18nService.translate('translations.general.process_failed'),
         );
       });
   }
@@ -130,7 +132,7 @@ export class UserService {
   ): Promise<UserModel> {
     return await this.userModel.findByIdAndUpdate(id, online).catch(() => {
       throw new BadRequestException(
-        'Ocurrio un problema al procesar la solicitud.',
+        this.i18nService.translate('translations.general.process_failed'),
       );
     });
   }
@@ -156,7 +158,9 @@ export class UserService {
     }
 
     if (!type) {
-      throw new BadRequestException('Type for the photo is required.');
+      throw new BadRequestException(
+        this.i18nService.translate('translations.user.service.type_photo'),
+      );
     }
 
     if (type === 'photo') {
@@ -164,7 +168,7 @@ export class UserService {
         .findByIdAndUpdate(userId, { photo: dir })
         .catch(() => {
           throw new BadRequestException(
-            'Ocurrio un problema al procesar la solicitud.',
+            this.i18nService.translate('translations.general.process_failed'),
           );
         });
     }
@@ -174,7 +178,7 @@ export class UserService {
         .findByIdAndUpdate(userId, { cover: dir })
         .catch(() => {
           throw new BadRequestException(
-            'Ocurrio un problema al procesar la solicitud.',
+            this.i18nService.translate('translations.general.process_failed'),
           );
         });
     }
@@ -207,7 +211,7 @@ export class UserService {
       user.reactions.push({ author: ofId, type: 1 });
       await user.save().catch(() => {
         throw new BadRequestException(
-          'Ocurrio un problema al procesar la solicitud.',
+          this.i18nService.translate('translations.general.process_failed'),
         );
       });
     }
@@ -224,7 +228,7 @@ export class UserService {
       )
       .catch(() => {
         throw new BadRequestException(
-          'Ocurrio un problema al procesar la solicitud.',
+          this.i18nService.translate('translations.general.process_failed'),
         );
       });
   }
@@ -232,7 +236,7 @@ export class UserService {
   public async deleteUser(id: string): Promise<void> {
     return await this.userModel.findByIdAndDelete(id).catch(() => {
       throw new BadRequestException(
-        'Ocurrio un problema al procesar la solicitud.',
+        this.i18nService.translate('translations.general.process_failed'),
       );
     });
   }

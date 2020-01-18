@@ -28,5 +28,22 @@
       "user_not_found": "We are sorry but the user could not be found.",
       "user_session_error": "We have problems closing the user session. Please contact us to help you as soon as possible."
     }
+  },
+  "general": {
+    "account_no_permission": "The account does not have sufficient permissions to complete this action.",
+    "process_failed": "There was a problem processing the request.",
+    "saved": "Changes saved successfully."
+  },
+  "user": {
+    "controller": {
+      "cover_photo_updated": "Cover photo updated successfully.",
+      "profile_photo_updated": "Profile photo updated successfully.",
+      "reaction_added": "Reaction added successfully.",
+      "reactions_deleted": "Reaction removed successfully.",
+      "user_deleted": "User deleted successfully"
+    },
+    "service": {
+      "type_photo": "It is necessary to specify the type of photo."
+    }
   }
 }

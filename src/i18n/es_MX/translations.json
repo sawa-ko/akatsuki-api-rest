@@ -28,5 +28,22 @@
       "user_not_found": "Lo sentimos, pero no se pudo encontrar al usuario.",
       "user_session_error": "Tenemos problemas para cerrar la sesión del usuario. Por favor contáctenos para ayudarlo lo antes posible."
     }
+  },
+  "general": {
+    "account_no_permission": "La cuenta no tiene permisos suficientes para completar esta acción.",
+    "process_failed": "Ocurrió un problema al procesar la solicitud.",
+    "saved": "Cambios guardados correctamente."
+  },
+  "user": {
+    "controller": {
+      "cover_photo_updated": "Foto de portada actualizada con éxito.",
+      "profile_photo_updated": "Foto de perfil actualizada correctamente.",
+      "reaction_added": "Reacción añadida con éxito.",
+      "reactions_deleted": "Reacción eliminada con éxito.",
+      "user_deleted": "Usuario eliminado con éxito."
+    },
+    "service": {
+      "type_photo": "Es necesario especificar el tipo de foto."
+    }
   }
 }

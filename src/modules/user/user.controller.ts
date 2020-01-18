@@ -21,12 +21,14 @@ import { diskStorage } from 'multer';
 import { ConfigurationEnum } from '../../keys/configuration.enum';
 import { ConfigService } from '../../config/config.service';
 import { ReactionsDto } from './dto/reactions.dto';
+import { I18nService, I18nLang } from 'nestjs-i18n';
 
 @Controller('user')
 export class UserController {
   constructor(
     private readonly userService: UserService,
     private readonly configService: ConfigService,
+    private readonly i18nService: I18nService,
   ) {}
 
   @Get('/find/:userId')
@@ -35,11 +37,17 @@ export class UserController {
   }
 
   @Patch('/update')
-  public updateUser(@Body() updateUserDto: UpdateUserDto, @Res() response) {
+  public updateUser(
+    @Body() updateUserDto: UpdateUserDto,
+    @Res() response,
+    @I18nLang() lang: string,
+  ) {
     return this.userService.updateUser(updateUserDto).then(() => {
       response.status(HttpStatus.OK).json({
         statusCode: HttpStatus.OK,
-        message: 'Cambios guardados correctamente.',
+        message: this.i18nService.translate('translations.general.saved', {
+          lang,
+        }),
       });
     });
   }
@@ -51,11 +59,20 @@ export class UserController {
 
   @Rank('Administrator', 'Moderator')
   @Delete('/delete/:id')
-  protected async deleteUser(@Param('id') id: string, @Res() res) {
+  protected async deleteUser(
+    @Param('id') id: string,
+    @Res() res,
+    @I18nLang() lang: string,
+  ) {
     return await this.userService.deleteUser(id).then(() => {
       res.status(HttpStatus.OK).json({
-        status: HttpStatus.OK,
-        message: 'User deleted successfully',
+        statusCode: HttpStatus.OK,
+        message: this.i18nService.translate(
+          'translations.user.controller.user_deleted',
+          {
+            lang,
+          },
+        ),
         id,
       });
     });
@@ -81,6 +98,7 @@ export class UserController {
     @UploadedFile() file,
     @Param('id') id: string,
     @Res() res,
+    @I18nLang() lang: string,
   ) {
     return await this.userService
       .updatePhoto(
@@ -92,8 +110,13 @@ export class UserController {
       )
       .then(() => {
         res.status(HttpStatus.OK).json({
-          status: HttpStatus.OK,
-          message: 'Profile photo updated successfully',
+          statusCode: HttpStatus.OK,
+          message: this.i18nService.translate(
+            'translations.user.controller.profile_photo_updated',
+            {
+              lang,
+            },
+          ),
           path: `${this.configService.get(
             ConfigurationEnum.SERVER_HOST,
           )}/uploads/profile_photo/${file.filename}`,
@@ -121,6 +144,7 @@ export class UserController {
     @UploadedFile() file,
     @Param('id') id: string,
     @Res() res,
+    @I18nLang() lang: string,
   ) {
     return await this.userService
       .updatePhoto(
@@ -132,8 +156,13 @@ export class UserController {
       )
       .then(() => {
         res.status(HttpStatus.OK).json({
-          status: HttpStatus.OK,
-          message: 'Cover photo updated successfully',
+          statusCode: HttpStatus.OK,
+          message: this.i18nService.translate(
+            'translations.user.controller.cover_photo_updated',
+            {
+              lang,
+            },
+          ),
           path: `${this.configService.get(
             ConfigurationEnum.SERVER_HOST,
           )}/uploads/${id}/cover_photo/${file.filename}`,
@@ -142,11 +171,20 @@ export class UserController {
   }
 
   @Put('/reactions/add')
-  protected async addReaction(@Res() res, @Body() reactionsDto: ReactionsDto) {
+  protected async addReaction(
+    @Res() res,
+    @Body() reactionsDto: ReactionsDto,
+    @I18nLang() lang: string,
+  ) {
     return await this.userService.addReaction(reactionsDto).then(() => {
       res.status(HttpStatus.OK).json({
-        status: HttpStatus.OK,
-        message: 'Reaction added successfully.',
+        statusCode: HttpStatus.OK,
+        message: this.i18nService.translate(
+          'translations.user.controller.reaction_added',
+          {
+            lang,
+          },
+        ),
       });
     });
   }
@@ -156,11 +194,17 @@ export class UserController {
     @Res() res,
     @Body('toId') toId: string,
     @Body('ofId') ofId: string,
+    @I18nLang() lang: string,
   ) {
     return await this.userService.removeReaction(ofId, toId).then(() => {
       res.status(HttpStatus.OK).json({
-        status: HttpStatus.OK,
-        message: 'Reaction removed successfully.',
+        statusCode: HttpStatus.OK,
+        message: this.i18nService.translate(
+          'translations.user.controller.reactions_deleted',
+          {
+            lang,
+          },
+        ),
       });
     });
   }
