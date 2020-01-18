@@ -1,5 +1,5 @@
 import {
-  Injectable,
+  ble,
   ConflictException,
   UnauthorizedException,
   ForbiddenException,
@@ -10,6 +10,7 @@ import { UserModel } from './models/user.model';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { I18nRequestScopeService } from 'nestjs-i18n';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { ReactionsDto } from './dto/reactions.dto';
 
 @Injectable()
 export class UserService {
@@ -115,16 +116,26 @@ export class UserService {
       );
     }
 
-    return await this.userModel.findByIdAndUpdate(id, {
-      [key]: value,
-    });
+    return await this.userModel
+      .findByIdAndUpdate(id, {
+        [key]: value,
+      })
+      .catch(() => {
+        throw new BadRequestException(
+          'Ocurrio un problema al procesar la solicitud.',
+        );
+      });
   }
 
   public async updateOnlineUser(
     id: string,
     online: { online: { online: boolean; mode: number; last: Date } },
   ): Promise<UserModel> {
-    return await this.userModel.findByIdAndUpdate(id, online);
+    return await this.userModel.findByIdAndUpdate(id, online).catch(() => {
+      throw new BadRequestException(
+        'Ocurrio un problema al procesar la solicitud.',
+      );
+    });
   }
 
   public async updatePhoto(
@@ -145,28 +156,56 @@ export class UserService {
     }
 
     if (type === 'photo') {
-      await this.userModel.findByIdAndUpdate(id, { photo: dir });
+      await this.userModel.findByIdAndUpdate(id, { photo: dir }).catch(() => {
+        throw new BadRequestException(
+          'Ocurrio un problema al procesar la solicitud.',
+        );
+      });
     }
 
     if (type === 'cover') {
-      await this.userModel.findByIdAndUpdate(id, { cover: dir });
+      await this.userModel.findByIdAndUpdate(id, { cover: dir }).catch(() => {
+        throw new BadRequestException(
+          'Ocurrio un problema al procesar la solicitud.',
+        );
+      });
     }
   }
 
-  public async addReaction(
-    id: string,
-    type: string,
-    userId: string,
-  ): Promise<void> {
-    const user = await this.userModel.findById(id);
+  public async addReaction(reactionsDto: ReactionsDto): Promise<void> {
+    const { to, id, type } = reactionsDto;
+    let user;
+    try {
+      user = await this.userModel.findById(to);
+    } catch (error) {
+      throw new ConflictException(
+        this.i18nService.translate('translations.auth.service.user_not_found'),
+      );
+    }
+
+    if (!user) {
+      throw new UnauthorizedException(
+        this.i18nService.translate(
+          'translations.auth.service.invalid_credentials',
+        ),
+      );
+    }
     if (type === 'upvote') {
-      user.reactions.push({ id: userId, type: 0 });
-      await user.save();
+      user.reactions.push({ id, type: 0 });
+      await user.save().catch(() => {
+        throw new BadRequestException(
+          'Ocurrio un problema al procesar la solicitud.',
+        );
+      });
     }
 
     if (type === 'downvote') {
-      user.reactions.push({ id: userId, type: 1 });
-      await user.save();
+      user.reactions.push({ id, type: 1 });
+      await user.save().catch(() => {
+        throw new BadRequestException(
+          'Ocurrio un problema al procesar la solicitud.',
+        );
+      });
     }
   }
 
@@ -174,19 +213,25 @@ export class UserService {
     username: string,
     id: string,
   ): Promise<UserModel> {
-    return await this.userModel.findOneAndUpdate(
-      id,
-      {
-        $pull: { reactions: { username } },
-      },
-      { new: true },
-    );
+    return await this.userModel
+      .findOneAndUpdate(
+        id,
+        {
+          $pull: { reactions: { username } },
+        },
+        { new: true },
+      )
+      .catch(() => {
+        throw new BadRequestException(
+          'Ocurrio un problema al procesar la solicitud.',
+        );
+      });
   }
 
   public async deleteUser(id: string): Promise<void> {
     return await this.userModel.findByIdAndDelete(id).catch(() => {
       throw new BadRequestException(
-        'Ocurrio un problema al procesar la solicitud de eliminacion de miembro.',
+        'Ocurrio un problema al procesar la solicitud.',
       );
     });
   }
