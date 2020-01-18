@@ -10,7 +10,6 @@ import {
   Post,
   UseInterceptors,
   UploadedFile,
-  BadRequestException,
   Put,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -158,16 +157,11 @@ export class UserController {
     @Body('toId') toId: string,
     @Body('ofId') ofId: string,
   ) {
-    try {
-      await this.userService.removeReaction(ofId, toId);
+    return await this.userService.removeReaction(ofId, toId).then(() => {
       res.status(HttpStatus.OK).json({
         status: HttpStatus.OK,
         message: 'Reaction removed successfully.',
       });
-    } catch (err) {
-      throw new BadRequestException(
-        'We are sorry but we could not process the reaction. Please contact us for more help.',
-      );
-    }
+    });
   }
 }

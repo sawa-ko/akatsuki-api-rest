@@ -45,9 +45,7 @@ export class UserService {
 
     if (!user) {
       throw new UnauthorizedException(
-        this.i18nService.translate(
-          'translations.auth.service.invalid_credentials',
-        ),
+        this.i18nService.translate('translations.auth.service.user_not_found'),
       );
     }
     return user;
@@ -105,9 +103,7 @@ export class UserService {
 
     if (!user) {
       throw new UnauthorizedException(
-        this.i18nService.translate(
-          'translations.auth.service.invalid_credentials',
-        ),
+        this.i18nService.translate('translations.auth.service.user_not_found'),
       );
     }
 
@@ -155,14 +151,8 @@ export class UserService {
 
     if (!user) {
       throw new UnauthorizedException(
-        this.i18nService.translate(
-          'translations.auth.service.invalid_credentials',
-        ),
+        this.i18nService.translate('translations.auth.service.user_not_found'),
       );
-    }
-
-    if (!type) {
-      throw new BadRequestException('Type is required.');
     }
 
     if (!type) {
