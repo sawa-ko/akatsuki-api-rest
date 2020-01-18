@@ -4,6 +4,7 @@ import {
   ForbiddenException,
   BadRequestException,
   Injectable,
+  NotFoundException,
 } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 import { UserModel } from './models/user.model';
@@ -139,44 +140,13 @@ export class UserService {
   }
 
   public async updatePhoto(
-    id: string,
+    userId: string,
     dir: string,
     type: string,
   ): Promise<void> {
-    if (!id) {
-      throw new BadRequestException('Id is required.');
-    }
-
-    if (!type) {
-      throw new BadRequestException('Type is required.');
-    }
-
-    if (!type) {
-      throw new BadRequestException('Type for the photo is required.');
-    }
-
-    if (type === 'photo') {
-      await this.userModel.findByIdAndUpdate(id, { photo: dir }).catch(() => {
-        throw new BadRequestException(
-          'Ocurrio un problema al procesar la solicitud.',
-        );
-      });
-    }
-
-    if (type === 'cover') {
-      await this.userModel.findByIdAndUpdate(id, { cover: dir }).catch(() => {
-        throw new BadRequestException(
-          'Ocurrio un problema al procesar la solicitud.',
-        );
-      });
-    }
-  }
-
-  public async addReaction(reactionsDto: ReactionsDto): Promise<void> {
-    const { to, id, type } = reactionsDto;
-    let user;
+    let user: UserModel;
     try {
-      user = await this.userModel.findById(to);
+      user = await this.userModel.findById(userId);
     } catch (error) {
       throw new ConflictException(
         this.i18nService.translate('translations.auth.service.user_not_found'),
@@ -190,17 +160,61 @@ export class UserService {
         ),
       );
     }
+
+    if (!type) {
+      throw new BadRequestException('Type is required.');
+    }
+
+    if (!type) {
+      throw new BadRequestException('Type for the photo is required.');
+    }
+
+    if (type === 'photo') {
+      await this.userModel
+        .findByIdAndUpdate(userId, { photo: dir })
+        .catch(() => {
+          throw new BadRequestException(
+            'Ocurrio un problema al procesar la solicitud.',
+          );
+        });
+    }
+
+    if (type === 'cover') {
+      await this.userModel
+        .findByIdAndUpdate(userId, { cover: dir })
+        .catch(() => {
+          throw new BadRequestException(
+            'Ocurrio un problema al procesar la solicitud.',
+          );
+        });
+    }
+  }
+
+  public async addReaction(reactionsDto: ReactionsDto): Promise<void> {
+    const { toId, ofId, type } = reactionsDto;
+    let user;
+    try {
+      user = await this.userModel.findById(toId);
+    } catch (error) {
+      throw new ConflictException(
+        this.i18nService.translate('translations.auth.service.user_not_found'),
+      );
+    }
+
+    if (!user) {
+      throw new NotFoundException(
+        this.i18nService.translate('translations.auth.service.user_not_found'),
+      );
+    }
     if (type === 'upvote') {
-      user.reactions.push({ id, type: 0 });
-      await user.save().catch(() => {
-        throw new BadRequestException(
-          'Ocurrio un problema al procesar la solicitud.',
-        );
+      user.reactions.push({ author: ofId, type: 0 });
+      await user.save().catch(error => {
+        throw new BadRequestException(error);
       });
     }
 
     if (type === 'downvote') {
-      user.reactions.push({ id, type: 1 });
+      user.reactions.push({ author: ofId, type: 1 });
       await user.save().catch(() => {
         throw new BadRequestException(
           'Ocurrio un problema al procesar la solicitud.',
@@ -209,15 +223,12 @@ export class UserService {
     }
   }
 
-  public async removeReaction(
-    username: string,
-    id: string,
-  ): Promise<UserModel> {
+  public async removeReaction(OfId: string, toId: string): Promise<UserModel> {
     return await this.userModel
       .findOneAndUpdate(
-        id,
+        toId,
         {
-          $pull: { reactions: { username } },
+          $pull: { reactions: { author: OfId } },
         },
         { new: true },
       )

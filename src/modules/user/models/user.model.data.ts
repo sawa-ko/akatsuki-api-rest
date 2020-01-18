@@ -43,10 +43,8 @@ export class Reactions {
     required: true,
     lowercase: true,
     trim: true,
-    minlength: 6,
-    maxlength: 20,
   })
-  public id: string;
+  public author: string;
 
   @prop({ required: true, min: 0, max: 1 })
   public type: number;

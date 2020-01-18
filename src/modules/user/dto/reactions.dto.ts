@@ -3,11 +3,11 @@ import { IsString, IsNotEmpty } from 'class-validator';
 export class ReactionsDto {
   @IsString()
   @IsNotEmpty()
-  readonly to: string;
+  readonly toId: string;
 
   @IsString()
   @IsNotEmpty()
-  readonly id: string;
+  readonly ofId: string;
 
   @IsString()
   @IsNotEmpty()

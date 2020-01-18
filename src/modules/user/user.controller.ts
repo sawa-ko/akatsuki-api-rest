@@ -64,10 +64,11 @@ export class UserController {
 
   @Post('/upload/photo/:id')
   @UseInterceptors(
-    FileInterceptor('file', {
+    FileInterceptor('photo', {
       storage: diskStorage({
         destination: './uploads/profile_photo',
-        filename: (req, file, cb) => {
+        // tslint:disable-next-line: variable-name
+        filename: (_req, file, cb) => {
           const randomName = Array(32)
             .fill(null)
             .map(() => Math.round(Math.random() * 16).toString(16))
@@ -102,10 +103,11 @@ export class UserController {
   }
 
   @UseInterceptors(
-    FileInterceptor('file', {
+    FileInterceptor('cover', {
       storage: diskStorage({
         destination: './uploads/cover_photo',
-        filename: (req, file, cb) => {
+        // tslint:disable-next-line: variable-name
+        filename: (_req, file, cb) => {
           const randomName = Array(32)
             .fill(null)
             .map(() => Math.round(Math.random() * 16).toString(16))
@@ -126,7 +128,7 @@ export class UserController {
         id,
         `${this.configService.get(
           ConfigurationEnum.SERVER_HOST,
-        )}/uploads/cover_photo/${file.filename}`,
+        )}/uploads/${id}/cover_photo/${file.filename}`,
         'cover_photo',
       )
       .then(() => {
@@ -135,22 +137,37 @@ export class UserController {
           message: 'Cover photo updated successfully',
           path: `${this.configService.get(
             ConfigurationEnum.SERVER_HOST,
-          )}/uploads/cover_photo/${file.filename}`,
+          )}/uploads/${id}/cover_photo/${file.filename}`,
         });
       });
   }
 
-  @Put('/reactions/add/:id')
-  protected async addReaction(
-    @Res() res,
-    @Param('id') id: string,
-    @Body() reactionsDto: ReactionsDto,
-  ) {
+  @Put('/reactions/add')
+  protected async addReaction(@Res() res, @Body() reactionsDto: ReactionsDto) {
     return await this.userService.addReaction(reactionsDto).then(() => {
       res.status(HttpStatus.OK).json({
         status: HttpStatus.OK,
         message: 'Reaction added successfully.',
       });
     });
+  }
+
+  @Delete('/reactions/remove')
+  protected async removeReaction(
+    @Res() res,
+    @Body('toId') toId: string,
+    @Body('ofId') ofId: string,
+  ) {
+    try {
+      await this.userService.removeReaction(ofId, toId);
+      res.status(HttpStatus.OK).json({
+        status: HttpStatus.OK,
+        message: 'Reaction removed successfully.',
+      });
+    } catch (err) {
+      throw new BadRequestException(
+        'We are sorry but we could not process the reaction. Please contact us for more help.',
+      );
+    }
   }
 }
