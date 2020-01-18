@@ -8,14 +8,6 @@ image: atlassian/default-image:2
 pipelines:
   default:
     - step:
-        name: Test Api code,
-        script:
-          - npm i -g @nestjs/cli
-          - npm i
-          - npm run test
-          - npm run test:cov
-          - npm run test:e2e
-    - step:
         name: Lint Api code,
         script:
           - npm i -g @nestjs/cli
