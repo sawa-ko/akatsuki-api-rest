@@ -13,7 +13,7 @@ import * as moments from 'moment';
 import * as momentstz from 'moment-timezone';
 import { SignInDto } from './dto/signin.dto';
 import { SecurityDto } from './dto/security.dto';
-import { ConfigurationEnum } from 'src/keys/configuration.enum';
+import { ConfigurationEnum } from '../keys/configuration.enum';
 import { IJwtPayload } from './jwt.payload.interface';
 
 @Injectable()

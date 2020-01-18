@@ -13,10 +13,9 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { I18nService, I18nLang } from 'nestjs-i18n';
-import { UserModel } from 'src/modules/user/models/user.model';
+import { UserModel } from '../modules/user/models/user.model';
 import { SignInDto } from './dto/signin.dto';
 import { SecurityDto } from './dto/security.dto';
-import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
