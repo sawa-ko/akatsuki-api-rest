@@ -8,16 +8,17 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start": "yarn process:assets && cls && echo init server Nestjs... && nest start",
+    "start:dev": "yarn process:assets cls && echo init server Nestjs... && nest start --watch",
+    "start:debug": "yarn process:assets cls && echo init server Nestjs... nest start --debug --watch",
+    "start:prod": "yarn process:assets cls && echo init server Nestjs... node dist/main",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "process:assets": "echo Processing assets... && tree src && xcopy /I /E /Y \"src/views\" \"dist/views\" && xcopy /I /E /Y \"src/i18n\" \"dist/i18n\""
   },
   "dependencies": {
     "@nest-modules/mailer": "^1.1.3",

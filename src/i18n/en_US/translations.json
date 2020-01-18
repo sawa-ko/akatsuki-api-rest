@@ -1,0 +1,32 @@
+{
+  "auth": {
+    "controller": {
+      "account_confirmation": "The account has been successfully confirmed. You can now login!",
+      "change_password": "The password has been changed successfully. Login with the new password chosen.",
+      "password_reset": "An email has been sent with the steps to reset the password.",
+      "security_challenge_completed": "Safety challenge completed successfully.",
+      "session_confirmation": "Session confirmed successfully.",
+      "session_logout": "Session closed successfully. We hope to see you again here. :)",
+      "user_created": "User registered successfully."
+    },
+    "service": {
+      "confirmation_error_token": "The account confirmation token is not valid.",
+      "duplicate_user": "We are sorry but the user cannot be processed because a user with this data already exists. Try again by changing the registration data.",
+      "email_confirmation_error_token": "Token confirmation",
+      "error_signup": "We are sorry but we were unable to process the user. Please try again later.",
+      "invalid_credentials": "We are sorry but the email or password is incorrect. Please try again and correct the credentials entered.",
+      "no_permission": "This account does not have sufficient permissions to perform this action. Please contact us if you think it is a mistake.",
+      "password_error_reset_email": "We are sorry but an error occurred while processing the password change request. Please try again later.",
+      "password_token_expiration": "Could not set a new password. Token has expired or is invalid.",
+      "security_code_failed": "The security code is incorrect. Please try again later.",
+      "security_no_enabled": "This account has no two-step verification activated.",
+      "send_email": "We are sorry but we were unable to send the confirmation message to your email. Please contact us to solve it as soon as possible.",
+      "session_already_exists": "An active session already exists on this device. Please close the active session to continue.",
+      "session_invalid": "This session is invalid. Please log in again to continue.",
+      "session_not_exists": "This session does not exist. Please log in again to continue.",
+      "suspension_account": "We are sorry but this account is suspended. Please contact us to verify if this is a mistake and to solve this problem.",
+      "user_not_found": "We are sorry but the user could not be found.",
+      "user_session_error": "We have problems closing the user session. Please contact us to help you as soon as possible."
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "auth": {
+    "controller": {
+      "account_confirmation": "Se ha confirmado con exito la cuenta. ¡Ya puedes iniciar sesión!",
+      "change_password": "La contraseña se ha cambiado correctamente. Inicia sesion con la nueva contraseña elegida.",
+      "password_reset": "Se ha enviado un correo con los pasos para restablecer la contraseña.",
+      "security_challenge_completed": "Desafio de seguridad completado con éxito.",
+      "session_confirmation": "Sesión confirmada con éxito.",
+      "session_logout": "Sesion cerrada con exito. Esperamos verte pronto de nuevo por aqui. :)",
+      "user_created": "Usuario registrado correctamente."
+    },
+    "service": {
+      "confirmation_error_token": "El Token de confirmación de cuenta no es valido.",
+      "duplicate_user": "Lo sentimos, pero el usuario no puede ser procesado porque ya existe un usuario con estos datos. Inténtalo de nuevo cambiando los datos de registro.",
+      "email_confirmation_error_token": "El Token de confirmacion de cuenta no es valido.",
+      "error_signup": "Lo sentimos, pero no pudimos procesar al usuario. Por favor, inténtalo de nuevo más tarde.",
+      "invalid_credentials": "Lo sentimos, pero el correo electrónico o la contraseña son incorrectos. Intenta nuevamente y verifica las credenciales ingresadas.",
+      "no_permission": "Esta cuenta no tiene permisos suficientes para realizar esta acción. Contáctanos si crees que es un error.",
+      "password_error_reset_email": "Lo sentimos pero ha ocurrido un error al procesar la solicitud de cambio de contraseña. Por favor intentalo de nuevo mas tarde.",
+      "password_token_expiration": "No se pudo establecer una nueva contraseña. El Token ha expirado o es invalido.",
+      "security_code_failed": "El codigo de seguridad es incorrecto. Por favor intentalo de nuevo mas tarde.",
+      "security_no_enabled": "Esta cuenta no tiene verificación en dos pasos activada.",
+      "send_email": "Lo sentimos, pero no pudimos enviar el mensaje de confirmación a tu correo electrónico. Contáctanos para resolverlo lo antes posible.",
+      "session_already_exists": "Ya existe una sesión activa en este dispositivo. Cierra la sesión activa para continuar",
+      "session_invalid": "Esta sesión es invalida. Por favor inicia sesión de nuevo para poder continuar.",
+      "session_not_exists": "Esta sesión no existe. Por favor inicia sesion de nuevo para poder continuar.",
+      "suspension_account": "Lo sentimos, pero esta cuenta está suspendida. Pónte en contacto con nosotros para verificar si esto es un error y para resolver este problema.",
+      "user_not_found": "Lo sentimos, pero no se pudo encontrar al usuario.",
+      "user_session_error": "Tenemos problemas para cerrar la sesión del usuario. Por favor contáctenos para ayudarlo lo antes posible."
+    }
+  }
+}

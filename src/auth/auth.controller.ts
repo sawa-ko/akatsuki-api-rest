@@ -46,8 +46,7 @@ export class AuthController {
     });
   }
 
-  @UseGuards(AuthGuard())
-  @Get('/signin')
+  @Post('/signin')
   public async SignIn(@Body() user: SignInDto) {
     return await this.authService.SignIn(user);
   }
