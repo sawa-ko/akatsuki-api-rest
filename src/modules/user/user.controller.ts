@@ -11,6 +11,7 @@ import {
   UseInterceptors,
   UploadedFile,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UserService } from './user.service';
@@ -22,7 +23,9 @@ import { ConfigurationEnum } from '../../keys/configuration.enum';
 import { ConfigService } from '../../config/config.service';
 import { ReactionsDto } from './dto/reactions.dto';
 import { I18nService, I18nLang } from 'nestjs-i18n';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard())
 @Controller('user')
 export class UserController {
   constructor(
