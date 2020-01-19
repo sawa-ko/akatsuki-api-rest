@@ -12,6 +12,7 @@ import { ReturnModelType } from '@typegoose/typegoose';
 import { I18nRequestScopeService } from 'nestjs-i18n';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ReactionsDto } from './dto/reactions.dto';
+import { RanksEnum } from 'src/keys/ranks.enum';
 
 @Injectable()
 export class UserService {
@@ -68,7 +69,11 @@ export class UserService {
       .exec();
   }
 
-  public async updateUser(updateUserDto: UpdateUserDto): Promise<UserModel> {
+  public async updateUser(
+    updateUserDto: UpdateUserDto,
+    requetUserId: string,
+    requestUserRank: string[],
+  ): Promise<UserModel> {
     let user: UserModel;
     const { id, key, value } = updateUserDto;
     const blockKey: string[] = [
@@ -115,6 +120,19 @@ export class UserService {
       );
     }
 
+    if (requetUserId !== id) {
+      if (
+        !requestUserRank.includes(RanksEnum.ADMINISTRATOR) &&
+        !requestUserRank.includes(RanksEnum.MODERATOR)
+      ) {
+        throw new ForbiddenException(
+          this.i18nService.translate(
+            'translations.general.account_no_permission',
+          ),
+        );
+      }
+    }
+
     return await this.userModel
       .findByIdAndUpdate(id, {
         [key]: value,
@@ -141,6 +159,8 @@ export class UserService {
     userId: string,
     dir: string,
     type: string,
+    requetUserId: string,
+    requestUserRank: string[],
   ): Promise<void> {
     let user: UserModel;
     try {
@@ -155,6 +175,19 @@ export class UserService {
       throw new UnauthorizedException(
         this.i18nService.translate('translations.auth.service.user_not_found'),
       );
+    }
+
+    if (requetUserId !== userId) {
+      if (
+        !requestUserRank.includes(RanksEnum.ADMINISTRATOR) &&
+        !requestUserRank.includes(RanksEnum.MODERATOR)
+      ) {
+        throw new ForbiddenException(
+          this.i18nService.translate(
+            'translations.general.account_no_permission',
+          ),
+        );
+      }
     }
 
     if (!type) {

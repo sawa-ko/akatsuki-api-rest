@@ -39,12 +39,12 @@ export class Market extends TimeStamps {
 }
 
 export class Reactions {
-  @prop({
+  /*@prop({
     required: true,
     lowercase: true,
     trim: true,
   })
-  public author: string;
+  public author: string;*/
 
   @prop({ required: true, min: 0, max: 1 })
   public type: number;

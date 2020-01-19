@@ -24,6 +24,8 @@ import { ConfigService } from '../../config/config.service';
 import { ReactionsDto } from './dto/reactions.dto';
 import { I18nService, I18nLang } from 'nestjs-i18n';
 import { AuthGuard } from '@nestjs/passport';
+import { RanksEnum } from '../../keys/ranks.enum';
+import { GetUser } from '../../decorators/user.decorator';
 
 @UseGuards(AuthGuard())
 @Controller('user')
@@ -40,45 +42,29 @@ export class UserController {
   }
 
   @Patch('/update')
-  public updateUser(
+  public async updateUser(
     @Body() updateUserDto: UpdateUserDto,
     @Res() response,
     @I18nLang() lang: string,
+    @GetUser('id') userRequestId: string,
+    @GetUser('rank') userRequestRank: string[],
   ) {
-    return this.userService.updateUser(updateUserDto).then(() => {
-      response.status(HttpStatus.OK).json({
-        statusCode: HttpStatus.OK,
-        message: this.i18nService.translate('translations.general.saved', {
-          lang,
-        }),
-      });
+    await this.userService.updateUser(
+      updateUserDto,
+      userRequestId,
+      userRequestRank,
+    );
+    response.status(HttpStatus.OK).json({
+      statusCode: HttpStatus.OK,
+      message: this.i18nService.translate('translations.general.saved', {
+        lang,
+      }),
     });
   }
 
   @Get()
   protected async getAllUsers() {
     return await this.userService.getUsers();
-  }
-
-  @Rank('Administrator', 'Moderator')
-  @Delete('/delete/:id')
-  protected async deleteUser(
-    @Param('id') id: string,
-    @Res() res,
-    @I18nLang() lang: string,
-  ) {
-    return await this.userService.deleteUser(id).then(() => {
-      res.status(HttpStatus.OK).json({
-        statusCode: HttpStatus.OK,
-        message: this.i18nService.translate(
-          'translations.user.controller.user_deleted',
-          {
-            lang,
-          },
-        ),
-        id,
-      });
-    });
   }
 
   @Post('/upload/photo/:id')
@@ -102,6 +88,8 @@ export class UserController {
     @Param('id') id: string,
     @Res() res,
     @I18nLang() lang: string,
+    @GetUser('id') userRequestId: string,
+    @GetUser('rank') userRequestRank: string[],
   ) {
     return await this.userService
       .updatePhoto(
@@ -110,6 +98,8 @@ export class UserController {
           ConfigurationEnum.SERVER_HOST,
         )}/uploads/profile_photo/${file.filename}`,
         'profile_photo',
+        userRequestId,
+        userRequestRank,
       )
       .then(() => {
         res.status(HttpStatus.OK).json({
@@ -148,6 +138,8 @@ export class UserController {
     @Param('id') id: string,
     @Res() res,
     @I18nLang() lang: string,
+    @GetUser('id') userRequestId: string,
+    @GetUser('rank') userRequestRank: string[],
   ) {
     return await this.userService
       .updatePhoto(
@@ -156,6 +148,8 @@ export class UserController {
           ConfigurationEnum.SERVER_HOST,
         )}/uploads/${id}/cover_photo/${file.filename}`,
         'cover_photo',
+        userRequestId,
+        userRequestRank,
       )
       .then(() => {
         res.status(HttpStatus.OK).json({
@@ -192,6 +186,7 @@ export class UserController {
     });
   }
 
+  @Rank(RanksEnum.ADMINISTRATOR)
   @Delete('/reactions/remove')
   protected async removeReaction(
     @Res() res,
