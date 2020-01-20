@@ -37,8 +37,10 @@ export class UserController {
   ) {}
 
   @Get('/find/:userId')
-  public getUser(@Param('userId') userId: string, 
-  @GetUser('id') userRequestId: string,) {
+  public getUser(
+    @Param('userId') userId: string,
+    @GetUser('id') userRequestId: string,
+  ) {
     return this.userService.getPublicUser(userId, userRequestId);
   }
 
@@ -98,7 +100,7 @@ export class UserController {
         `${this.configService.get(
           ConfigurationEnum.SERVER_HOST,
         )}/uploads/profile_photo/${file.filename}`,
-        'profile_photo',
+        'photo',
         userRequestId,
         userRequestRank,
       )
@@ -148,7 +150,7 @@ export class UserController {
         `${this.configService.get(
           ConfigurationEnum.SERVER_HOST,
         )}/uploads/${id}/cover_photo/${file.filename}`,
-        'cover_photo',
+        'cover',
         userRequestId,
         userRequestRank,
       )
@@ -163,7 +165,7 @@ export class UserController {
           ),
           path: `${this.configService.get(
             ConfigurationEnum.SERVER_HOST,
-          )}/uploads/${id}/cover_photo/${file.filename}`,
+          )}/uploads/cover_photo/${file.filename}`,
         });
       });
   }
