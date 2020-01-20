@@ -1,0 +1,1368 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>backend-api documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">backend-api documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>UserService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/modules/user/user.service.ts</code>
+        </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#logger">logger</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#addReaction">addReaction</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteUser">deleteUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#getPublicUser">getPublicUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#getUsers">getUsers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeReaction">removeReaction</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateOnlineUser">updateOnlineUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#updatePhoto">updatePhoto</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateUser">updateUser</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(userModel: ReturnModelType<>, i18nService: I18nRequestScopeService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/modules/user/user.service.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userModel</td>
+                                                  
+                                                        <td>
+                                                                    <code>ReturnModelType&lt;&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>i18nService</td>
+                                                  
+                                                        <td>
+                                                                    <code>I18nRequestScopeService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addReaction"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            addReaction
+                        </b>
+                        <a href="#addReaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addReaction(reactionsDto: <a href="../classes/ReactionsDto.html">ReactionsDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="304"
+                            class="link-to-prism">src/modules/user/user.service.ts:304</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>reactionsDto</td>
+                                    <td>
+                                                <code><a href="../classes/ReactionsDto.html" target="_self" >ReactionsDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteUser"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            deleteUser
+                        </b>
+                        <a href="#deleteUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteUser(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="374"
+                            class="link-to-prism">src/modules/user/user.service.ts:374</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPublicUser"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            getPublicUser
+                        </b>
+                        <a href="#getPublicUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getPublicUser(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, userRequestId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/modules/user/user.service.ts:28</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>userId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>userRequestId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/UserModel.html" target="_self" >Promise&lt;UserModel&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUsers"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            getUsers
+                        </b>
+                        <a href="#getUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getUsers()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/modules/user/user.service.ts:100</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeReaction"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            removeReaction
+                        </b>
+                        <a href="#removeReaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeReaction(ofId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, toId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="354"
+                            class="link-to-prism">src/modules/user/user.service.ts:354</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ofId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>toId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/UserModel.html" target="_self" >Promise&lt;UserModel&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOnlineUser"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            updateOnlineUser
+                        </b>
+                        <a href="#updateOnlineUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOnlineUser(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, online: literal type)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="213"
+                            class="link-to-prism">src/modules/user/user.service.ts:213</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>online</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/UserModel.html" target="_self" >Promise&lt;UserModel&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePhoto"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            updatePhoto
+                        </b>
+                        <a href="#updatePhoto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updatePhoto(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dir: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, requetUserId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, requestUserRank: string[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="224"
+                            class="link-to-prism">src/modules/user/user.service.ts:224</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>userId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>dir</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>type</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>requetUserId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>requestUserRank</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUser"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            updateUser
+                        </b>
+                        <a href="#updateUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateUser(updateUserDto: <a href="../classes/UpdateUserDto.html">UpdateUserDto</a>, requetUserId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, requestUserRank: string[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">src/modules/user/user.service.ts:120</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>updateUserDto</td>
+                                    <td>
+                                                <code><a href="../classes/UpdateUserDto.html" target="_self" >UpdateUserDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>requetUserId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>requestUserRank</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/UserModel.html" target="_self" >Promise&lt;UserModel&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="logger"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            logger</b>
+                            <a href="#logger"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Logger</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Logger(&#x27;User&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/modules/user/user.service.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ConflictException,
+  UnauthorizedException,
+  ForbiddenException,
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+  Logger,
+} from &#x27;@nestjs/common&#x27;;
+import { InjectModel } from &#x27;nestjs-typegoose&#x27;;
+import { UserModel } from &#x27;./models/user.model&#x27;;
+import { ReturnModelType } from &#x27;@typegoose/typegoose&#x27;;
+import { I18nRequestScopeService } from &#x27;nestjs-i18n&#x27;;
+import { UpdateUserDto } from &#x27;./dto/update-user.dto&#x27;;
+import { ReactionsDto } from &#x27;./dto/reactions.dto&#x27;;
+import { RanksEnum } from &#x27;src/keys/ranks.enum&#x27;;
+
+@Injectable()
+export class UserService {
+  private readonly logger: Logger &#x3D; new Logger(&#x27;User&#x27;);
+
+  constructor(
+    @InjectModel(UserModel)
+    private readonly userModel: ReturnModelType&lt;typeof UserModel&gt;,
+    private readonly i18nService: I18nRequestScopeService,
+  ) {}
+
+  public async getPublicUser(
+    userId: string,
+    userRequestId: string,
+  ): Promise&lt;UserModel&gt; {
+    let user: UserModel;
+    try {
+      if (userRequestId &#x3D;&#x3D;&#x3D; userId) {
+        this.logger.log(
+          &#x60;Obtaining private information from the user ${userId} by the user ${userRequestId}.&#x60;,
+        );
+        user &#x3D; await this.userModel
+          .findById(userId)
+          .select([
+            &#x27;email.key&#x27;,
+            &#x27;password.key&#x27;,
+            &#x27;offer&#x27;,
+            &#x27;photo&#x27;,
+            &#x27;cover&#x27;,
+            &#x27;stats&#x27;,
+            &#x27;online&#x27;,
+            &#x27;name&#x27;,
+            &#x27;username&#x27;,
+            &#x27;specialty&#x27;,
+            &#x27;reactions&#x27;,
+            &#x27;tachi&#x27;,
+            &#x27;security&#x27;,
+            &#x27;premium&#x27;,
+            &#x27;notifications&#x27;,
+            &#x27;transactions&#x27;,
+            &#x27;market&#x27;,
+            &#x27;sessions&#x27;,
+            &#x27;rank&#x27;,
+          ]);
+      } else {
+        this.logger.log(
+          &#x60;Obtaining public information of the user ${userId} by the user ${userRequestId}.&#x60;,
+        );
+        user &#x3D; await this.userModel
+          .findById(userId)
+          .select([
+            &#x27;offer&#x27;,
+            &#x27;photo&#x27;,
+            &#x27;cover&#x27;,
+            &#x27;stats&#x27;,
+            &#x27;online&#x27;,
+            &#x27;name&#x27;,
+            &#x27;username&#x27;,
+            &#x27;specialty&#x27;,
+            &#x27;reactions&#x27;,
+            &#x27;rank&#x27;,
+          ]);
+      }
+    } catch (error) {
+      this.logger.error(
+        &#x60;Could not get user information ${userId} by user ${userRequestId} because the user does not exist.&#x60;,
+      );
+      throw new ConflictException(
+        this.i18nService.translate(&#x27;translations.auth.service.user_not_found&#x27;),
+      );
+    }
+
+    if (!user) {
+      this.logger.error(
+        &#x60;Could not get user information ${userId} by user ${userRequestId} because the user does not exist.&#x60;,
+      );
+      throw new UnauthorizedException(
+        this.i18nService.translate(&#x27;translations.auth.service.user_not_found&#x27;),
+      );
+    }
+    return user;
+  }
+
+  public async getUsers() {
+    this.logger.log(
+      &#x27;Obtaining list of all users registered in Akatsuki Project.&#x27;,
+    );
+    return await this.userModel
+      .find()
+      .select([
+        &#x27;offer&#x27;,
+        &#x27;photo&#x27;,
+        &#x27;cover&#x27;,
+        &#x27;stats&#x27;,
+        &#x27;online&#x27;,
+        &#x27;name&#x27;,
+        &#x27;username&#x27;,
+        &#x27;specialty&#x27;,
+        &#x27;reactions&#x27;,
+      ])
+      .exec();
+  }
+
+  public async updateUser(
+    updateUserDto: UpdateUserDto,
+    requetUserId: string,
+    requestUserRank: string[],
+  ): Promise&lt;UserModel&gt; {
+    this.logger.log(
+      &#x60;Updating the user ${updateUserDto.id} by the user ${requetUserId}.&#x60;,
+    );
+    let user: UserModel;
+    const { id, key, value } &#x3D; updateUserDto;
+    const blockKey: string[] &#x3D; [
+      &#x27;email.status&#x27;,
+      &#x27;email.expiration&#x27;,
+      &#x27;email.token&#x27;,
+      &#x27;password.status&#x27;,
+      &#x27;password.expiration&#x27;,
+      &#x27;password.token&#x27;,
+      &#x27;ip&#x27;,
+      &#x27;tachi&#x27;,
+      &#x27;stats&#x27;,
+      &#x27;suspension&#x27;,
+      &#x27;premium&#x27;,
+      &#x27;rank&#x27;,
+      &#x27;transactions&#x27;,
+      &#x27;market&#x27;,
+      &#x27;device&#x27;,
+      &#x27;reactions&#x27;,
+      &#x27;sessions&#x27;,
+      &#x27;createdAt&#x27;,
+      &#x27;updatedAt&#x27;,
+      &#x27;__v&#x27;,
+    ];
+    try {
+      user &#x3D; await this.userModel.findById(id);
+    } catch (error) {
+      this.logger.error(
+        &#x60;Could not update user ${id} by user ${requetUserId} because the user does not exist.&#x60;,
+      );
+      throw new ConflictException(
+        this.i18nService.translate(&#x27;translations.auth.service.user_not_found&#x27;),
+      );
+    }
+
+    if (!user) {
+      this.logger.error(
+        &#x60;Could not update user ${id} by user ${requetUserId} because the user does not exist.&#x60;,
+      );
+      throw new UnauthorizedException(
+        this.i18nService.translate(&#x27;translations.auth.service.user_not_found&#x27;),
+      );
+    }
+
+    if (blockKey.includes(key)) {
+      this.logger.error(
+        &#x60;Could not update user ${id} by user ${requetUserId} because he does not have sufficient permissions to update the ${key} key with the value ${value}.&#x60;,
+      );
+      throw new ForbiddenException(
+        this.i18nService.translate(
+          &#x27;translations.general.account_no_permission&#x27;,
+        ),
+      );
+    }
+
+    if (requetUserId !&#x3D;&#x3D; id) {
+      if (
+        !requestUserRank.includes(RanksEnum.ADMINISTRATOR) &amp;&amp;
+        !requestUserRank.includes(RanksEnum.MODERATOR)
+      ) {
+        this.logger.error(
+          &#x60;Could not update user ${id} by user ${requetUserId} because the user who wants to update does not have sufficient permissions on the account.&#x60;,
+        );
+        throw new ForbiddenException(
+          this.i18nService.translate(
+            &#x27;translations.general.account_no_permission&#x27;,
+          ),
+        );
+      }
+    }
+
+    return await this.userModel
+      .findByIdAndUpdate(id, {
+        [key]: value,
+      })
+      .catch(() &#x3D;&gt; {
+        this.logger.error(
+          &#x60;Could not update user ${id} by user ${requetUserId} due to a system error.&#x60;,
+        );
+        throw new BadRequestException(
+          this.i18nService.translate(&#x27;translations.general.process_failed&#x27;),
+        );
+      });
+  }
+
+  public async updateOnlineUser(
+    id: string,
+    online: { online: { online: boolean; mode: number; last: Date } },
+  ): Promise&lt;UserModel&gt; {
+    return await this.userModel.findByIdAndUpdate(id, online).catch(() &#x3D;&gt; {
+      throw new BadRequestException(
+        this.i18nService.translate(&#x27;translations.general.process_failed&#x27;),
+      );
+    });
+  }
+
+  public async updatePhoto(
+    userId: string,
+    dir: string,
+    type: string,
+    requetUserId: string,
+    requestUserRank: string[],
+  ): Promise&lt;void&gt; {
+    this.logger.log(
+      &#x60;Updating profile picture of ${userId} by user ${requetUserId}.&#x60;,
+    );
+    let user: UserModel;
+    try {
+      user &#x3D; await this.userModel.findById(userId);
+    } catch (error) {
+      throw new ConflictException(
+        this.i18nService.translate(&#x27;translations.auth.service.user_not_found&#x27;),
+      );
+    }
+
+    if (!user) {
+      this.logger.error(
+        &#x60;Could not update user ${userId} by user ${requetUserId} because the user does not exist.&#x60;,
+      );
+      throw new UnauthorizedException(
+        this.i18nService.translate(&#x27;translations.auth.service.user_not_found&#x27;),
+      );
+    }
+
+    if (requetUserId !&#x3D;&#x3D; userId) {
+      if (
+        !requestUserRank.includes(RanksEnum.ADMINISTRATOR) &amp;&amp;
+        !requestUserRank.includes(RanksEnum.MODERATOR)
+      ) {
+        this.logger.error(
+          &#x60;Could not update user ${userId} by user ${requetUserId} because the user who wants to update does not have sufficient permissions on the account.&#x60;,
+        );
+        throw new ForbiddenException(
+          this.i18nService.translate(
+            &#x27;translations.general.account_no_permission&#x27;,
+          ),
+        );
+      }
+    }
+
+    if (!type) {
+      this.logger.error(
+        &#x60;Could not update profile picture of ${userId} by user ${requetUserId} because the type of photo to update was not specified.&#x60;,
+      );
+      throw new BadRequestException(
+        this.i18nService.translate(&#x27;translations.user.service.type_photo&#x27;),
+      );
+    }
+
+    if (type &#x3D;&#x3D;&#x3D; &#x27;photo&#x27;) {
+      await this.userModel
+        .findByIdAndUpdate(userId, { photo: dir })
+        .catch(() &#x3D;&gt; {
+          this.logger.error(
+            &#x60;Could not update profile picture of ${userId} by user ${requetUserId} due to a system error.&#x60;,
+          );
+          throw new BadRequestException(
+            this.i18nService.translate(&#x27;translations.general.process_failed&#x27;),
+          );
+        });
+    }
+
+    if (type &#x3D;&#x3D;&#x3D; &#x27;cover&#x27;) {
+      await this.userModel
+        .findByIdAndUpdate(userId, { cover: dir })
+        .catch(() &#x3D;&gt; {
+          this.logger.error(
+            &#x60;Could not update the cover photo of ${userId} by user ${requetUserId} due to a system error.&#x60;,
+          );
+          throw new BadRequestException(
+            this.i18nService.translate(&#x27;translations.general.process_failed&#x27;),
+          );
+        });
+    }
+  }
+
+  public async addReaction(reactionsDto: ReactionsDto): Promise&lt;void&gt; {
+    const { toId, ofId, type } &#x3D; reactionsDto;
+    this.logger.error(
+      &#x60;Adding new reaction to user ${toId} by user ${ofId} with reaction type $ {type}.&#x60;,
+    );
+    let user;
+    try {
+      user &#x3D; await this.userModel.findById(toId);
+    } catch (error) {
+      this.logger.error(
+        &#x60;The process of adding reaction to user ${toId} by user ${ofId} could not be completed because the user does not exist.&#x60;,
+      );
+      throw new ConflictException(
+        this.i18nService.translate(&#x27;translations.auth.service.user_not_found&#x27;),
+      );
+    }
+
+    if (!user) {
+      this.logger.error(
+        &#x60;The process of adding reaction to user ${toId} by user ${ofId} could not be completed because the user does not exist.&#x60;,
+      );
+      throw new NotFoundException(
+        this.i18nService.translate(&#x27;translations.auth.service.user_not_found&#x27;),
+      );
+    }
+    if (type &#x3D;&#x3D;&#x3D; &#x27;upvote&#x27;) {
+      user.reactions.push({ author: ofId, type: 0 });
+      await user.save().catch(error &#x3D;&gt; {
+        this.logger.error(
+          &#x60;Could not add user reaction ${ofId} to user ${toId} due to a system error.&#x60;,
+        );
+        throw new BadRequestException(
+          this.i18nService.translate(&#x27;translations.general.process_failed&#x27;),
+        );
+      });
+    }
+
+    if (type &#x3D;&#x3D;&#x3D; &#x27;downvote&#x27;) {
+      user.reactions.push({ author: ofId, type: 1 });
+      await user.save().catch(() &#x3D;&gt; {
+        this.logger.error(
+          &#x60;Could not add user reaction ${ofId} to user ${toId} due to a system error.&#x60;,
+        );
+        throw new BadRequestException(
+          this.i18nService.translate(&#x27;translations.general.process_failed&#x27;),
+        );
+      });
+    }
+  }
+
+  public async removeReaction(ofId: string, toId: string): Promise&lt;UserModel&gt; {
+    this.logger.error(&#x60;Eliminando reaccion de ${ofId} por el usuario ${toId}.&#x60;);
+    return await this.userModel
+      .findOneAndUpdate(
+        toId,
+        {
+          $pull: { reactions: { author: ofId } },
+        },
+        { new: true },
+      )
+      .catch(() &#x3D;&gt; {
+        this.logger.error(
+          &#x60;Could not remove user reaction ${ofId} to user ${toId} due to a system error.&#x60;,
+        );
+        throw new BadRequestException(
+          this.i18nService.translate(&#x27;translations.general.process_failed&#x27;),
+        );
+      });
+  }
+
+  public async deleteUser(id: string): Promise&lt;void&gt; {
+    return await this.userModel.findByIdAndDelete(id).catch(() &#x3D;&gt; {
+      this.logger.error(
+        &#x60;The user ${id} could not be deleted due to a system error.&#x60;,
+      );
+      throw new BadRequestException(
+        this.i18nService.translate(&#x27;translations.general.process_failed&#x27;),
+      );
+    });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
