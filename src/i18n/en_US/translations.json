@@ -5,6 +5,7 @@
       "change_password": "The password has been changed successfully. Login with the new password chosen.",
       "password_reset": "An email has been sent with the steps to reset the password.",
       "security_challenge_completed": "Safety challenge completed successfully.",
+      "security_updated": "Security updated successfully. Now the next time you log in to your account, the code currently entered will be requested. Keep it well.",
       "session_confirmation": "Session confirmed successfully.",
       "session_logout": "Session closed successfully. We hope to see you again here. :)",
       "user_created": "User registered successfully."
