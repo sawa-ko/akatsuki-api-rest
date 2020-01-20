@@ -173,8 +173,12 @@ export class AuthController {
       .then(() => {
         response.status(HttpStatus.OK).json({
           statusCode: HttpStatus.OK,
-          message:
-            'Seguridad actualizada con exito. Ahora la proxima vez que inicies sesion en tu cuenta se pedira el codigo introducido actualmente. Guardalo bien.',
+          message: this.i18nService.translate(
+            'translations.auth.controller.security_updated',
+            {
+              lang,
+            },
+          ),
         });
       });
   }
