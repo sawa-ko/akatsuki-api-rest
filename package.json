@@ -7,6 +7,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
+    "build:doc": "npx compodoc -p tsconfig.json -s",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "yarn process:assets && cls && echo init server Nestjs... && nest start",
     "start:dev": "yarn process:assets && cls && echo init server Nestjs... && nest start --watch",
@@ -30,6 +31,7 @@
     "@nestjs/platform-socket.io": "^6.10.14",
     "@nestjs/websockets": "^6.10.14",
     "@typegoose/typegoose": "^6.2.1",
+    "@types/moment-timezone": "^0.5.12",
     "bcryptjs": "^2.4.3",
     "cache-manager": "^2.10.1",
     "class-transformer": "^0.2.3",
@@ -52,6 +54,7 @@
     "ts-token-generator": "^1.0.4"
   },
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.11",
     "@nestjs/cli": "^6.9.0",
     "@nestjs/schematics": "^6.7.0",
     "@nestjs/testing": "^6.7.1",

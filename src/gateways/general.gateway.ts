@@ -1,30 +1,22 @@
 import {
   WebSocketGateway,
-  OnGatewayInit,
   OnGatewayConnection,
   OnGatewayDisconnect,
   WebSocketServer,
 } from '@nestjs/websockets';
-import { Server, Socket } from 'socket.io';
-import { Logger, UseGuards } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import { UserService } from '../modules/user/user.service';
 import * as moments from 'moment';
 import * as momentstz from 'moment-timezone';
-import { AuthGuard } from '@nestjs/passport';
 
 @WebSocketGateway()
 export class GeneralGateway
-  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+  implements OnGatewayConnection, OnGatewayDisconnect {
   private readonly logger: Logger = new Logger('Gateway: General');
 
+  @WebSocketServer() private readonly server: any;
   constructor(private readonly userService: UserService) {}
 
-  @WebSocketServer() private readonly server: any;
-  afterInit(server: Server) {
-    this.logger.log('Gateway initialization correct.' + server);
-  }
-
-  @UseGuards(AuthGuard)
   handleDisconnect(client: any) {
     const timezone = momentstz()
       .tz('America/New_York')
@@ -50,7 +42,6 @@ export class GeneralGateway
     }
   }
 
-  @UseGuards(AuthGuard)
   handleConnection(client: any) {
     const timezone = momentstz()
       .tz('America/New_York')
