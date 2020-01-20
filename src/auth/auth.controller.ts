@@ -16,6 +16,9 @@ import { I18nService, I18nLang } from 'nestjs-i18n';
 import { UserModel } from '../modules/user/models/user.model';
 import { SignInDto } from './dto/signin.dto';
 import { SecurityDto } from './dto/security.dto';
+import { SecurityUpdateDto } from './dto/security.update.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from '../decorators/user.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -37,7 +40,7 @@ export class AuthController {
       username: user.username,
       email: user.email,
       message: this.i18nService.translate(
-        'translations.auth.success.user_created',
+        'translations.auth.controller.user_created',
         {
           lang,
         },
@@ -152,6 +155,26 @@ export class AuthController {
               lang,
             },
           ),
+        });
+      });
+  }
+
+  @UseGuards(AuthGuard())
+  @Patch('/account/security/change')
+  public async ChangeSecurity(
+    @Body() securityUpdate: SecurityUpdateDto,
+    @GetUser('id') userIdRequest: string,
+    @GetUser('rank') userRankRequest: string[],
+    @I18nLang() lang: string,
+    @Res() response,
+  ) {
+    return await this.authService
+      .ChangeSecurity(securityUpdate, userIdRequest, userRankRequest)
+      .then(() => {
+        response.status(HttpStatus.OK).json({
+          statusCode: HttpStatus.OK,
+          message:
+            'Seguridad actualizada con exito. Ahora la proxima vez que inicies sesion en tu cuenta se pedira el codigo introducido actualmente. Guardalo bien.',
         });
       });
   }

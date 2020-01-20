@@ -1,4 +1,13 @@
-import { Injectable, Logger, BadGatewayException, ConflictException, BadRequestException, UnauthorizedException, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  BadGatewayException,
+  ConflictException,
+  BadRequestException,
+  UnauthorizedException,
+  NotFoundException,
+  ForbiddenException,
+} from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 import { JwtService } from '@nestjs/jwt';
 import { UserModel } from '../modules/user/models/user.model';
@@ -15,6 +24,7 @@ import { SignInDto } from './dto/signin.dto';
 import { SecurityDto } from './dto/security.dto';
 import { ConfigurationEnum } from '../keys/configuration.enum';
 import { IJwtPayload } from './jwt.payload.interface';
+import { SecurityUpdateDto } from './dto/security.update.dto';
 
 @Injectable()
 export class AuthService {
@@ -549,6 +559,57 @@ export class AuthService {
         ),
       );
     }
+  }
+
+  public async ChangeSecurity(securityUpdate: SecurityUpdateDto, userRequestId: string, userRequestRank: string[]) {
+    let user;
+    try {
+      user = await this.userModel.findById(securityUpdate.id);
+    } catch (error) {
+      throw new ConflictException(
+        this.i18nService.translate('translations.auth.service.user_not_found'),
+      );
+    }
+
+    if (!user) {
+      this.logger.error(
+        `The process of updating account security could not be completed because the requested user does not exist.`,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate('translations.auth.service.user_not_found'),
+      );
+    }
+
+    if (userRequestId !== securityUpdate.id) {
+      if (
+        !userRequestRank.includes(RanksEnum.ADMINISTRATOR) &&
+        !userRequestRank.includes(RanksEnum.MODERATOR)
+      ) {
+        throw new ForbiddenException(
+          this.i18nService.translate(
+            'translations.general.account_no_permission',
+          ),
+        );
+      }
+    }
+
+    return await this.userModel
+      .findByIdAndUpdate(securityUpdate.id, {
+        security: {
+          code1: securityUpdate.security.code1,
+          code2: securityUpdate.security.code2,
+          code3: securityUpdate.security.code3,
+          code4: securityUpdate.security.code4,
+          code5: securityUpdate.security.code5,
+          enabled: securityUpdate.security.enabled,
+        },
+      })
+      .catch(() => {
+        throw new BadRequestException(
+          this.i18nService.translate('translations.general.process_failed'),
+        );
+      });
   }
 
   public async LogOut(userId: string, sessionId: string) {
