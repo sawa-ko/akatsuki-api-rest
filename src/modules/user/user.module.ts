@@ -10,5 +10,6 @@ import { ConfigModule } from '../../config/config.module';
   imports: [TypegooseModule.forFeature([UserModel]), AuthModule, ConfigModule],
   providers: [UserService],
   controllers: [UserController],
+  exports: [UserService],
 })
 export class UserModule {}

@@ -15,6 +15,7 @@ import {
 import { join } from 'path';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { GeneralGateway } from './gateways/general.gateway';
 
 @Module({
   imports: [
@@ -62,7 +63,7 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, GeneralGateway],
 })
 export class AppModule {
   static port: number | string;
