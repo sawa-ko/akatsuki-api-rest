@@ -37,8 +37,9 @@ export class UserController {
   ) {}
 
   @Get('/find/:userId')
-  public getUser(@Param('userId') userId: string) {
-    return this.userService.getPublicUser(userId);
+  public getUser(@Param('userId') userId: string, 
+  @GetUser('id') userRequestId: string,) {
+    return this.userService.getPublicUser(userId, userRequestId);
   }
 
   @Patch('/update')

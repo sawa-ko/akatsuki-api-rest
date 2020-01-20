@@ -22,10 +22,35 @@ export class UserService {
     private readonly i18nService: I18nRequestScopeService,
   ) {}
 
-  public async getPublicUser(userId: string): Promise<UserModel> {
+  public async getPublicUser(userId: string, userRequestId: string): Promise<UserModel> {
     let user: UserModel;
     try {
-      user = await this.userModel
+      if (userRequestId === userId) {
+        user = await this.userModel
+        .findById(userId)
+        .select([
+          'email.key',
+          'password.key',
+          'offer',
+          'photo',
+          'cover',
+          'stats',
+          'online',
+          'name',
+          'username',
+          'specialty',
+          'reactions',
+          'tachi',
+          'security',
+          'premium',
+          'notifications',
+          'transactions',
+          'market',
+          'sessions',
+          'rank',
+        ]);
+      } else {
+        user = await this.userModel
         .findById(userId)
         .select([
           'offer',
@@ -37,7 +62,9 @@ export class UserService {
           'username',
           'specialty',
           'reactions',
+          'rank',
         ]);
+      }
     } catch (error) {
       throw new ConflictException(
         this.i18nService.translate('translations.auth.service.user_not_found'),
