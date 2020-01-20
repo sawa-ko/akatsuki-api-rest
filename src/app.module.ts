@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, CacheModule, CacheInterceptor } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from './config/config.module';
@@ -16,6 +16,7 @@ import { join } from 'path';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { GeneralGateway } from './gateways/general.gateway';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -61,9 +62,17 @@ import { GeneralGateway } from './gateways/general.gateway';
     ConfigModule,
     UserModule,
     AuthModule,
+    CacheModule.register(),
   ],
   controllers: [AppController],
-  providers: [AppService, GeneralGateway],
+  providers: [
+    AppService,
+    GeneralGateway,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: CacheInterceptor,
+    },
+  ],
 })
 export class AppModule {
   static port: number | string;
