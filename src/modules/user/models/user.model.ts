@@ -1,4 +1,10 @@
-import { prop, modelOptions, arrayProp, index } from '@typegoose/typegoose';
+import {
+  prop,
+  modelOptions,
+  arrayProp,
+  index,
+  Ref,
+} from '@typegoose/typegoose';
 import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 import {
   Market,

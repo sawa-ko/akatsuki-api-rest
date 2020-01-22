@@ -17,6 +17,7 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { GeneralGateway } from './gateways/general.gateway';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
@@ -63,6 +64,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     UserModule,
     AuthModule,
     CacheModule.register(),
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [

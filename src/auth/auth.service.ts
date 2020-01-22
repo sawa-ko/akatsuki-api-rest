@@ -131,7 +131,7 @@ export class AuthService {
     token: string;
   }> {
     const { email, password, device, ip } = signInDto;
-    const userSignIn: UserModel = await this.userModel.findOne({
+    const userSignIn = await this.userModel.findOne({
       'email.key': email,
     });
     this.logger.log(
