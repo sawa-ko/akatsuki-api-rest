@@ -19,6 +19,7 @@ import { GeneralGateway } from './gateways/general.gateway';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { AdminModule } from './modules/admin/admin.module';
 import { MarketModule } from './modules/market/market.module';
+import { TransactionModule } from './modules/transaction/transaction.module';
 
 @Module({
   imports: [
@@ -67,6 +68,7 @@ import { MarketModule } from './modules/market/market.module';
     CacheModule.register(),
     AdminModule,
     MarketModule,
+    TransactionModule,
   ],
   controllers: [AppController],
   providers: [
