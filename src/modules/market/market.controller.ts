@@ -55,16 +55,26 @@ export class MarketController {
   public async GetProduct(
     @Param('id') productId: string,
     @GetUser('rank') rankUserRequest: string[],
+    @GetUser('id') idUserRequest: string,
   ) {
-    return await this.marketService.GetProduct(productId, rankUserRequest);
+    return await this.marketService.GetProduct(
+      productId,
+      rankUserRequest,
+      idUserRequest,
+    );
   }
 
   @Get('/get/products/:filter')
   public async GetAllProducts(
     @Param('filter', ParseIntPipe) productId: number,
     @GetUser('rank') rankUserRequest: string[],
+    @GetUser('id') idUserRequest: string,
   ) {
-    return await this.marketService.GetAllProducts(productId, rankUserRequest);
+    return await this.marketService.GetAllProducts(
+      productId,
+      rankUserRequest,
+      idUserRequest,
+    );
   }
 
   @Put('/add/comment')

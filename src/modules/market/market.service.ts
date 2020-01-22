@@ -3,6 +3,7 @@ import {
   BadRequestException,
   ConflictException,
   NotFoundException,
+  Logger,
 } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 import { MarketModel } from './models/market.model';
@@ -18,6 +19,8 @@ import { I18nRequestScopeService } from 'nestjs-i18n';
 
 @Injectable()
 export class MarketService {
+  private readonly logger: Logger = new Logger('Market');
+
   constructor(
     @InjectModel(MarketModel)
     private readonly marketModel: ReturnModelType<typeof MarketModel>,
@@ -25,7 +28,15 @@ export class MarketService {
   ) {}
 
   public async AddProduct(marketModel: MarketModel) {
+    this.logger.log(
+      `Creating a new product for the market with the name of $ {marketModel.name} with a value of ${marketModel.price} and with a discount of ${marketModel.discount.percentage}%. This product is published by ${marketModel.author} on the device ${marketModel.device} with IP ${marketModel.ip}.`,
+    );
+
     return await this.marketModel.create(marketModel).catch(() => {
+      this.logger.error(
+        `The product with name ${marketModel.name} could not be processed by user ${marketModel.author} due to a database failure.`,
+      );
+
       throw new BadRequestException(
         this.i18nService.translate(
           'translations.market.service.product_error_added',
@@ -34,7 +45,15 @@ export class MarketService {
     });
   }
 
-  public async GetProduct(productId: string, rankUserRequest: string[]) {
+  public async GetProduct(
+    productId: string,
+    rankUserRequest: string[],
+    idUserRequest: string,
+  ) {
+    this.logger.log(
+      `Obtaining product data ${productId} by user ${idUserRequest}.`,
+    );
+
     if (
       !rankUserRequest.includes(RanksEnum.ADMINISTRATOR) &&
       !rankUserRequest.includes(RanksEnum.MODERATOR)
@@ -63,8 +82,16 @@ export class MarketService {
     }
   }
 
-  public async GetAllProducts(filter: number, rankUserRequest: string[]) {
+  public async GetAllProducts(
+    filter: number,
+    rankUserRequest: string[],
+    idUserRequest: string,
+  ) {
     let order = '-createdAt';
+
+    this.logger.log(
+      `Obtaining data of all products with the filter ${filter} by the user ${idUserRequest}.`,
+    );
 
     if (
       !rankUserRequest.includes(RanksEnum.ADMINISTRATOR) &&
@@ -118,9 +145,18 @@ export class MarketService {
 
   public async AddBuyerToProduct(buyerAddMarketDto: BuyerAddMarketDto) {
     let product;
+
+    this.logger.log(
+      `Adding the user ${buyerAddMarketDto.user} as a new buyer of the product ${buyerAddMarketDto.product}.`,
+    );
+
     try {
       product = await this.marketModel.findById(buyerAddMarketDto.product);
     } catch (error) {
+      this.logger.error(
+        `The user ${buyerAddMarketDto.user} could not be added as a new buyer of the product ${buyerAddMarketDto.product} due to an error in the database.`,
+      );
+
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
@@ -129,6 +165,10 @@ export class MarketService {
     }
 
     if (!product) {
+      this.logger.error(
+        `The user ${buyerAddMarketDto.user} could not be added as a new buyer of the product ${buyerAddMarketDto.product} because the product does not exist.`,
+      );
+
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
@@ -143,6 +183,10 @@ export class MarketService {
     });
 
     return await product.save().catch(() => {
+      this.logger.error(
+        `The user ${buyerAddMarketDto.user} could not be added as a new buyer of the product ${buyerAddMarketDto.product} because the changes could not be saved.`,
+      );
+
       throw new BadRequestException(
         this.i18nService.translate(
           'translations.market.service.buyer_error_added',
@@ -153,9 +197,18 @@ export class MarketService {
 
   public async AddComment(commentMarketDto: CommentMarketDto) {
     let product;
+
+    this.logger.log(
+      `Adding a new comment for ${commentMarketDto.user} to the product ${commentMarketDto.product}.`,
+    );
+
     try {
       product = await this.marketModel.findById(commentMarketDto.product);
     } catch (error) {
+      this.logger.error(
+        `A new comment for ${commentMarketDto.user} could not be added to the product ${commentMarketDto.product} due to a system error.`,
+      );
+
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
@@ -164,6 +217,10 @@ export class MarketService {
     }
 
     if (!product) {
+      this.logger.error(
+        `A new comment for ${commentMarketDto.user} could not be added to the product ${commentMarketDto.product} because the product does not exist.`,
+      );
+
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
@@ -179,6 +236,10 @@ export class MarketService {
     });
 
     return await product.save().catch(() => {
+      this.logger.error(
+        `A new comment for ${commentMarketDto.user} could not be added to the product ${commentMarketDto.product} because the changes could not be saved.`,
+      );
+
       throw new BadRequestException(
         this.i18nService.translate(
           'translations.market.service.comment_error_added',
@@ -189,9 +250,18 @@ export class MarketService {
 
   public async AddReaction(reactionAddMarketDto: ReactionAddMarketDto) {
     let product;
+
+    this.logger.log(
+      `Adding a new reaction for ${reactionAddMarketDto.user} to the product ${reactionAddMarketDto.product}.`,
+    );
+
     try {
       product = await this.marketModel.findById(reactionAddMarketDto.product);
     } catch (error) {
+      this.logger.error(
+        `A new reaction for ${reactionAddMarketDto.user} could not be added to the product ${reactionAddMarketDto.product} due to an error in the database.`,
+      );
+
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
@@ -200,6 +270,10 @@ export class MarketService {
     }
 
     if (!product) {
+      this.logger.error(
+        `A new reaction for ${reactionAddMarketDto.user} could not be added to the product ${reactionAddMarketDto.product} because the product does not exist.`,
+      );
+
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
@@ -215,6 +289,10 @@ export class MarketService {
     });
 
     return await product.save().catch(() => {
+      this.logger.error(
+        `A new reaction for ${reactionAddMarketDto.user} could not be added to the product ${reactionAddMarketDto.product} because the changes could not be saved.`,
+      );
+
       throw new BadRequestException(
         this.i18nService.translate(
           'translations.market.service.reaction_error_added',
@@ -228,9 +306,18 @@ export class MarketService {
     idUserRequest: string,
   ) {
     let product;
+
+    this.logger.log(
+      `Deleting comment by ${commentRemoveMarketDto.author} in the product ${commentRemoveMarketDto.product}.`,
+    );
+
     try {
       product = await this.marketModel.findById(commentRemoveMarketDto.product);
     } catch (error) {
+      this.logger.error(
+        `Could not delete comment for ${commentRemoveMarketDto.author} in product ${commentRemoveMarketDto.product} due to an error in the database.`,
+      );
+
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
@@ -239,6 +326,10 @@ export class MarketService {
     }
 
     if (!product) {
+      this.logger.error(
+        `Could not delete comment for ${commentRemoveMarketDto.author} in product ${commentRemoveMarketDto.product} because the product does not exist.`,
+      );
+
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
@@ -247,6 +338,10 @@ export class MarketService {
     }
 
     if (idUserRequest !== product.reaction.user) {
+      this.logger.error(
+        `Could not delete comment for ${commentRemoveMarketDto.author} on product ${commentRemoveMarketDto.product} because user ${idUserRequest} is not the author of the comment.`,
+      );
+
       throw new ConflictException(
         this.i18nService.translate(
           'translations.market.service.comment_only_delete_owned',
@@ -267,6 +362,10 @@ export class MarketService {
         { new: true },
       )
       .catch(() => {
+        this.logger.error(
+          `Could not delete comment for ${commentRemoveMarketDto.author} in product ${commentRemoveMarketDto.product} because the changes could not be saved.`,
+        );
+
         throw new BadRequestException(
           this.i18nService.translate(
             'translations.market.service.comment_error_deleted',
@@ -276,6 +375,10 @@ export class MarketService {
   }
 
   public async RemoveBuyer(buyerRemoveMarketDto: BuyerRemoveMarketDto) {
+    this.logger.log(
+      `Removing buyer ${buyerRemoveMarketDto.user} from product ${buyerRemoveMarketDto.product}.`,
+    );
+
     return await this.marketModel
       .findOneAndUpdate(
         buyerRemoveMarketDto.product,
@@ -289,6 +392,10 @@ export class MarketService {
         { new: true },
       )
       .catch(() => {
+        this.logger.error(
+          `Could not remove buyer ${buyerRemoveMarketDto.user} from product ${buyerRemoveMarketDto.product} because the changes could not be saved.`,
+        );
+
         throw new BadRequestException(
           this.i18nService.translate(
             'translations.market.service.buyer_error_deleted',
@@ -302,11 +409,20 @@ export class MarketService {
     idUserRequest: string,
   ) {
     let product;
+
+    this.logger.log(
+      `Eliminating reaction for ${reactionRemoveMarketDto.user} in the product ${reactionRemoveMarketDto.product}.`,
+    );
+
     try {
       product = await this.marketModel.findById(
         reactionRemoveMarketDto.product,
       );
     } catch (error) {
+      this.logger.error(
+        `The reaction could not be deleted for ${reactionRemoveMarketDto.user} in product ${reactionRemoveMarketDto.product} due to a database failure.`,
+      );
+
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
@@ -315,6 +431,10 @@ export class MarketService {
     }
 
     if (!product) {
+      this.logger.error(
+        `The reaction could not be removed for ${reactionRemoveMarketDto.user} in the product ${reactionRemoveMarketDto.product} because the product does not exist.`,
+      );
+
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
@@ -323,6 +443,10 @@ export class MarketService {
     }
 
     if (idUserRequest !== product.reaction.user) {
+      this.logger.error(
+        `The reaction could not be deleted for ${reactionRemoveMarketDto.user} in the product ${reactionRemoveMarketDto.product} because the user ${idUserRequest} is not the author of the reaction.`,
+      );
+
       throw new ConflictException(
         this.i18nService.translate(
           'translations.market.service.reaction_only_delete_owned',
@@ -343,6 +467,10 @@ export class MarketService {
         { new: true },
       )
       .catch(() => {
+        this.logger.error(
+          `The reaction could not be deleted for ${reactionRemoveMarketDto.user} in the product ${reactionRemoveMarketDto.product} because the changes could not be saved.`,
+        );
+
         throw new BadRequestException(
           this.i18nService.translate(
             'translations.market.service.reaction_error_deleted',
