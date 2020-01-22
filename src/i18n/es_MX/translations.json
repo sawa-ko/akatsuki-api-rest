@@ -1,4 +1,12 @@
 {
+  "admin": {
+    "controller": {
+      "changelog_added": "Registro de cambios publicado con éxito."
+    },
+    "service": {
+      "changelog_error_add": "Lo sentimos, pero no pudimos procesar el registro de cambios."
+    }
+  },
   "auth": {
     "controller": {
       "account_confirmation": "Se ha confirmado con exito la cuenta. ¡Ya puedes iniciar sesión!",
@@ -34,6 +42,28 @@
     "account_no_permission": "La cuenta no tiene permisos suficientes para completar esta acción.",
     "process_failed": "Ocurrió un problema al procesar la solicitud.",
     "saved": "Cambios guardados correctamente."
+  },
+  "market": {
+    "controller": {
+      "buyer_deleted": "Comprador eliminado correctamente del producto.",
+      "comment_added": "Comentario agregado correctamente al producto.",
+      "comment_deleted": "Comentario eliminado correctamente del producto.",
+      "product_added": "Producto publicado con éxito en la tienda. Revisaremos tu producto y cuando lo revisemos te notificaremos si fue aprobado o no. Recuerda que si tu producto no cumple con los principios de la comunidad, se eliminará y se deducirá una cantidad de Tachi de tu cuenta.",
+      "reaction_added": "Reacción agregada correctamente al producto.",
+      "reaction_deleted": "Reacción eliminada correctamente del producto."
+    },
+    "service": {
+      "buyer_error_added": "Lo sentimos pero no hemos podido procesar la transaccion. Intentalo de nuevo mas tarde.",
+      "buyer_error_deleted": "Lo sentimos pero no hemos podido eliminar al comprador del producto. Intentalo de nuevo mas tarde.",
+      "comment_error_added": "Lo sentimos pero no hemos podido procesar el comentario. Intentalo de nuevo mas tarde.",
+      "comment_error_deleted": "Lo sentimos pero no hemos podido eliminar el comentario. Intentalo de nuevo mas tarde.",
+      "comment_only_delete_owned": "Sólo puedes eliminar tus comentarios.",
+      "product_error_added": "Lo sentimos pero no pudimos procesar el producto. Por favor, inténtalo de nuevo más tarde.",
+      "product_not_found": "Lo sentimos pero no hemos encontrado el producto.",
+      "reaction_error_added": "Lo sentimos pero no hemos podido procesar la reaccion. Intentalo de nuevo mas tarde.",
+      "reaction_error_deleted": "Lo sentimos pero no hemos eliminar la reaccion. Intentalo de nuevo mas tarde.",
+      "reaction_only_delete_owned": "Solo puedes eliminar tus reacciones."
+    }
   },
   "user": {
     "controller": {

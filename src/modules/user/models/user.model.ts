@@ -1,13 +1,6 @@
-import {
-  prop,
-  modelOptions,
-  arrayProp,
-  index,
-  Ref,
-} from '@typegoose/typegoose';
+import { prop, modelOptions, arrayProp, index } from '@typegoose/typegoose';
 import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 import {
-  Market,
   Suspension,
   Stats,
   Security,
@@ -110,9 +103,6 @@ export class UserModel extends TimeStamps {
 
   @arrayProp({ items: Transaction })
   public transactions: Transaction[];
-
-  @arrayProp({ items: Market })
-  public market: Market[];
 
   @arrayProp({ items: Reactions })
   public reactions: Reactions[];

@@ -1,4 +1,12 @@
 {
+  "admin": {
+    "controller": {
+      "changelog_added": "Changelog published successfully."
+    },
+    "service": {
+      "changelog_error_add": "We are sorry but we were unable to process the change log."
+    }
+  },
   "auth": {
     "controller": {
       "account_confirmation": "The account has been successfully confirmed. You can now login!",
@@ -34,6 +42,28 @@
     "account_no_permission": "The account does not have sufficient permissions to complete this action.",
     "process_failed": "There was a problem processing the request.",
     "saved": "Changes saved successfully."
+  },
+  "market": {
+    "controller": {
+      "buyer_deleted": "Buyer successfully removed from product.",
+      "comment_added": "Comment successfully added to the product.",
+      "comment_deleted": "Comment successfully removed from the product.",
+      "product_added": "Product successfully published in the store. We will review your product and when we review it we will notify you if it was approved or not. Remember that if your product does not comply with the principles of the community, it will be eliminated and a quantity of Tachi's will be deducted from your account.",
+      "reaction_added": "Reaction successfully added to the product.",
+      "reaction_deleted": "Reaction successfully removed from the product."
+    },
+    "service": {
+      "buyer_error_added": "We are sorry but we could not process the transaction. Try again later.",
+      "buyer_error_deleted": "We are sorry but we were unable to eliminate the buyer from the product. Try again later.",
+      "comment_error_added": "We are sorry but we could not process the comment. Try again later.",
+      "comment_error_deleted": "We are sorry but we were unable to delete the comment. Try again later.",
+      "comment_only_delete_owned": "You can only delete your comments.",
+      "product_error_added": "We are sorry but we could not process the product. Please try again later.",
+      "product_not_found": "We are sorry but we have not found the product.",
+      "reaction_error_added": "We are sorry but we could not process the reaction. Try again later.",
+      "reaction_error_deleted": "We are sorry but we have not eliminated the reaction. Try again later.",
+      "reaction_only_delete_owned": "You can only eliminate your reactions."
+    }
   },
   "user": {
     "controller": {

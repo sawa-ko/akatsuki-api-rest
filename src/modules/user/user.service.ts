@@ -326,6 +326,7 @@ export class UserService {
         this.i18nService.translate('translations.auth.service.user_not_found'),
       );
     }
+    
     if (type === 'upvote') {
       user.reactions.push({ author: ofId, type: 0 });
       await user.save().catch(error => {

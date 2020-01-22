@@ -1,43 +1,6 @@
 import { prop, index } from '@typegoose/typegoose';
 import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 
-export class Market extends TimeStamps {
-  @prop({
-    required: true,
-    minlength: 6,
-    maxlength: 20,
-  })
-  public description: string;
-
-  @prop({ required: true, min: 0, max: 9999 })
-  public price: number;
-
-  @prop({ required: true, min: 0, max: 1 })
-  public type: number;
-
-  @prop({ required: true })
-  public discount: number;
-
-  @prop({
-    required: true,
-    lowercase: true,
-    trim: true,
-    minlength: 6,
-    maxlength: 20,
-  })
-  @prop({ required: true })
-  public seller: string;
-
-  @prop({ required: true })
-  public device: number;
-
-  @prop({ required: true })
-  public ip: string;
-
-  @prop({ required: true })
-  public market: number;
-}
-
 export class Reactions {
   /*@prop({
     required: true,
@@ -201,6 +164,7 @@ export class TransactionBuyer {
   @prop({ required: true })
   public device: string;
 }
+
 export class Transaction extends TimeStamps {
   // tslint:disable-next-line
   public _id?: string;
@@ -226,3 +190,4 @@ export class Transaction extends TimeStamps {
   @prop({ required: true })
   public market: number;
 }
+
