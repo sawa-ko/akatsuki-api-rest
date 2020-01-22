@@ -1206,7 +1206,7 @@ export class AuthService {
     token: string;
   }&gt; {
     const { email, password, device, ip } &#x3D; signInDto;
-    const userSignIn: UserModel &#x3D; await this.userModel.findOne({
+    const userSignIn &#x3D; await this.userModel.findOne({
       &#x27;email.key&#x27;: email,
     });
     this.logger.log(

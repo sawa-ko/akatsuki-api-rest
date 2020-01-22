@@ -1,0 +1,1538 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>backend-api documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">backend-api documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>MarketService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/modules/market/market.service.ts</code>
+        </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#logger">logger</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#AddBuyerToProduct">AddBuyerToProduct</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#AddComment">AddComment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#AddProduct">AddProduct</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#AddReaction">AddReaction</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#GetAllProducts">GetAllProducts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#GetProduct">GetProduct</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#RemoveBuyer">RemoveBuyer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#RemoveComment">RemoveComment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#RemoveReaction">RemoveReaction</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(marketModel: ReturnModelType<>, i18nService: I18nRequestScopeService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/modules/market/market.service.ts:22</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>marketModel</td>
+                                                  
+                                                        <td>
+                                                                    <code>ReturnModelType&lt;&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>i18nService</td>
+                                                  
+                                                        <td>
+                                                                    <code>I18nRequestScopeService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AddBuyerToProduct"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            AddBuyerToProduct
+                        </b>
+                        <a href="#AddBuyerToProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>AddBuyerToProduct(buyerAddMarketDto: <a href="../classes/BuyerAddMarketDto.html">BuyerAddMarketDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="146"
+                            class="link-to-prism">src/modules/market/market.service.ts:146</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>buyerAddMarketDto</td>
+                                    <td>
+                                                <code><a href="../classes/BuyerAddMarketDto.html" target="_self" >BuyerAddMarketDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AddComment"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            AddComment
+                        </b>
+                        <a href="#AddComment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>AddComment(commentMarketDto: <a href="../classes/CommentMarketDto.html">CommentMarketDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="198"
+                            class="link-to-prism">src/modules/market/market.service.ts:198</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>commentMarketDto</td>
+                                    <td>
+                                                <code><a href="../classes/CommentMarketDto.html" target="_self" >CommentMarketDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AddProduct"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            AddProduct
+                        </b>
+                        <a href="#AddProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>AddProduct(marketModel: <a href="../classes/MarketModel.html">MarketModel</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/modules/market/market.service.ts:30</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>marketModel</td>
+                                    <td>
+                                                <code><a href="../classes/MarketModel.html" target="_self" >MarketModel</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AddReaction"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            AddReaction
+                        </b>
+                        <a href="#AddReaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>AddReaction(reactionAddMarketDto: <a href="../classes/ReactionAddMarketDto.html">ReactionAddMarketDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="251"
+                            class="link-to-prism">src/modules/market/market.service.ts:251</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>reactionAddMarketDto</td>
+                                    <td>
+                                                <code><a href="../classes/ReactionAddMarketDto.html" target="_self" >ReactionAddMarketDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetAllProducts"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            GetAllProducts
+                        </b>
+                        <a href="#GetAllProducts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>GetAllProducts(filter: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, rankUserRequest: string[], idUserRequest: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/modules/market/market.service.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>rankUserRequest</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>idUserRequest</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetProduct"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            GetProduct
+                        </b>
+                        <a href="#GetProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>GetProduct(productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, rankUserRequest: string[], idUserRequest: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/modules/market/market.service.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>productId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>rankUserRequest</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>idUserRequest</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RemoveBuyer"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            RemoveBuyer
+                        </b>
+                        <a href="#RemoveBuyer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>RemoveBuyer(buyerRemoveMarketDto: <a href="../classes/BuyerRemoveMarketDto.html">BuyerRemoveMarketDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="377"
+                            class="link-to-prism">src/modules/market/market.service.ts:377</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>buyerRemoveMarketDto</td>
+                                    <td>
+                                                <code><a href="../classes/BuyerRemoveMarketDto.html" target="_self" >BuyerRemoveMarketDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RemoveComment"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            RemoveComment
+                        </b>
+                        <a href="#RemoveComment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>RemoveComment(commentRemoveMarketDto: <a href="../classes/CommentRemoveMarketDto.html">CommentRemoveMarketDto</a>, idUserRequest: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="304"
+                            class="link-to-prism">src/modules/market/market.service.ts:304</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>commentRemoveMarketDto</td>
+                                    <td>
+                                                <code><a href="../classes/CommentRemoveMarketDto.html" target="_self" >CommentRemoveMarketDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>idUserRequest</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RemoveReaction"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            RemoveReaction
+                        </b>
+                        <a href="#RemoveReaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>RemoveReaction(reactionRemoveMarketDto: <a href="../classes/ReactionRemoveMarketDto.html">ReactionRemoveMarketDto</a>, idUserRequest: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="407"
+                            class="link-to-prism">src/modules/market/market.service.ts:407</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>reactionRemoveMarketDto</td>
+                                    <td>
+                                                <code><a href="../classes/ReactionRemoveMarketDto.html" target="_self" >ReactionRemoveMarketDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>idUserRequest</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="logger"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            logger</b>
+                            <a href="#logger"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Logger</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Logger(&#x27;Market&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/modules/market/market.service.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Injectable,
+  BadRequestException,
+  ConflictException,
+  NotFoundException,
+  Logger,
+} from &#x27;@nestjs/common&#x27;;
+import { InjectModel } from &#x27;nestjs-typegoose&#x27;;
+import { MarketModel } from &#x27;./models/market.model&#x27;;
+import { ReturnModelType } from &#x27;@typegoose/typegoose&#x27;;
+import { RanksEnum } from &#x27;src/keys/ranks.enum&#x27;;
+import { CommentMarketDto } from &#x27;./dto/comment.add.dto&#x27;;
+import { CommentRemoveMarketDto } from &#x27;./dto/comment.remove.dto&#x27;;
+import { BuyerAddMarketDto } from &#x27;./dto/buyer.add.dto&#x27;;
+import { BuyerRemoveMarketDto } from &#x27;./dto/buyer.remove.dto&#x27;;
+import { ReactionAddMarketDto } from &#x27;./dto/reaction.add.dto&#x27;;
+import { ReactionRemoveMarketDto } from &#x27;./dto/reaction.remove.dto&#x27;;
+import { I18nRequestScopeService } from &#x27;nestjs-i18n&#x27;;
+
+@Injectable()
+export class MarketService {
+  private readonly logger: Logger &#x3D; new Logger(&#x27;Market&#x27;);
+
+  constructor(
+    @InjectModel(MarketModel)
+    private readonly marketModel: ReturnModelType&lt;typeof MarketModel&gt;,
+    private readonly i18nService: I18nRequestScopeService,
+  ) {}
+
+  public async AddProduct(marketModel: MarketModel) {
+    this.logger.log(
+      &#x60;Creating a new product for the market with the name of $ {marketModel.name} with a value of ${marketModel.price} and with a discount of ${marketModel.discount.percentage}%. This product is published by ${marketModel.author} on the device ${marketModel.device} with IP ${marketModel.ip}.&#x60;,
+    );
+
+    return await this.marketModel.create(marketModel).catch(() &#x3D;&gt; {
+      this.logger.error(
+        &#x60;The product with name ${marketModel.name} could not be processed by user ${marketModel.author} due to a database failure.&#x60;,
+      );
+
+      throw new BadRequestException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_error_added&#x27;,
+        ),
+      );
+    });
+  }
+
+  public async GetProduct(
+    productId: string,
+    rankUserRequest: string[],
+    idUserRequest: string,
+  ) {
+    this.logger.log(
+      &#x60;Obtaining product data ${productId} by user ${idUserRequest}.&#x60;,
+    );
+
+    if (
+      !rankUserRequest.includes(RanksEnum.ADMINISTRATOR) &amp;&amp;
+      !rankUserRequest.includes(RanksEnum.MODERATOR)
+    ) {
+      return await this.marketModel
+        .findById(productId)
+        .select([
+          &#x27;name&#x27;,
+          &#x27;description&#x27;,
+          &#x27;price&#x27;,
+          &#x27;available&#x27;,
+          &#x27;status&#x27;,
+          &#x27;discount&#x27;,
+          &#x27;author&#x27;,
+          &#x27;buyers&#x27;,
+          &#x27;reactions&#x27;,
+          &#x27;comments&#x27;,
+          &#x27;createdAt&#x27;,
+          &#x27;updatedAt&#x27;,
+        ])
+        .populate(&#x27;author&#x27;, &#x27;name photo rank premium.status&#x27;)
+        .populate(&#x27;buyers.user&#x27;, &#x27;name photo rank premium.status&#x27;)
+        .populate(&#x27;reactions.user&#x27;, &#x27;name photo rank premium.status&#x27;)
+        .populate(&#x27;comments.author&#x27;, &#x27;name photo rank premium.status&#x27;)
+        .exec();
+    }
+  }
+
+  public async GetAllProducts(
+    filter: number,
+    rankUserRequest: string[],
+    idUserRequest: string,
+  ) {
+    let order &#x3D; &#x27;-createdAt&#x27;;
+
+    this.logger.log(
+      &#x60;Obtaining data of all products with the filter ${filter} by the user ${idUserRequest}.&#x60;,
+    );
+
+    if (
+      !rankUserRequest.includes(RanksEnum.ADMINISTRATOR) &amp;&amp;
+      !rankUserRequest.includes(RanksEnum.MODERATOR)
+    ) {
+      switch (filter) {
+        case 1:
+          order &#x3D; &#x27;-createdAt&#x27;;
+          break;
+        case 2:
+          order &#x3D; &#x27;-price&#x27;;
+          break;
+        case 3:
+          order &#x3D; &#x27;-discount.percentage&#x27;;
+          break;
+        case 3:
+          order &#x3D; &#x27;createdAt&#x27;;
+          break;
+        case 4:
+          order &#x3D; &#x27;price&#x27;;
+          break;
+        case 5:
+          order &#x3D; &#x27;discount.percentage&#x27;;
+          break;
+      }
+
+      return await this.marketModel
+        .find({})
+        .sort(order)
+        .select([
+          &#x27;name&#x27;,
+          &#x27;description&#x27;,
+          &#x27;price&#x27;,
+          &#x27;available&#x27;,
+          &#x27;status&#x27;,
+          &#x27;discount&#x27;,
+          &#x27;author&#x27;,
+          &#x27;buyers&#x27;,
+          &#x27;reactions&#x27;,
+          &#x27;comments&#x27;,
+          &#x27;createdAt&#x27;,
+          &#x27;updatedAt&#x27;,
+        ])
+        .populate(&#x27;author&#x27;, &#x27;name photo rank premium.status&#x27;)
+        .populate(&#x27;buyers.user&#x27;, &#x27;name photo rank premium.status&#x27;)
+        .populate(&#x27;reactions.user&#x27;, &#x27;name photo rank premium.status&#x27;)
+        .populate(&#x27;comments.author&#x27;, &#x27;name photo rank premium.status&#x27;)
+        .exec();
+    }
+  }
+
+  public async AddBuyerToProduct(buyerAddMarketDto: BuyerAddMarketDto) {
+    let product;
+
+    this.logger.log(
+      &#x60;Adding the user ${buyerAddMarketDto.user} as a new buyer of the product ${buyerAddMarketDto.product}.&#x60;,
+    );
+
+    try {
+      product &#x3D; await this.marketModel.findById(buyerAddMarketDto.product);
+    } catch (error) {
+      this.logger.error(
+        &#x60;The user ${buyerAddMarketDto.user} could not be added as a new buyer of the product ${buyerAddMarketDto.product} due to an error in the database.&#x60;,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    if (!product) {
+      this.logger.error(
+        &#x60;The user ${buyerAddMarketDto.user} could not be added as a new buyer of the product ${buyerAddMarketDto.product} because the product does not exist.&#x60;,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    product.buyers.push({
+      user: buyerAddMarketDto.user,
+      device: buyerAddMarketDto.device,
+      ip: buyerAddMarketDto.ip,
+    });
+
+    return await product.save().catch(() &#x3D;&gt; {
+      this.logger.error(
+        &#x60;The user ${buyerAddMarketDto.user} could not be added as a new buyer of the product ${buyerAddMarketDto.product} because the changes could not be saved.&#x60;,
+      );
+
+      throw new BadRequestException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.buyer_error_added&#x27;,
+        ),
+      );
+    });
+  }
+
+  public async AddComment(commentMarketDto: CommentMarketDto) {
+    let product;
+
+    this.logger.log(
+      &#x60;Adding a new comment for ${commentMarketDto.user} to the product ${commentMarketDto.product}.&#x60;,
+    );
+
+    try {
+      product &#x3D; await this.marketModel.findById(commentMarketDto.product);
+    } catch (error) {
+      this.logger.error(
+        &#x60;A new comment for ${commentMarketDto.user} could not be added to the product ${commentMarketDto.product} due to a system error.&#x60;,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    if (!product) {
+      this.logger.error(
+        &#x60;A new comment for ${commentMarketDto.user} could not be added to the product ${commentMarketDto.product} because the product does not exist.&#x60;,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    product.comments.push({
+      author: commentMarketDto.user,
+      device: commentMarketDto.device,
+      ip: commentMarketDto.ip,
+      content: commentMarketDto.content,
+    });
+
+    return await product.save().catch(() &#x3D;&gt; {
+      this.logger.error(
+        &#x60;A new comment for ${commentMarketDto.user} could not be added to the product ${commentMarketDto.product} because the changes could not be saved.&#x60;,
+      );
+
+      throw new BadRequestException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.comment_error_added&#x27;,
+        ),
+      );
+    });
+  }
+
+  public async AddReaction(reactionAddMarketDto: ReactionAddMarketDto) {
+    let product;
+
+    this.logger.log(
+      &#x60;Adding a new reaction for ${reactionAddMarketDto.user} to the product ${reactionAddMarketDto.product}.&#x60;,
+    );
+
+    try {
+      product &#x3D; await this.marketModel.findById(reactionAddMarketDto.product);
+    } catch (error) {
+      this.logger.error(
+        &#x60;A new reaction for ${reactionAddMarketDto.user} could not be added to the product ${reactionAddMarketDto.product} due to an error in the database.&#x60;,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    if (!product) {
+      this.logger.error(
+        &#x60;A new reaction for ${reactionAddMarketDto.user} could not be added to the product ${reactionAddMarketDto.product} because the product does not exist.&#x60;,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    product.reactions.push({
+      user: reactionAddMarketDto.user,
+      device: reactionAddMarketDto.device,
+      ip: reactionAddMarketDto.ip,
+      type: reactionAddMarketDto.type,
+    });
+
+    return await product.save().catch(() &#x3D;&gt; {
+      this.logger.error(
+        &#x60;A new reaction for ${reactionAddMarketDto.user} could not be added to the product ${reactionAddMarketDto.product} because the changes could not be saved.&#x60;,
+      );
+
+      throw new BadRequestException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.reaction_error_added&#x27;,
+        ),
+      );
+    });
+  }
+
+  public async RemoveComment(
+    commentRemoveMarketDto: CommentRemoveMarketDto,
+    idUserRequest: string,
+  ) {
+    let product;
+
+    this.logger.log(
+      &#x60;Deleting comment by ${commentRemoveMarketDto.author} in the product ${commentRemoveMarketDto.product}.&#x60;,
+    );
+
+    try {
+      product &#x3D; await this.marketModel.findById(commentRemoveMarketDto.product);
+    } catch (error) {
+      this.logger.error(
+        &#x60;Could not delete comment for ${commentRemoveMarketDto.author} in product ${commentRemoveMarketDto.product} due to an error in the database.&#x60;,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    if (!product) {
+      this.logger.error(
+        &#x60;Could not delete comment for ${commentRemoveMarketDto.author} in product ${commentRemoveMarketDto.product} because the product does not exist.&#x60;,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    if (idUserRequest !&#x3D;&#x3D; product.reaction.user) {
+      this.logger.error(
+        &#x60;Could not delete comment for ${commentRemoveMarketDto.author} on product ${commentRemoveMarketDto.product} because user ${idUserRequest} is not the author of the comment.&#x60;,
+      );
+
+      throw new ConflictException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.comment_only_delete_owned&#x27;,
+        ),
+      );
+    }
+
+    return await this.marketModel
+      .findOneAndUpdate(
+        commentRemoveMarketDto.product,
+        {
+          $pull: {
+            comments: {
+              author: commentRemoveMarketDto.author,
+            },
+          },
+        },
+        { new: true },
+      )
+      .catch(() &#x3D;&gt; {
+        this.logger.error(
+          &#x60;Could not delete comment for ${commentRemoveMarketDto.author} in product ${commentRemoveMarketDto.product} because the changes could not be saved.&#x60;,
+        );
+
+        throw new BadRequestException(
+          this.i18nService.translate(
+            &#x27;translations.market.service.comment_error_deleted&#x27;,
+          ),
+        );
+      });
+  }
+
+  public async RemoveBuyer(buyerRemoveMarketDto: BuyerRemoveMarketDto) {
+    this.logger.log(
+      &#x60;Removing buyer ${buyerRemoveMarketDto.user} from product ${buyerRemoveMarketDto.product}.&#x60;,
+    );
+
+    return await this.marketModel
+      .findOneAndUpdate(
+        buyerRemoveMarketDto.product,
+        {
+          $pull: {
+            buyers: {
+              user: buyerRemoveMarketDto.user,
+            },
+          },
+        },
+        { new: true },
+      )
+      .catch(() &#x3D;&gt; {
+        this.logger.error(
+          &#x60;Could not remove buyer ${buyerRemoveMarketDto.user} from product ${buyerRemoveMarketDto.product} because the changes could not be saved.&#x60;,
+        );
+
+        throw new BadRequestException(
+          this.i18nService.translate(
+            &#x27;translations.market.service.buyer_error_deleted&#x27;,
+          ),
+        );
+      });
+  }
+
+  public async RemoveReaction(
+    reactionRemoveMarketDto: ReactionRemoveMarketDto,
+    idUserRequest: string,
+  ) {
+    let product;
+
+    this.logger.log(
+      &#x60;Eliminating reaction for ${reactionRemoveMarketDto.user} in the product ${reactionRemoveMarketDto.product}.&#x60;,
+    );
+
+    try {
+      product &#x3D; await this.marketModel.findById(
+        reactionRemoveMarketDto.product,
+      );
+    } catch (error) {
+      this.logger.error(
+        &#x60;The reaction could not be deleted for ${reactionRemoveMarketDto.user} in product ${reactionRemoveMarketDto.product} due to a database failure.&#x60;,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    if (!product) {
+      this.logger.error(
+        &#x60;The reaction could not be removed for ${reactionRemoveMarketDto.user} in the product ${reactionRemoveMarketDto.product} because the product does not exist.&#x60;,
+      );
+
+      throw new NotFoundException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    if (idUserRequest !&#x3D;&#x3D; product.reaction.user) {
+      this.logger.error(
+        &#x60;The reaction could not be deleted for ${reactionRemoveMarketDto.user} in the product ${reactionRemoveMarketDto.product} because the user ${idUserRequest} is not the author of the reaction.&#x60;,
+      );
+
+      throw new ConflictException(
+        this.i18nService.translate(
+          &#x27;translations.market.service.reaction_only_delete_owned&#x27;,
+        ),
+      );
+    }
+
+    return await this.marketModel
+      .findOneAndUpdate(
+        reactionRemoveMarketDto.product,
+        {
+          $pull: {
+            reactions: {
+              user: reactionRemoveMarketDto.user,
+            },
+          },
+        },
+        { new: true },
+      )
+      .catch(() &#x3D;&gt; {
+        this.logger.error(
+          &#x60;The reaction could not be deleted for ${reactionRemoveMarketDto.user} in the product ${reactionRemoveMarketDto.product} because the changes could not be saved.&#x60;,
+        );
+
+        throw new BadRequestException(
+          this.i18nService.translate(
+            &#x27;translations.market.service.reaction_error_deleted&#x27;,
+          ),
+        );
+      });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'MarketService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
