@@ -18,6 +18,9 @@ import {
   options: {
     customName: 'Market',
   },
+  schemaOptions: {
+    collection: 'market',
+  },
 })
 @index(
   {
