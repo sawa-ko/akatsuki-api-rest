@@ -18,6 +18,7 @@ import { AuthModule } from './auth/auth.module';
 import { GeneralGateway } from './gateways/general.gateway';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { AdminModule } from './modules/admin/admin.module';
+import { MarketModule } from './modules/market/market.module';
 
 @Module({
   imports: [
@@ -65,6 +66,7 @@ import { AdminModule } from './modules/admin/admin.module';
     AuthModule,
     CacheModule.register(),
     AdminModule,
+    MarketModule,
   ],
   controllers: [AppController],
   providers: [
