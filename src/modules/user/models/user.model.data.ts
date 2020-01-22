@@ -190,4 +190,3 @@ export class Transaction extends TimeStamps {
   @prop({ required: true })
   public market: number;
 }
-
