@@ -26,6 +26,7 @@ export class AdminService {
     return await this.changelogModel
       .find()
       .populate('author.info', 'username name photo cover rank')
+      .limit(1)
       .exec();
   }
 }
