@@ -8,6 +8,12 @@ image: atlassian/default-image:2
 pipelines:
   default:
     - step:
+        name: Test Api code,
+        caches:
+          - nestjs-node
+          - npm i
+          - npm run lint
+    - step:
         name: Build API with NestsJs framework,
         script:
           - npm i -g @nestjs/cli
