@@ -32,6 +32,7 @@ export class MarketController {
     private readonly i18nService: I18nService,
   ) {}
 
+  @Rank(RanksEnum.SELLER, RanksEnum.MODERATOR, RanksEnum.ADMINISTRATOR)
   @Put('/add/product')
   public async AddProduct(
     @Body() marketModel: MarketModel,
