@@ -1,5 +1,5 @@
 import { prop, Ref } from '@typegoose/typegoose';
-import { UserModel } from 'src/modules/user/models/user.model';
+import { UserModel } from '../../../modules/user/models/user.model';
 
 export class DiscountMarket {
   @prop({ required: true, min: 0, max: 99 })

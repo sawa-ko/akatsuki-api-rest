@@ -16,7 +16,10 @@ import {
 } from './user.model.data';
 
 @modelOptions({ options: { customName: 'Users' } })
-@index({ email: 1, username: 1, device: 1, ip: 1 }, { unique: true })
+@index(
+  { 'email': 1, 'username': 1, 'device': 1, 'ip': 1, 'sessions.device': 1, 'sessions.ip': 1 },
+  { unique: true },
+)
 export class UserModel extends TimeStamps {
   // tslint:disable-next-line
   public _id?: string;

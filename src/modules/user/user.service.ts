@@ -13,7 +13,7 @@ import { ReturnModelType } from '@typegoose/typegoose';
 import { I18nRequestScopeService } from 'nestjs-i18n';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ReactionsDto } from './dto/reactions.dto';
-import { RanksEnum } from 'src/keys/ranks.enum';
+import { RanksEnum } from '../../keys/ranks.enum';
 
 @Injectable()
 export class UserService {

@@ -6,7 +6,7 @@ import {
   index,
 } from '@typegoose/typegoose';
 import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
-import { UserModel } from 'src/modules/user/models/user.model';
+import { UserModel } from '../../../modules/user/models/user.model';
 import {
   DiscountMarket,
   BuyerMarket,
@@ -29,7 +29,7 @@ import {
     'buyer.user._id': 1,
     'reactions.device': 1,
     'reactions.ip': 1,
-    'reactions.user._id': 1,
+    'reactions.user': 1,
   },
   { unique: true },
 )
@@ -51,6 +51,9 @@ export class MarketModel extends TimeStamps {
 
   @prop({ required: true, _id: false })
   public discount: DiscountMarket;
+
+  @prop({ required: true })
+  public market: number;
 
   @prop({ required: true })
   public ip: string;

@@ -65,6 +65,21 @@
       "reaction_only_delete_owned": "Solo puedes eliminar tus reacciones."
     }
   },
+  "transactions": {
+    "controller": {
+      "product_not_found": "Lo sentimos, pero no pudimos procesar el producto porque no existe o se eliminó de la tienda.",
+      "rank_seller_error": "No pudimos completar la transacción porque el vendedor no tiene suficientes permisos para vender.",
+      "tachi_error": "No pudimos completar la transacción porque no tienes suficiente Tachi para completar la compra.",
+      "transaction_error_deleted": "Lo sentimos, pero no pudimos completar la eliminación de la transacción. Intenta nuevamente más tarde.",
+      "transaction_error_id": "Lo sentimos, pero no pudimos obtener los ID de transacción. La compra probablemente no se refleje en tu cuenta, pero el producto ahora es tuyo. Te recomendamos que te contactes con nosotros para resolver este problema. :)",
+      "transaction_error_process": "Lo sentimos pero no pudimos procesar la transacción.",
+      "transaction_error_save": "No pudimos completar la transacción porque no se pudieron guardar los cambios. Por favor, inténtalo de nuevo más tarde.",
+      "transaction_successful": "Compra exitosa."
+    },
+    "service": {
+      "transaction_deleted": "La transacción y la compra se eliminaron con éxito del producto y los usuarios."
+    }
+  },
   "user": {
     "controller": {
       "cover_photo_updated": "Foto de portada actualizada con éxito.",

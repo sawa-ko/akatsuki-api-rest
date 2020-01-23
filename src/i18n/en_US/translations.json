@@ -65,6 +65,21 @@
       "reaction_only_delete_owned": "You can only eliminate your reactions."
     }
   },
+  "transactions": {
+    "controller": {
+      "product_not_found": "We are sorry but we could not process the product because it does not exist or was removed from the store.",
+      "rank_seller_error": "We were unable to complete the transaction because the seller does not have enough permits to sell.",
+      "tachi_error": "We could not complete the transaction because you do not have enough Tachi to complete the purchase.",
+      "transaction_error_deleted": "We are sorry but we were unable to complete the transaction removal. Try again later.",
+      "transaction_error_id": "We're sorry, but we couldn't get the transaction IDs. The purchase is probably not reflected in your account, but the product is now yours. We recommend that you contact us to solve this problem. :)",
+      "transaction_error_process": "We are sorry but we could not process the transaction.",
+      "transaction_error_save": "We were unable to complete the transaction because the changes could not be saved. Please try again later.",
+      "transaction_successful": "Successful purchase."
+    },
+    "service": {
+      "transaction_deleted": "Transaction and purchase successfully removed from the product and users."
+    }
+  },
   "user": {
     "controller": {
       "cover_photo_updated": "Cover photo updated successfully.",
