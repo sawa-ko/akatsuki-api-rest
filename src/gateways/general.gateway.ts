@@ -8,6 +8,7 @@ import { Logger } from '@nestjs/common';
 import { UserService } from '../modules/user/user.service';
 import * as moments from 'moment';
 import * as momentstz from 'moment-timezone';
+import { Socket } from 'socket.io';
 
 @WebSocketGateway()
 export class GeneralGateway
@@ -17,7 +18,7 @@ export class GeneralGateway
   @WebSocketServer() private readonly server: any;
   constructor(private readonly userService: UserService) {}
 
-  handleDisconnect(client: any) {
+  handleDisconnect(client: Socket) {
     const timezone = momentstz()
       .tz('America/New_York')
       .utc()
@@ -27,12 +28,12 @@ export class GeneralGateway
       .add(15, 'minutes')
       .toDate();
 
-    if (client.query.online === 1) {
-      this.server.emit(`USER:${client.query.USER}:ONLINE`, { online: false });
-      this.logger.log(
-        `User ${client.query.user} with session ID ${client.query.session} and with Socket Id ${client.id} has been disconnected.`,
-      );
-      return this.userService.updateOnlineUser(client.query.user, {
+    if (client.handshake.query.online === 1) {
+      this.server.emit(`USER:${client.handshake.query.USER}:ONLINE`, { online: false });
+      /*this.logger.log(
+        `User ${client.handshake.query.user} with session ID ${client.handshake.query.session} and with Socket Id ${client.id} has been disconnected.`,
+      );*/
+      return this.userService.updateOnlineUser(client.handshake.query.user, {
         online: {
           online: false,
           mode: 1,
@@ -42,7 +43,7 @@ export class GeneralGateway
     }
   }
 
-  handleConnection(client: any) {
+  handleConnection(client: Socket) {
     const timezone = momentstz()
       .tz('America/New_York')
       .utc()
@@ -52,12 +53,12 @@ export class GeneralGateway
       .add(15, 'minutes')
       .toDate();
 
-    if (client.query.online === 1) {
-      this.server.emit(`USER:${client.query.USER}:ONLINE`, { online: true });
-      this.logger.log(
-        `User ${client.query.user} has been logged in with session ID ${client.query.session} and with Socket Id ${client.id}.`,
-      );
-      return this.userService.updateOnlineUser(client.query.user, {
+    if (client.handshake.query.online === 1) {
+      this.server.emit(`USER:${client.handshake.query.USER}:ONLINE`, { online: true });
+      /*this.logger.log(
+        `User ${client.handshake.query.user} has been logged in with session ID ${client.handshake.query.session} and with Socket Id ${client.id}.`,
+      );*/
+      return this.userService.updateOnlineUser(client.handshake.query.user, {
         online: {
           online: true,
           mode: 1,
