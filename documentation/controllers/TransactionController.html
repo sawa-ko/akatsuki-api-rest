@@ -68,15 +68,347 @@
 
 
 
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
 
-    </div>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#DeleteTransaction">DeleteTransaction</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#GetTransactions">GetTransactions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#ProcessTransaction">ProcessTransaction</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DeleteTransaction"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            DeleteTransaction
+                        </b>
+                        <a href="#DeleteTransaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>DeleteTransaction(transactionDeleteDto: <a href="../classes/TransactionDeleteDto.html">TransactionDeleteDto</a>, response, lang: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Rank(RanksEnum.ADMINISTRATOR, RanksEnum.MODERATOR)<br />@Delete(&#x27;/delete/purchase&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/modules/transaction/transaction.controller.ts:35</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>transactionDeleteDto</td>
+                                    <td>
+                                                <code><a href="../classes/TransactionDeleteDto.html" target="_self" >TransactionDeleteDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>response</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>lang</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetTransactions"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            GetTransactions
+                        </b>
+                        <a href="#GetTransactions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>GetTransactions()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Rank(RanksEnum.ADMINISTRATOR, RanksEnum.MODERATOR)<br />@Get(&#x27;/get/all&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/modules/transaction/transaction.controller.ts:57</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ProcessTransaction"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            ProcessTransaction
+                        </b>
+                        <a href="#ProcessTransaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ProcessTransaction(transactionModel: <a href="../classes/TransactionModel.html">TransactionModel</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Put(&#x27;/process/purchase&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/modules/transaction/transaction.controller.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>transactionModel</td>
+                                    <td>
+                                                <code><a href="../classes/TransactionModel.html" target="_self" >TransactionModel</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Controller,
+  Put,
+  Body,
+  UseGuards,
+  Delete,
+  Res,
+  HttpStatus,
+  Get,
+} from &#x27;@nestjs/common&#x27;;
+import { TransactionService } from &#x27;./transaction.service&#x27;;
+import { TransactionModel } from &#x27;./models/transaction.model&#x27;;
+import { RankGuard } from &#x27;../../guards/rank.guard&#x27;;
+import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
+import { TransactionDeleteDto } from &#x27;./dto/transaction.delete.dto&#x27;;
+import { RanksEnum } from &#x27;../../keys/ranks.enum&#x27;;
+import { Rank } from &#x27;../../decorators/rank.decorator&#x27;;
+import { I18nLang, I18nService } from &#x27;nestjs-i18n&#x27;;
 
+@UseGuards(AuthGuard(), RankGuard)
 @Controller(&#x27;transaction&#x27;)
-export class TransactionController {}
+export class TransactionController {
+  constructor(
+    private readonly transactionService: TransactionService,
+    private readonly i18nService: I18nService,
+  ) {}
+
+  @Put(&#x27;/process/purchase&#x27;)
+  public async ProcessTransaction(@Body() transactionModel: TransactionModel) {
+    return await this.transactionService.ProcessTransaction(transactionModel);
+  }
+
+  @Rank(RanksEnum.ADMINISTRATOR, RanksEnum.MODERATOR)
+  @Delete(&#x27;/delete/purchase&#x27;)
+  public async DeleteTransaction(
+    @Body() transactionDeleteDto: TransactionDeleteDto,
+    @Res() response,
+    @I18nLang() lang: string,
+  ) {
+    return await this.transactionService
+      .DeleteTransaction(transactionDeleteDto)
+      .then(() &#x3D;&gt; {
+        response.status(HttpStatus.OK).json({
+          statusCode: HttpStatus.OK,
+          message: this.i18nService.translate(
+            &#x27;translations.transactions.service.transaction_deleted&#x27;,
+            {
+              lang,
+            },
+          ),
+        });
+      });
+  }
+
+  @Rank(RanksEnum.ADMINISTRATOR, RanksEnum.MODERATOR)
+  @Get(&#x27;/get/all&#x27;)
+  public async GetTransactions() {
+    return this.transactionService.GetAllTransactions();
+  }
+}
 </code></pre>
     </div>
 </div>

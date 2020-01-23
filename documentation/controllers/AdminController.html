@@ -140,8 +140,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/modules/admin/admin.controller.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/modules/admin/admin.controller.ts:33</a></div>
                 </td>
             </tr>
 
@@ -175,7 +175,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>NewChangelog(changelog: <a href="../classes/ChangelogModel.html">ChangelogModel</a>, response)</code>
+                    <code>NewChangelog(changelog: <a href="../classes/ChangelogModel.html">ChangelogModel</a>, response, lang: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -189,8 +189,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="10"
-                            class="link-to-prism">src/modules/admin/admin.controller.ts:10</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/modules/admin/admin.controller.ts:14</a></div>
                 </td>
             </tr>
 
@@ -232,6 +232,18 @@
 
 
                                 </tr>
+                                <tr>
+                                    <td>lang</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -255,20 +267,30 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Put, Body, Res, HttpStatus, Get } from &#x27;@nestjs/common&#x27;;
 import { AdminService } from &#x27;./admin.service&#x27;;
 import { ChangelogModel } from &#x27;./models/changelog.model&#x27;;
+import { I18nService, I18nLang } from &#x27;nestjs-i18n&#x27;;
 
 @Controller(&#x27;admin&#x27;)
 export class AdminController {
-  constructor(private readonly adminService: AdminService) {}
+  constructor(
+    private readonly adminService: AdminService,
+    private readonly i18nService: I18nService,
+  ) {}
 
   @Put(&#x27;/new/changelog&#x27;)
   public async NewChangelog(
     @Body() changelog: ChangelogModel,
     @Res() response,
+    @I18nLang() lang: string,
   ) {
     return await this.adminService.NewChangelog(changelog).then(() &#x3D;&gt; {
       response.status(HttpStatus.CREATED).json({
         statusCode: HttpStatus.CREATED,
-        message: &#x27;Registro de cambios publicado con éxito.&#x27;,
+        message: this.i18nService.translate(
+          &#x27;translations.admin.controller.changelog_added&#x27;,
+          {
+            lang,
+          },
+        ),
       });
     });
   }

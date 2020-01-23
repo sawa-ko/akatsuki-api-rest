@@ -931,7 +931,7 @@ import { ReturnModelType } from &#x27;@typegoose/typegoose&#x27;;
 import { I18nRequestScopeService } from &#x27;nestjs-i18n&#x27;;
 import { UpdateUserDto } from &#x27;./dto/update-user.dto&#x27;;
 import { ReactionsDto } from &#x27;./dto/reactions.dto&#x27;;
-import { RanksEnum } from &#x27;src/keys/ranks.enum&#x27;;
+import { RanksEnum } from &#x27;../../keys/ranks.enum&#x27;;
 
 @Injectable()
 export class UserService {
@@ -1222,7 +1222,7 @@ export class UserService {
   public async addReaction(reactionsDto: ReactionsDto): Promise&lt;void&gt; {
     const { toId, ofId, type } &#x3D; reactionsDto;
     this.logger.error(
-      &#x60;Adding new reaction to user ${toId} by user ${ofId} with reaction type $ {type}.&#x60;,
+      &#x60;Adding new reaction to user ${toId} by user ${ofId} with reaction type ${type}.&#x60;,
     );
     let user;
     try {

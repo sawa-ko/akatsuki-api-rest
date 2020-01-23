@@ -88,34 +88,19 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AppModule.html" data-type="entity-link">AppModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-AppModule-77293113bad37a6218de298875598b94"' : 'data-target="#xs-controllers-links-module-AppModule-77293113bad37a6218de298875598b94"' }>
+                                            'data-target="#controllers-links-module-AppModule-af24d36d014caf49d024618e97f418fd"' : 'data-target="#xs-controllers-links-module-AppModule-af24d36d014caf49d024618e97f418fd"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-AppModule-77293113bad37a6218de298875598b94"' :
-                                            'id="xs-controllers-links-module-AppModule-77293113bad37a6218de298875598b94"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-AppModule-af24d36d014caf49d024618e97f418fd"' :
+                                            'id="xs-controllers-links-module-AppModule-af24d36d014caf49d024618e97f418fd"' }>
                                             <li class="link">
                                                 <a href="controllers/AppController.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AppController</a>
                                             </li>
                                         </ul>
                                     </li>
-                                <li class="chapter inner">
-                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-AppModule-77293113bad37a6218de298875598b94"' : 'data-target="#xs-injectables-links-module-AppModule-77293113bad37a6218de298875598b94"' }>
-                                        <span class="icon ion-md-arrow-round-down"></span>
-                                        <span>Injectables</span>
-                                        <span class="icon ion-ios-arrow-down"></span>
-                                    </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-AppModule-77293113bad37a6218de298875598b94"' :
-                                        'id="xs-injectables-links-module-AppModule-77293113bad37a6218de298875598b94"' }>
-                                        <li class="link">
-                                            <a href="injectables/AppService.html"
-                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>AppService</a>
-                                        </li>
-                                    </ul>
-                                </li>
                             </li>
                             <li class="link">
                                 <a href="modules/AuthModule.html" data-type="entity-link">AuthModule</a>
@@ -194,13 +179,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/TransactionModule.html" data-type="entity-link">TransactionModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-TransactionModule-cf75c197bce751696861d304f2134a54"' : 'data-target="#xs-controllers-links-module-TransactionModule-cf75c197bce751696861d304f2134a54"' }>
+                                            'data-target="#controllers-links-module-TransactionModule-d300a48dc79844c40ae14f4a3e7d6511"' : 'data-target="#xs-controllers-links-module-TransactionModule-d300a48dc79844c40ae14f4a3e7d6511"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-TransactionModule-cf75c197bce751696861d304f2134a54"' :
-                                            'id="xs-controllers-links-module-TransactionModule-cf75c197bce751696861d304f2134a54"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-TransactionModule-d300a48dc79844c40ae14f4a3e7d6511"' :
+                                            'id="xs-controllers-links-module-TransactionModule-d300a48dc79844c40ae14f4a3e7d6511"' }>
                                             <li class="link">
                                                 <a href="controllers/TransactionController.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">TransactionController</a>
@@ -209,13 +194,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-TransactionModule-cf75c197bce751696861d304f2134a54"' : 'data-target="#xs-injectables-links-module-TransactionModule-cf75c197bce751696861d304f2134a54"' }>
+                                        'data-target="#injectables-links-module-TransactionModule-d300a48dc79844c40ae14f4a3e7d6511"' : 'data-target="#xs-injectables-links-module-TransactionModule-d300a48dc79844c40ae14f4a3e7d6511"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-TransactionModule-cf75c197bce751696861d304f2134a54"' :
-                                        'id="xs-injectables-links-module-TransactionModule-cf75c197bce751696861d304f2134a54"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-TransactionModule-d300a48dc79844c40ae14f4a3e7d6511"' :
+                                        'id="xs-injectables-links-module-TransactionModule-d300a48dc79844c40ae14f4a3e7d6511"' }>
                                         <li class="link">
                                             <a href="injectables/TransactionService.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>TransactionService</a>
@@ -433,7 +418,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/TransactionBuyer.html" data-type="entity-link">TransactionBuyer</a>
                             </li>
                             <li class="link">
-                                <a href="classes/TransactionBuyer-1.html" data-type="entity-link">TransactionBuyer</a>
+                                <a href="classes/TransactionDeleteDto.html" data-type="entity-link">TransactionDeleteDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/TransactionInfo.html" data-type="entity-link">TransactionInfo</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/TransactionModel.html" data-type="entity-link">TransactionModel</a>
                             </li>
                             <li class="link">
                                 <a href="classes/UpdateUserDto.html" data-type="entity-link">UpdateUserDto</a>
@@ -456,9 +447,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
                                     <a href="injectables/AdminService.html" data-type="entity-link">AdminService</a>
-                                </li>
-                                <li class="link">
-                                    <a href="injectables/AppService.html" data-type="entity-link">AppService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/AuthService.html" data-type="entity-link">AuthService</a>

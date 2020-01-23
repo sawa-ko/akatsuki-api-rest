@@ -999,7 +999,7 @@
 import { InjectModel } from &#x27;nestjs-typegoose&#x27;;
 import { MarketModel } from &#x27;./models/market.model&#x27;;
 import { ReturnModelType } from &#x27;@typegoose/typegoose&#x27;;
-import { RanksEnum } from &#x27;src/keys/ranks.enum&#x27;;
+import { RanksEnum } from &#x27;../../keys/ranks.enum&#x27;;
 import { CommentMarketDto } from &#x27;./dto/comment.add.dto&#x27;;
 import { CommentRemoveMarketDto } from &#x27;./dto/comment.remove.dto&#x27;;
 import { BuyerAddMarketDto } from &#x27;./dto/buyer.add.dto&#x27;;
@@ -1020,7 +1020,7 @@ export class MarketService {
 
   public async AddProduct(marketModel: MarketModel) {
     this.logger.log(
-      &#x60;Creating a new product for the market with the name of $ {marketModel.name} with a value of ${marketModel.price} and with a discount of ${marketModel.discount.percentage}%. This product is published by ${marketModel.author} on the device ${marketModel.device} with IP ${marketModel.ip}.&#x60;,
+      &#x60;Creating a new product for the market with the name of ${marketModel.name} with a value of ${marketModel.price} and with a discount of ${marketModel.discount.percentage}%. This product is published by ${marketModel.author} on the device ${marketModel.device} with IP ${marketModel.ip}.&#x60;,
     );
 
     return await this.marketModel.create(marketModel).catch(() &#x3D;&gt; {

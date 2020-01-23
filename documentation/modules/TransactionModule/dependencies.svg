@@ -22,29 +22,45 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_TransactionModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="146,-70 146,-195 350,-195 350,-70 146,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="90,-70 90,-195 406,-195 406,-70 90,-70"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_TransactionModule_imports</title>
+<polygon fill="none" stroke="#000000" points="294,-78 294,-130 398,-130 398,-78 294,-78"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_TransactionModule_providers</title>
-<polygon fill="none" stroke="#000000" points="154,-78 154,-130 342,-130 342,-78 154,-78"/>
+<polygon fill="none" stroke="#000000" points="98,-78 98,-130 286,-130 286,-78 98,-78"/>
 </g>
-<!-- TransactionService -->
+<!-- AuthModule -->
 <g id="node1" class="node">
-<title>TransactionService</title>
-<ellipse fill="#fdb462" stroke="#000000" cx="248" cy="-104" rx="85.6493" ry="18"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">TransactionService</text>
+<title>AuthModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="389.5482,-122 386.5482,-126 365.5482,-126 362.5482,-122 302.4518,-122 302.4518,-86 389.5482,-86 389.5482,-122"/>
+<text text-anchor="middle" x="346" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AuthModule</text>
 </g>
 <!-- TransactionModule -->
 <g id="node2" class="node">
 <title>TransactionModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="310.6331,-187 307.6331,-191 286.6331,-191 283.6331,-187 185.3669,-187 185.3669,-151 310.6331,-151 310.6331,-187"/>
-<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">TransactionModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="325.6331,-187 322.6331,-191 301.6331,-191 298.6331,-187 200.3669,-187 200.3669,-151 325.6331,-151 325.6331,-187"/>
+<text text-anchor="middle" x="263" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">TransactionModule</text>
+</g>
+<!-- AuthModule&#45;&gt;TransactionModule -->
+<g id="edge1" class="edge">
+<title>AuthModule&#45;&gt;TransactionModule</title>
+<path fill="none" stroke="#000000" d="M314.0214,-122.1061C314.0214,-122.1061 314.0214,-140.991 314.0214,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="310.5215,-140.9909 314.0214,-150.991 317.5215,-140.991 310.5215,-140.9909"/>
+</g>
+<!-- TransactionService -->
+<g id="node3" class="node">
+<title>TransactionService</title>
+<ellipse fill="#fdb462" stroke="#000000" cx="192" cy="-104" rx="85.6493" ry="18"/>
+<text text-anchor="middle" x="192" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">TransactionService</text>
 </g>
 <!-- TransactionService&#45;&gt;TransactionModule -->
-<g id="edge1" class="edge">
+<g id="edge2" class="edge">
 <title>TransactionService&#45;&gt;TransactionModule</title>
-<path fill="none" stroke="#000000" d="M248,-122.1061C248,-122.1061 248,-140.991 248,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-140.9909 248,-150.991 251.5001,-140.991 244.5001,-140.9909"/>
+<path fill="none" stroke="#000000" d="M238.8792,-119.0757C238.8792,-119.0757 238.8792,-140.7642 238.8792,-140.7642"/>
+<polygon fill="#000000" stroke="#000000" points="235.3793,-140.7642 238.8792,-150.7642 242.3793,-140.7642 235.3793,-140.7642"/>
 </g>
 </g>
 </svg>

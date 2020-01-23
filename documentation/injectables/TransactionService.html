@@ -62,18 +62,695 @@
 
 
 
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#logger">logger</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#DeleteTransaction">DeleteTransaction</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#GetAllTransactions">GetAllTransactions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#ProcessTransaction">ProcessTransaction</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(i18nService: I18nRequestScopeService, transactionModel: ReturnModelType<>, userModel: ReturnModelType<>, marketModel: ReturnModelType<>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/modules/transaction/transaction.service.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>i18nService</td>
+                                                  
+                                                        <td>
+                                                                    <code>I18nRequestScopeService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>transactionModel</td>
+                                                  
+                                                        <td>
+                                                                    <code>ReturnModelType&lt;&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userModel</td>
+                                                  
+                                                        <td>
+                                                                    <code>ReturnModelType&lt;&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>marketModel</td>
+                                                  
+                                                        <td>
+                                                                    <code>ReturnModelType&lt;&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DeleteTransaction"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            DeleteTransaction
+                        </b>
+                        <a href="#DeleteTransaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>DeleteTransaction(transactionDeleteDto: <a href="../classes/TransactionDeleteDto.html">TransactionDeleteDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/modules/transaction/transaction.service.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>transactionDeleteDto</td>
+                                    <td>
+                                                <code><a href="../classes/TransactionDeleteDto.html" target="_self" >TransactionDeleteDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetAllTransactions"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            GetAllTransactions
+                        </b>
+                        <a href="#GetAllTransactions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>GetAllTransactions()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="299"
+                            class="link-to-prism">src/modules/transaction/transaction.service.ts:299</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ProcessTransaction"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            ProcessTransaction
+                        </b>
+                        <a href="#ProcessTransaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ProcessTransaction(transactionModel: <a href="../classes/TransactionModel.html">TransactionModel</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/modules/transaction/transaction.service.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>transactionModel</td>
+                                    <td>
+                                                <code><a href="../classes/TransactionModel.html" target="_self" >TransactionModel</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="logger"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            logger</b>
+                            <a href="#logger"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Logger</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Logger(&#x27;Transaction&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/modules/transaction/transaction.service.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Injectable,
+  ConflictException,
+  BadRequestException,
+  Logger,
+} from &#x27;@nestjs/common&#x27;;
+import { TransactionModel } from &#x27;./models/transaction.model&#x27;;
+import { InjectModel } from &#x27;nestjs-typegoose&#x27;;
+import { ReturnModelType } from &#x27;@typegoose/typegoose&#x27;;
+import { UserModel } from &#x27;../user/models/user.model&#x27;;
+import { I18nRequestScopeService } from &#x27;nestjs-i18n&#x27;;
+import { MarketModel } from &#x27;../market/models/market.model&#x27;;
+import { TransactionDeleteDto } from &#x27;./dto/transaction.delete.dto&#x27;;
 
 @Injectable()
-export class TransactionService {}
+export class TransactionService {
+  private readonly logger: Logger &#x3D; new Logger(&#x27;Transaction&#x27;);
+
+  constructor(
+    private readonly i18nService: I18nRequestScopeService,
+    @InjectModel(TransactionModel)
+    private readonly transactionModel: ReturnModelType&lt;typeof TransactionModel&gt;,
+    @InjectModel(UserModel)
+    private readonly userModel: ReturnModelType&lt;typeof UserModel&gt;,
+    @InjectModel(MarketModel)
+    private readonly marketModel: ReturnModelType&lt;typeof MarketModel&gt;,
+  ) {}
+
+  public async DeleteTransaction(transactionDeleteDto: TransactionDeleteDto) {
+    return await this.marketModel
+      .findOneAndUpdate(
+        transactionDeleteDto.product,
+        {
+          $pull: {
+            buyers: {
+              user: transactionDeleteDto.buyer,
+            },
+          },
+        },
+        { new: true },
+      )
+      .catch(() &#x3D;&gt; {
+        throw new BadRequestException(
+          this.i18nService.translate(
+            &#x27;translations.transactions.controller.transaction_error_deleted&#x27;,
+          ),
+        );
+      })
+      .then(() &#x3D;&gt; {
+        this.userModel
+          .findOneAndUpdate(
+            transactionDeleteDto.buyer,
+            {
+              $pull: {
+                transactions: {
+                  product: transactionDeleteDto.product,
+                },
+              },
+            },
+            { new: true },
+          )
+          .catch(() &#x3D;&gt; {
+            throw new BadRequestException(
+              this.i18nService.translate(
+                &#x27;translations.transactions.controller.transaction_error_deleted&#x27;,
+              ),
+            );
+          })
+          .then(() &#x3D;&gt; {
+            this.userModel
+              .findOneAndUpdate(
+                transactionDeleteDto.seller,
+                {
+                  $pull: {
+                    transactions: {
+                      product: transactionDeleteDto.product,
+                    },
+                  },
+                },
+                { new: true },
+              )
+              .catch(() &#x3D;&gt; {
+                throw new BadRequestException(
+                  this.i18nService.translate(
+                    &#x27;translations.transactions.controller.transaction_error_deleted&#x27;,
+                  ),
+                );
+              });
+          });
+      });
+  }
+
+  public async ProcessTransaction(
+    transactionModel: TransactionModel,
+  ): Promise&lt;{
+    market: string;
+    transaction: string;
+    walletBuyer: string;
+    walletSeller: string;
+    message: string;
+  }&gt; {
+    const { buyer, product, device, ip } &#x3D; transactionModel;
+    let marketTransaction;
+    let userBuyer;
+    let userSeller;
+
+    this.logger.log(
+      &#x60;Starting process of a new transaction by user ${buyer} with device ${device} and with IP address ${ip}...&#x60;,
+    );
+
+    try {
+      userBuyer &#x3D; await this.userModel.findById(buyer);
+      marketTransaction &#x3D; await this.marketModel.findById(product);
+    } catch (error) {
+      this.logger.error(
+        &#x60;The transaction could not be processed because the product ${product} or buyer ${buyer} does not exist in the database.&#x60;,
+      );
+
+      throw new ConflictException(
+        this.i18nService.translate(
+          &#x27;translations.transactions.controller.transaction_error_process&#x27;,
+        ),
+      );
+    }
+
+    if (!marketTransaction) {
+      this.logger.error(
+        &#x60;The transaction could not be processed because the product ${product} does not exist.&#x60;,
+      );
+
+      throw new BadRequestException(
+        this.i18nService.translate(
+          &#x27;translations.transactions.controller.product_not_found&#x27;,
+        ),
+      );
+    }
+
+    const userSellerId &#x3D; marketTransaction.author;
+    try {
+      userSeller &#x3D; await this.userModel.findById(userSellerId);
+    } catch (error) {
+      this.logger.error(
+        &#x60;The transaction could not be processed because the seller does not exist.&#x60;,
+      );
+
+      throw new ConflictException(
+        this.i18nService.translate(
+          &#x27;translations.transactions.controller.transaction_error_process&#x27;,
+        ),
+      );
+    }
+
+    const discountTotal &#x3D; Math.round(
+      marketTransaction.price -
+        (marketTransaction.discount.percentage * marketTransaction.price) / 100,
+    );
+
+    if (!userBuyer || !userSeller) {
+      this.logger.error(
+        &#x60;The transaction could not be processed because the buyer ${buyer} or seller ${userSellerId} does not exist.&#x60;,
+      );
+
+      throw new ConflictException(
+        this.i18nService.translate(&#x27;translations.auth.service.user_not_found&#x27;),
+      );
+    }
+
+    if (userBuyer.tachi &lt;&#x3D; discountTotal) {
+      this.logger.error(
+        &#x60;The transaction could not be processed because the buyer ${buyer} does not have the Tachi enough to complete the transaction.&#x60;,
+      );
+
+      throw new ConflictException(
+        this.i18nService.translate(
+          &#x27;translations.transactions.controller.tachi_error&#x27;,
+        ),
+      );
+    }
+
+    if (!userSeller.rank.seller) {
+      this.logger.error(
+        &#x60;The transaction could not be processed because the seller ${userSellerId} does not have sufficient permits to sell.&#x60;,
+      );
+
+      throw new ConflictException(
+        this.i18nService.translate(
+          &#x27;translations.transactions.controller.rank_seller_error&#x27;,
+        ),
+      );
+    }
+
+    this.logger.log(
+      &#x60;Creating transactions in user accounts ${buyer}, ${userSellerId} and in the product ${product}...&#x60;,
+    );
+
+    userBuyer.transactions.push({
+      buyer: {
+        id: userBuyer._id,
+        ip,
+        device,
+      },
+      seller: marketTransaction.author,
+      product,
+      type: 0,
+      price: marketTransaction.price,
+      discount: marketTransaction.discount.percentage,
+      market: marketTransaction.market,
+    });
+
+    userSeller.transactions.push({
+      buyer: {
+        id: userBuyer._id,
+        ip,
+        device,
+      },
+      seller: marketTransaction.author,
+      product,
+      type: 1,
+      price: marketTransaction.price,
+      discount: marketTransaction.discount.percentage,
+      market: marketTransaction.market,
+    });
+
+    marketTransaction.buyers.push({
+      user: userBuyer._id,
+      device,
+      ip,
+    });
+
+    this.logger.log(
+      &#x60;Sharing virtual money between users ${buyer} and ${userSellerId}. In total the seller ${userSellerId} won ${discountTotal} in this transaction and the buyer spent a total of ${discountTotal} of ${marketTransaction.price} having a discount of ${marketTransaction.discount.percentage}%.&#x60;,
+    );
+
+    userBuyer.tachi &#x3D; userBuyer.tachi - discountTotal;
+    userSeller.tachi &#x3D; userSeller.tachi + discountTotal;
+    const transaction &#x3D; await this.transactionModel.create(transactionModel);
+
+    try {
+      await userBuyer.save();
+      await userSeller.save();
+      await marketTransaction.save();
+    } catch (error) {
+      this.logger.error(
+        &#x60;The transaction could not be processed because the changes could not be saved.&#x60;,
+      );
+
+      throw new ConflictException(
+        this.i18nService.translate(
+          &#x27;translations.transactions.controller.transaction_error_save&#x27;,
+        ),
+      );
+    }
+
+    this.logger.log(&#x60;Getting transaction ID...&#x60;);
+
+    const transactionid &#x3D;
+      marketTransaction.buyers[marketTransaction.buyers.length - 1]._id;
+    const transactionBuyerId &#x3D;
+      userSeller.transactions[userBuyer.transactions.length - 1]._id;
+    const transactionSellerId &#x3D;
+      userSeller.transactions[userSeller.transactions.length - 1]._id;
+
+    if (
+      transaction._id &amp;&amp;
+      transactionid &amp;&amp;
+      transactionBuyerId &amp;&amp;
+      transactionSellerId
+    ) {
+      this.logger.log(
+        &#x60;Transaction completed successfully. User initiated ${buyer} to buy the product ${product} that was published by ${userSellerId}.&#x60;,
+      );
+
+      return {
+        market: transactionid,
+        transaction: transaction._id,
+        walletBuyer: transactionBuyerId,
+        walletSeller: transactionSellerId,
+        message: this.i18nService.translate(
+          &#x27;translations.transactions.controller.transaction_successful&#x27;,
+        ),
+      };
+    } else {
+      this.logger.warn(
+        &#x60;The transaction was completed but the transaction IDs could not be obtained. User initiated ${buyer} to buy the product ${product} that was published by ${userSellerId}.&#x60;,
+      );
+
+      return {
+        market: &#x27;&#x27;,
+        transaction: &#x27;&#x27;,
+        walletBuyer: &#x27;&#x27;,
+        walletSeller: &#x27;&#x27;,
+        message: this.i18nService.translate(
+          &#x27;translations.transactions.controller.transaction_error_id&#x27;,
+        ),
+      };
+    }
+  }
+
+  public async GetAllTransactions() {
+    this.logger.log(&#x27;Obtaining all transactions. (Admin)&#x27;);
+    return this.transactionModel
+      .find()
+      .sort(&#x27;-createdAt&#x27;)
+      .populate(&#x27;buyer&#x27;, &#x27;name photo rank premium.status&#x27;)
+      .populate(&#x27;seller&#x27;, &#x27;name photo rank premium.status&#x27;)
+      .populate(&#x27;product&#x27;, &#x27;name description price market discount&#x27;)
+      .exec();
+  }
+}
 </code></pre>
     </div>
 

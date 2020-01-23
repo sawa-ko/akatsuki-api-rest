@@ -1210,7 +1210,7 @@ export class AuthService {
       &#x27;email.key&#x27;: email,
     });
     this.logger.log(
-      &#x60;Logging into the account on the device $ {device} with IP ${ip}.&#x60;,
+      &#x60;Logging into the account on the device ${device} with IP ${ip}.&#x60;,
     );
     const timezone &#x3D; momentstz()
       .tz(&#x27;America/New_York&#x27;)
@@ -1221,7 +1221,7 @@ export class AuthService {
 
     if (!userSignIn) {
       this.logger.error(
-        &#x60;The attempt to login to the account on the device ${device} with IP $ {ip} was rejected due to incorrect cdentials.&#x60;,
+        &#x60;The attempt to login to the account on the device ${device} with IP ${ip} was rejected due to incorrect cdentials.&#x60;,
       );
 
       throw new UnauthorizedException(

@@ -133,9 +133,18 @@
 
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @IsNotEmpty()<br />
+                            </code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/modules/market/dto/buyer.add.dto.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/modules/market/dto/buyer.add.dto.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -161,9 +170,18 @@
 
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @IsNotEmpty()<br />@IsString()<br />
+                            </code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/modules/market/dto/buyer.add.dto.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/modules/market/dto/buyer.add.dto.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -189,9 +207,18 @@
 
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @IsNotEmpty()<br />@IsString()<br />
+                            </code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/modules/market/dto/buyer.add.dto.ts:6</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/modules/market/dto/buyer.add.dto.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -217,9 +244,18 @@
 
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @IsNotEmpty()<br />@IsString()<br />
+                            </code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/modules/market/dto/buyer.add.dto.ts:8</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/modules/market/dto/buyer.add.dto.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -241,14 +277,22 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Ref } from &#x27;@typegoose/typegoose&#x27;;
 
 import { UserModel } from &#x27;../../../modules/user/models/user.model&#x27;;
+import { IsString, IsNotEmpty } from &#x27;class-validator&#x27;;
 
 export class BuyerAddMarketDto {
+  @IsNotEmpty()
+  @IsString()
   public product: string;
 
+  @IsNotEmpty()
+  @IsString()
   public user: Ref&lt;UserModel&gt;;
 
+  @IsNotEmpty()
   public device: string | number;
 
+  @IsNotEmpty()
+  @IsString()
   public ip: string;
 }
 </code></pre>

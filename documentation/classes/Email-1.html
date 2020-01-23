@@ -146,7 +146,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/modules/user/models/user.model.data.ts:140</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/modules/user/models/user.model.data.ts:139</a></div>
                             </td>
                         </tr>
 
@@ -183,7 +183,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/modules/user/models/user.model.data.ts:131</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">src/modules/user/models/user.model.data.ts:130</a></div>
                             </td>
                         </tr>
 
@@ -220,7 +220,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/modules/user/models/user.model.data.ts:134</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/modules/user/models/user.model.data.ts:133</a></div>
                             </td>
                         </tr>
 
@@ -257,7 +257,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/modules/user/models/user.model.data.ts:137</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/modules/user/models/user.model.data.ts:136</a></div>
                             </td>
                         </tr>
 
@@ -389,7 +389,6 @@ export class Online {
   public last: Date;
 }
 
-@index({ device: 1, ip: 1 }, { unique: true })
 export class Sessions extends TimeStamps {
   // tslint:disable-next-line
   public _id?: string;
@@ -432,7 +431,7 @@ export class Password {
   public expiration?: Date;
 }
 
-export class TransactionBuyer {
+export class TransactionInfo {
   @prop({ required: true })
   public id: string;
 
@@ -447,14 +446,14 @@ export class Transaction extends TimeStamps {
   // tslint:disable-next-line
   public _id?: string;
 
+  @prop({ default: new TransactionInfo(), _id: false })
+  public buyer: TransactionInfo;
+
   @prop({ required: true })
   public seller: string;
 
-  @prop({ default: new TransactionBuyer(), _id: false })
-  public buyer: TransactionBuyer;
-
   @prop({ required: true })
-  public item: string;
+  public product: string;
 
   @prop({ required: true })
   public type: number;
