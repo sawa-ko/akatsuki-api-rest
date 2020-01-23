@@ -8,12 +8,6 @@ image: atlassian/default-image:2
 pipelines:
   default:
     - step:
-        name: Lint Api code,
-        script:
-          - npm i -g @nestjs/cli
-          - npm i
-          - npm run lint
-    - step:
         name: Build API with NestsJs framework,
         script:
           - npm i -g @nestjs/cli
