@@ -1,6 +1,5 @@
 import { Module, CacheModule, CacheInterceptor } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 import { ConfigurationEnum } from './keys/configuration.enum';
@@ -72,7 +71,6 @@ import { TransactionModule } from './modules/transaction/transaction.module';
   ],
   controllers: [AppController],
   providers: [
-    AppService,
     GeneralGateway,
     {
       provide: APP_INTERCEPTOR,

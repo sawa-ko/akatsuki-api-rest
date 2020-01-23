@@ -1,12 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  verifyApi(): string {
+    return 'The Connection to the APi is correct.';
+  }
+
+  @UseGuards(AuthGuard())
+  @Get('/token')
+  verifyToken(): string {
+    return 'The user token works correctly.';
   }
 }

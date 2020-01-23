@@ -304,7 +304,7 @@ export class UserService {
   public async addReaction(reactionsDto: ReactionsDto): Promise<void> {
     const { toId, ofId, type } = reactionsDto;
     this.logger.error(
-      `Adding new reaction to user ${toId} by user ${ofId} with reaction type $ {type}.`,
+      `Adding new reaction to user ${toId} by user ${ofId} with reaction type ${type}.`,
     );
     let user;
     try {

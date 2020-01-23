@@ -1,5 +1,11 @@
-export class ReactionRemoveMarketDto {
-    product: string;
+import { IsNotEmpty, IsString } from 'class-validator';
 
-    user: string;
+export class ReactionRemoveMarketDto {
+  @IsNotEmpty()
+  @IsString()
+  product: string;
+
+  @IsNotEmpty()
+  @IsString()
+  user: string;
 }

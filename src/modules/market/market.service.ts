@@ -29,7 +29,7 @@ export class MarketService {
 
   public async AddProduct(marketModel: MarketModel) {
     this.logger.log(
-      `Creating a new product for the market with the name of $ {marketModel.name} with a value of ${marketModel.price} and with a discount of ${marketModel.discount.percentage}%. This product is published by ${marketModel.author} on the device ${marketModel.device} with IP ${marketModel.ip}.`,
+      `Creating a new product for the market with the name of ${marketModel.name} with a value of ${marketModel.price} and with a discount of ${marketModel.discount.percentage}%. This product is published by ${marketModel.author} on the device ${marketModel.device} with IP ${marketModel.ip}.`,
     );
 
     return await this.marketModel.create(marketModel).catch(() => {

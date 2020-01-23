@@ -2,6 +2,7 @@ import {
   Injectable,
   ConflictException,
   BadRequestException,
+  Logger,
 } from '@nestjs/common';
 import { TransactionModel } from './models/transaction.model';
 import { InjectModel } from 'nestjs-typegoose';
@@ -13,6 +14,8 @@ import { TransactionDeleteDto } from './dto/transaction.delete.dto';
 
 @Injectable()
 export class TransactionService {
+  private readonly logger: Logger = new Logger('Transaction');
+
   constructor(
     private readonly i18nService: I18nRequestScopeService,
     @InjectModel(TransactionModel)
@@ -96,16 +99,23 @@ export class TransactionService {
     walletSeller: string;
     message: string;
   }> {
-    const { buyer, seller, product, device, ip } = transactionModel;
+    const { buyer, product, device, ip } = transactionModel;
     let marketTransaction;
     let userBuyer;
     let userSeller;
 
+    this.logger.log(
+      `Starting process of a new transaction by user ${buyer} with device ${device} and with IP address ${ip}...`,
+    );
+
     try {
       userBuyer = await this.userModel.findById(buyer);
-      userSeller = await this.userModel.findById(seller);
       marketTransaction = await this.marketModel.findById(product);
     } catch (error) {
+      this.logger.error(
+        `The transaction could not be processed because the product ${product} or buyer ${buyer} does not exist in the database.`,
+      );
+
       throw new ConflictException(
         this.i18nService.translate(
           'translations.transactions.controller.transaction_error_process',
@@ -114,9 +124,28 @@ export class TransactionService {
     }
 
     if (!marketTransaction) {
+      this.logger.error(
+        `The transaction could not be processed because the product ${product} does not exist.`,
+      );
+
       throw new BadRequestException(
         this.i18nService.translate(
           'translations.transactions.controller.product_not_found',
+        ),
+      );
+    }
+
+    const userSellerId = marketTransaction.author;
+    try {
+      userSeller = await this.userModel.findById(userSellerId);
+    } catch (error) {
+      this.logger.error(
+        `The transaction could not be processed because the seller does not exist.`,
+      );
+
+      throw new ConflictException(
+        this.i18nService.translate(
+          'translations.transactions.controller.transaction_error_process',
         ),
       );
     }
@@ -127,12 +156,20 @@ export class TransactionService {
     );
 
     if (!userBuyer || !userSeller) {
+      this.logger.error(
+        `The transaction could not be processed because the buyer ${buyer} or seller ${userSellerId} does not exist.`,
+      );
+
       throw new ConflictException(
         this.i18nService.translate('translations.auth.service.user_not_found'),
       );
     }
 
     if (userBuyer.tachi <= discountTotal) {
+      this.logger.error(
+        `The transaction could not be processed because the buyer ${buyer} does not have the Tachi enough to complete the transaction.`,
+      );
+
       throw new ConflictException(
         this.i18nService.translate(
           'translations.transactions.controller.tachi_error',
@@ -141,6 +178,10 @@ export class TransactionService {
     }
 
     if (!userSeller.rank.seller) {
+      this.logger.error(
+        `The transaction could not be processed because the seller ${userSellerId} does not have sufficient permits to sell.`,
+      );
+
       throw new ConflictException(
         this.i18nService.translate(
           'translations.transactions.controller.rank_seller_error',
@@ -148,13 +189,17 @@ export class TransactionService {
       );
     }
 
+    this.logger.log(
+      `Creating transactions in user accounts ${buyer}, ${userSellerId} and in the product ${product}...`,
+    );
+
     userBuyer.transactions.push({
       buyer: {
-        id: userBuyer,
+        id: userBuyer._id,
         ip,
         device,
       },
-      seller: userSeller,
+      seller: marketTransaction.author,
       product,
       type: 0,
       price: marketTransaction.price,
@@ -164,11 +209,11 @@ export class TransactionService {
 
     userSeller.transactions.push({
       buyer: {
-        id: userBuyer,
+        id: userBuyer._id,
         ip,
         device,
       },
-      seller: userSeller,
+      seller: marketTransaction.author,
       product,
       type: 1,
       price: marketTransaction.price,
@@ -177,10 +222,14 @@ export class TransactionService {
     });
 
     marketTransaction.buyers.push({
-      user: userBuyer,
+      user: userBuyer._id,
       device,
       ip,
     });
+
+    this.logger.log(
+      `Sharing virtual money between users ${buyer} and ${userSellerId}. In total the seller ${userSellerId} won ${discountTotal} in this transaction and the buyer spent a total of ${discountTotal} of ${marketTransaction.price} having a discount of ${marketTransaction.discount.percentage}%.`,
+    );
 
     userBuyer.tachi = userBuyer.tachi - discountTotal;
     userSeller.tachi = userSeller.tachi + discountTotal;
@@ -191,12 +240,18 @@ export class TransactionService {
       await userSeller.save();
       await marketTransaction.save();
     } catch (error) {
+      this.logger.error(
+        `The transaction could not be processed because the changes could not be saved.`,
+      );
+
       throw new ConflictException(
         this.i18nService.translate(
           'translations.transactions.controller.transaction_error_save',
         ),
       );
     }
+
+    this.logger.log(`Getting transaction ID...`);
 
     const transactionid =
       marketTransaction.buyers[marketTransaction.buyers.length - 1]._id;
@@ -211,6 +266,10 @@ export class TransactionService {
       transactionBuyerId &&
       transactionSellerId
     ) {
+      this.logger.log(
+        `Transaction completed successfully. User initiated ${buyer} to buy the product ${product} that was published by ${userSellerId}.`,
+      );
+
       return {
         market: transactionid,
         transaction: transaction._id,
@@ -221,6 +280,10 @@ export class TransactionService {
         ),
       };
     } else {
+      this.logger.warn(
+        `The transaction was completed but the transaction IDs could not be obtained. User initiated ${buyer} to buy the product ${product} that was published by ${userSellerId}.`,
+      );
+
       return {
         market: '',
         transaction: '',
@@ -234,6 +297,7 @@ export class TransactionService {
   }
 
   public async GetAllTransactions() {
+    this.logger.log('Obtaining all transactions. (Admin)');
     return this.transactionModel
       .find()
       .sort('-createdAt')
