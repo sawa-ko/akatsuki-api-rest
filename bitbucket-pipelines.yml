@@ -11,6 +11,7 @@ pipelines:
         name: Test Api code,
         caches:
           - nestjs-node
+        script:
           - npm i
           - npm run lint
     - step:
