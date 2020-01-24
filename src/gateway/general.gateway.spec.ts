@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { GeneralGateway } from '../general.gateway';
+import { GeneralGateway } from './general.gateway';
 
 describe('GeneralGateway', () => {
   let gateway: GeneralGateway;

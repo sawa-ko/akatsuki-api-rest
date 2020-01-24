@@ -14,11 +14,11 @@ import {
 import { join } from 'path';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { GeneralGateway } from './gateways/general.gateway';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { AdminModule } from './modules/admin/admin.module';
 import { MarketModule } from './modules/market/market.module';
 import { TransactionModule } from './modules/transaction/transaction.module';
+import { GeneralGateway } from './gateway/general.gateway';
 
 @Module({
   imports: [
@@ -71,11 +71,11 @@ import { TransactionModule } from './modules/transaction/transaction.module';
   ],
   controllers: [AppController],
   providers: [
-    GeneralGateway,
     {
       provide: APP_INTERCEPTOR,
       useClass: CacheInterceptor,
     },
+    GeneralGateway,
   ],
 })
 export class AppModule {
