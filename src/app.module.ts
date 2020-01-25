@@ -19,6 +19,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { MarketModule } from './modules/market/market.module';
 import { TransactionModule } from './modules/transaction/transaction.module';
 import { GeneralGateway } from './gateway/general.gateway';
+import { UserModel } from './modules/user/models/user.model';
 
 @Module({
   imports: [
@@ -61,6 +62,7 @@ import { GeneralGateway } from './gateway/general.gateway';
         new CookieResolver(['lang', 'locale', 'l']),
       ],
     }),
+    TypegooseModule.forFeature([UserModel]),
     ConfigModule,
     UserModule,
     AuthModule,
