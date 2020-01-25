@@ -9,6 +9,7 @@ import {
   Param,
   ParseIntPipe,
   Delete,
+  Post,
 } from '@nestjs/common';
 import { MarketService } from './market.service';
 import { MarketModel } from './models/market.model';
@@ -55,6 +56,32 @@ export class MarketController {
           ),
         });
       });
+  }
+
+  @Rank(RanksEnum.MODERATOR, RanksEnum.ADMINISTRATOR)
+  @Post('/approve/product')
+  public async ApproveProduct(
+    @Body('product') productId: string,
+    @Res() response,
+    @I18nLang() lang: string,
+  ) {
+    return this.marketService.ApproveProduct(productId).then(() => {
+      response.status(HttpStatus.OK).json({
+        statusCode: HttpStatus.OK,
+        message: this.i18nService.translate(
+          'translations.market.controller.product_added',
+          {
+            lang,
+          },
+        ),
+      });
+    });
+  }
+
+  @Rank(RanksEnum.MODERATOR, RanksEnum.ADMINISTRATOR)
+  @Get('/approve/pending')
+  public async GetNoApprovedProducts() {
+    return await this.marketService.GetNoApprovedProducts();
   }
 
   @Get('/get/product/:id')
@@ -193,5 +220,18 @@ export class MarketController {
           ),
         });
       });
+  }
+
+  @Delete('/delete/product')
+  public async RemoveProduct(
+    @Body('product') produtId: string,
+    @Res() response,
+  ) {
+    return await this.marketService.DeleteProduct(produtId).then(() => {
+      response.status(HttpStatus.OK).json({
+        statusCode: HttpStatus.OK,
+        message: 'Ok',
+      });
+    });
   }
 }

@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 import { MarketModel } from './models/market.model';
-import { ReturnModelType, Ref } from '@typegoose/typegoose';
+import { ReturnModelType } from '@typegoose/typegoose';
 import { RanksEnum } from '../../keys/ranks.enum';
 import { CommentMarketDto } from './dto/comment.add.dto';
 import { CommentRemoveMarketDto } from './dto/comment.remove.dto';
@@ -16,7 +16,6 @@ import { BuyerRemoveMarketDto } from './dto/buyer.remove.dto';
 import { ReactionAddMarketDto } from './dto/reaction.add.dto';
 import { ReactionRemoveMarketDto } from './dto/reaction.remove.dto';
 import { I18nRequestScopeService } from 'nestjs-i18n';
-import { UserModel } from '../user/models/user.model';
 
 @Injectable()
 export class MarketService {
@@ -41,6 +40,9 @@ export class MarketService {
       );
     }
 
+    this.marketModel.status = false;
+    this.marketModel.available = false;
+
     return await this.marketModel.create(marketModel).catch((error) => {
       this.logger.error(
         `The product with name ${marketModel.name} could not be processed by user ${marketModel.author} due to a database failure.`,
@@ -48,6 +50,20 @@ export class MarketService {
 
       throw new BadRequestException(error);
     });
+  }
+
+  public async ApproveProduct(productId: string) {
+    try {
+      this.marketModel.findByIdAndUpdate(productId, {
+        status: true,
+      });
+    } catch (error) {
+      throw new NotFoundException(
+        this.i18nService.translate(
+          'translations.market.service.product_not_found',
+        ),
+      );
+    }
   }
 
   public async GetProduct(
@@ -128,23 +144,25 @@ export class MarketService {
 
       switch (filterMarket) {
         case 1:
-          search = { market: 1 };
+          search = { market: 1, status: true };
           break;
         case 2:
-          search = { market: 2 };
+          search = { market: 2, status: true };
           break;
         case 3:
-          search = { market: 3 };
+          search = { market: 3, status: true };
           break;
         case 4:
-          search = { market: 4 };
+          search = { market: 4, status: true };
           break;
         case 5:
-          search = { market: 5 };
+          search = { market: 5, status: true };
           break;
         case 6:
-          search = { market: 6 };
+          search = { market: 6, status: true };
           break;
+        default:
+          search = { market: 1, status: true };
       }
 
       return await this.marketModel
@@ -171,6 +189,32 @@ export class MarketService {
         .populate('comments.author', 'name photo rank premium.status')
         .exec();
     }
+  }
+
+  public async GetNoApprovedProducts() {
+    return await this.marketModel
+      .find({ status: false })
+      .sort('-createdAt')
+      .select([
+        'name',
+        'description',
+        'market',
+        'price',
+        'available',
+        'status',
+        'discount',
+        'author',
+        'buyers',
+        'reactions',
+        'comments',
+        'createdAt',
+        'updatedAt',
+      ])
+      .populate('author', 'name photo rank premium.status')
+      .populate('buyers.user', 'name photo rank premium.status')
+      .populate('reactions.user', 'name photo rank premium.status')
+      .populate('comments.author', 'name photo rank premium.status')
+      .exec();
   }
 
   public async AddBuyerToProduct(buyerAddMarketDto: BuyerAddMarketDto) {
@@ -523,5 +567,11 @@ export class MarketService {
           ),
         );
       });
+  }
+
+  public async DeleteProduct(productId: string) {
+    return this.marketModel.findByIdAndDelete(productId).catch((error) => {
+      throw new NotFoundException(error);
+    });
   }
 }

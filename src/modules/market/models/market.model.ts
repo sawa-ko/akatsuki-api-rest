@@ -22,17 +22,6 @@ import {
     collection: 'market',
   },
 })
-@index(
-  {
-    'buyer.device': 1,
-    'buyer.ip': 1,
-    'buyer.user._id': 1,
-    'reactions.device': 1,
-    'reactions.ip': 1,
-    'reactions.user': 1,
-  },
-  { unique: true },
-)
 export class MarketModel extends TimeStamps {
   @prop({ required: true, minlength: 10, maxlength: 30 })
   public name: string;
@@ -46,11 +35,11 @@ export class MarketModel extends TimeStamps {
   @prop({ required: true, min: 1, max: 9999 })
   public price: number;
 
-  @prop({ required: true })
-  public available: boolean;
+  @prop()
+  public available?: boolean;
 
-  @prop({ required: true })
-  public status: boolean;
+  @prop()
+  public status?: boolean;
 
   @prop({ required: true, _id: false })
   public discount: DiscountMarket;
