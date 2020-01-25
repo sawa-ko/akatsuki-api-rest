@@ -232,7 +232,11 @@ export class TransactionService {
     );
 
     userBuyer.tachi = userBuyer.tachi - discountTotal;
+    userBuyer.stats.won = discountTotal;
+    userBuyer.stats.rep = userBuyer.stats.rep + (Math.floor(Math.random() * 50) + 1);
     userSeller.tachi = userSeller.tachi + discountTotal;
+    userSeller.stats.spent = discountTotal;
+    userSeller.stats.exp = userSeller.stats.exp + (Math.floor(Math.random() * 100) + 1);
     const transaction = await this.transactionModel.create(transactionModel);
 
     try {

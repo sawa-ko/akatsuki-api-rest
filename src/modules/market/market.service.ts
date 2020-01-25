@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 import { MarketModel } from './models/market.model';
-import { ReturnModelType } from '@typegoose/typegoose';
+import { ReturnModelType, Ref } from '@typegoose/typegoose';
 import { RanksEnum } from '../../keys/ranks.enum';
 import { CommentMarketDto } from './dto/comment.add.dto';
 import { CommentRemoveMarketDto } from './dto/comment.remove.dto';
@@ -16,6 +16,7 @@ import { BuyerRemoveMarketDto } from './dto/buyer.remove.dto';
 import { ReactionAddMarketDto } from './dto/reaction.add.dto';
 import { ReactionRemoveMarketDto } from './dto/reaction.remove.dto';
 import { I18nRequestScopeService } from 'nestjs-i18n';
+import { UserModel } from '../user/models/user.model';
 
 @Injectable()
 export class MarketService {
@@ -27,21 +28,25 @@ export class MarketService {
     private readonly i18nService: I18nRequestScopeService,
   ) {}
 
-  public async AddProduct(marketModel: MarketModel) {
+  public async AddProduct(marketModel: MarketModel, idUserRequest: string) {
     this.logger.log(
       `Creating a new product for the market with the name of ${marketModel.name} with a value of ${marketModel.price} and with a discount of ${marketModel.discount.percentage}%. This product is published by ${marketModel.author} on the device ${marketModel.device} with IP ${marketModel.ip}.`,
     );
 
-    return await this.marketModel.create(marketModel).catch(() => {
-      this.logger.error(
-        `The product with name ${marketModel.name} could not be processed by user ${marketModel.author} due to a database failure.`,
-      );
-
-      throw new BadRequestException(
+    if (`${marketModel.author}` !== idUserRequest) {
+      throw new ConflictException(
         this.i18nService.translate(
           'translations.market.service.product_error_added',
         ),
       );
+    }
+
+    return await this.marketModel.create(marketModel).catch((error) => {
+      this.logger.error(
+        `The product with name ${marketModel.name} could not be processed by user ${marketModel.author} due to a database failure.`,
+      );
+
+      throw new BadRequestException(error);
     });
   }
 
@@ -63,6 +68,7 @@ export class MarketService {
         .select([
           'name',
           'description',
+          'market',
           'price',
           'available',
           'status',
@@ -83,21 +89,23 @@ export class MarketService {
   }
 
   public async GetAllProducts(
-    filter: number,
+    filterOrder: number,
+    filterMarket: number,
     rankUserRequest: string[],
     idUserRequest: string,
   ) {
     let order = '-createdAt';
+    let search = {};
 
     this.logger.log(
-      `Obtaining data of all products with the filter ${filter} by the user ${idUserRequest}.`,
+      `Obtaining data of all products with the filterOrder ${filterOrder} by the user ${idUserRequest}.`,
     );
 
     if (
       !rankUserRequest.includes(RanksEnum.ADMINISTRATOR) &&
       !rankUserRequest.includes(RanksEnum.MODERATOR)
     ) {
-      switch (filter) {
+      switch (filterOrder) {
         case 1:
           order = '-createdAt';
           break;
@@ -118,12 +126,34 @@ export class MarketService {
           break;
       }
 
+      switch (filterMarket) {
+        case 1:
+          search = { market: 1 };
+          break;
+        case 2:
+          search = { market: 2 };
+          break;
+        case 3:
+          search = { market: 3 };
+          break;
+        case 4:
+          search = { market: 4 };
+          break;
+        case 5:
+          search = { market: 5 };
+          break;
+        case 6:
+          search = { market: 6 };
+          break;
+      }
+
       return await this.marketModel
-        .find({})
+        .find(search)
         .sort(order)
         .select([
           'name',
           'description',
+          'market',
           'price',
           'available',
           'status',
@@ -195,7 +225,7 @@ export class MarketService {
     });
   }
 
-  public async AddComment(commentMarketDto: CommentMarketDto) {
+  public async AddComment(commentMarketDto: CommentMarketDto, idUserRequest: string) {
     let product;
 
     this.logger.log(
@@ -228,6 +258,14 @@ export class MarketService {
       );
     }
 
+    if (`${commentMarketDto.user}` !== idUserRequest) {
+      throw new ConflictException(
+        this.i18nService.translate(
+          'translations.market.service.comment_error_added',
+        ),
+      );
+    }
+
     product.comments.push({
       author: commentMarketDto.user,
       device: commentMarketDto.device,
@@ -248,7 +286,7 @@ export class MarketService {
     });
   }
 
-  public async AddReaction(reactionAddMarketDto: ReactionAddMarketDto) {
+  public async AddReaction(reactionAddMarketDto: ReactionAddMarketDto, idUserRequest: string) {
     let product;
 
     this.logger.log(
@@ -277,6 +315,14 @@ export class MarketService {
       throw new NotFoundException(
         this.i18nService.translate(
           'translations.market.service.product_not_found',
+        ),
+      );
+    }
+
+    if (`${reactionAddMarketDto.user}` !== idUserRequest) {
+      throw new ConflictException(
+        this.i18nService.translate(
+          'translations.market.service.comment_error_added',
         ),
       );
     }

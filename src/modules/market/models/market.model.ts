@@ -37,8 +37,11 @@ export class MarketModel extends TimeStamps {
   @prop({ required: true, minlength: 10, maxlength: 30 })
   public name: string;
 
-  @prop({ required: true, minlength: 100, maxlength: 1000 })
+  @prop({ required: true, minlength: 100, maxlength: 300 })
   public description: string;
+
+  @prop({ required: true, minlength: 100, maxlength: 3000 })
+  public content: string;
 
   @prop({ required: true, min: 1, max: 9999 })
   public price: number;

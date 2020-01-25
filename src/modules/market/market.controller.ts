@@ -23,6 +23,8 @@ import { RankGuard } from '../../guards/rank.guard';
 import { ReactionAddMarketDto } from './dto/reaction.add.dto';
 import { ReactionRemoveMarketDto } from './dto/reaction.remove.dto';
 import { I18nService, I18nLang } from 'nestjs-i18n';
+import { UserModel } from '../user/models/user.model';
+import { Ref } from '@typegoose/typegoose';
 
 @UseGuards(AuthGuard(), RankGuard)
 @Controller('market')
@@ -37,19 +39,22 @@ export class MarketController {
   public async AddProduct(
     @Body() marketModel: MarketModel,
     @Res() response,
+    @GetUser('id') idUserRequest: string,
     @I18nLang() lang: string,
   ) {
-    return await this.marketService.AddProduct(marketModel).then(() => {
-      response.status(HttpStatus.CREATED).json({
-        statusCode: HttpStatus.CREATED,
-        message: this.i18nService.translate(
-          'translations.market.controller.product_added',
-          {
-            lang,
-          },
-        ),
+    return await this.marketService
+      .AddProduct(marketModel, idUserRequest)
+      .then(() => {
+        response.status(HttpStatus.CREATED).json({
+          statusCode: HttpStatus.CREATED,
+          message: this.i18nService.translate(
+            'translations.market.controller.product_added',
+            {
+              lang,
+            },
+          ),
+        });
       });
-    });
   }
 
   @Get('/get/product/:id')
@@ -65,14 +70,16 @@ export class MarketController {
     );
   }
 
-  @Get('/get/products/:filter')
+  @Get('/get/products/:filter/:market')
   public async GetAllProducts(
     @Param('filter', ParseIntPipe) productId: number,
+    @Param('market', ParseIntPipe) marketId: number,
     @GetUser('rank') rankUserRequest: string[],
     @GetUser('id') idUserRequest: string,
   ) {
     return await this.marketService.GetAllProducts(
       productId,
+      marketId,
       rankUserRequest,
       idUserRequest,
     );
@@ -82,29 +89,33 @@ export class MarketController {
   public async AddComment(
     @Body() commentMarketDto: CommentMarketDto,
     @Res() response,
+    @GetUser('id') idUserRequest: string,
     @I18nLang() lang: string,
   ) {
-    return await this.marketService.AddComment(commentMarketDto).then(() => {
-      response.status(HttpStatus.OK).json({
-        statusCode: HttpStatus.OK,
-        message: this.i18nService.translate(
-          'translations.market.controller.comment_added',
-          {
-            lang,
-          },
-        ),
+    return await this.marketService
+      .AddComment(commentMarketDto, idUserRequest)
+      .then(() => {
+        response.status(HttpStatus.OK).json({
+          statusCode: HttpStatus.OK,
+          message: this.i18nService.translate(
+            'translations.market.controller.comment_added',
+            {
+              lang,
+            },
+          ),
+        });
       });
-    });
   }
 
   @Put('/add/reaction')
   public async AddReaction(
     @Body() reactionAddMarketDto: ReactionAddMarketDto,
     @Res() response,
+    @GetUser('id') idUserRequest: string,
     @I18nLang() lang: string,
   ) {
     return await this.marketService
-      .AddReaction(reactionAddMarketDto)
+      .AddReaction(reactionAddMarketDto, idUserRequest)
       .then(() => {
         response.status(HttpStatus.OK).json({
           statusCode: HttpStatus.OK,
