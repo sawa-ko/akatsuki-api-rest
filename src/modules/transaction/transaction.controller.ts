@@ -16,6 +16,7 @@ import { TransactionDeleteDto } from './dto/transaction.delete.dto';
 import { RanksEnum } from '../../keys/ranks.enum';
 import { Rank } from '../../decorators/rank.decorator';
 import { I18nLang, I18nService } from 'nestjs-i18n';
+import { GetUser } from '../../decorators/user.decorator';
 
 @UseGuards(AuthGuard(), RankGuard)
 @Controller('transaction')
@@ -23,11 +24,11 @@ export class TransactionController {
   constructor(
     private readonly transactionService: TransactionService,
     private readonly i18nService: I18nService,
-  ) {}
+  ) { }
 
   @Put('/process/purchase')
-  public async ProcessTransaction(@Body() transactionModel: TransactionModel) {
-    return await this.transactionService.ProcessTransaction(transactionModel);
+  public async ProcessTransaction(@Body() transactionModel: TransactionModel, @GetUser() userRequestId: string) {
+    return await this.transactionService.ProcessTransaction(transactionModel, userRequestId);
   }
 
   @Rank(RanksEnum.ADMINISTRATOR, RanksEnum.MODERATOR)

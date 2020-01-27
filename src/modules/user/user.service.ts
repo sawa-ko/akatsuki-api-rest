@@ -23,7 +23,7 @@ export class UserService {
     @InjectModel(UserModel)
     private readonly userModel: ReturnModelType<typeof UserModel>,
     private readonly i18nService: I18nRequestScopeService,
-  ) {}
+  ) { }
 
   public async getPublicUser(
     userId: string,
@@ -101,8 +101,32 @@ export class UserService {
     this.logger.log(
       'Obtaining list of all users registered in Akatsuki Project.',
     );
+
     return await this.userModel
       .find()
+      .sort('-createdAt')
+      .select([
+        'offer',
+        'photo',
+        'cover',
+        'stats',
+        'online',
+        'name',
+        'username',
+        'specialty',
+        'reactions',
+      ])
+      .exec();
+  }
+
+  public async getBestSellers() {
+    this.logger.log(
+      'Obtaining list of best users registered in Akatsuki Project.',
+    );
+
+    return await this.userModel
+      .find()
+      .sort('-stats.rep')
       .select([
         'offer',
         'photo',

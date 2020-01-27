@@ -7,6 +7,9 @@ import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
   options: {
     customName: 'Transactions',
   },
+  schemaOptions: {
+    collection: 'transactions',
+  },
 })
 export class TransactionModel extends TimeStamps {
   @prop({
@@ -22,10 +25,9 @@ export class TransactionModel extends TimeStamps {
   public buyer: Ref<UserModel>;
 
   @prop({
-    required: true,
     ref: 'Users',
   })
-  public seller: Ref<UserModel>;
+  public seller?: Ref<UserModel>;
 
   @prop({ required: true })
   public device: string | number;

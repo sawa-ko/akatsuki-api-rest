@@ -25,7 +25,7 @@ export class MarketService {
     @InjectModel(MarketModel)
     private readonly marketModel: ReturnModelType<typeof MarketModel>,
     private readonly i18nService: I18nRequestScopeService,
-  ) {}
+  ) { }
 
   public async AddProduct(marketModel: MarketModel, idUserRequest: string) {
     this.logger.log(
@@ -96,10 +96,18 @@ export class MarketService {
           'createdAt',
           'updatedAt',
         ])
-        .populate('author', 'name photo rank premium.status')
-        .populate('buyers.user', 'name photo rank premium.status')
-        .populate('reactions.user', 'name photo rank premium.status')
-        .populate('comments.author', 'name photo rank premium.status')
+        .populate('author', 'name photo cover rank premium.status online')
+        .populate('buyers.user', 'name photo cover rank premium.status online')
+        .populate('reactions.user', 'name photo cover rank premium.status online')
+        .populate('comments.author', 'name photo cover rank premium.status online')
+        .exec();
+    } else {
+      return await this.marketModel
+        .findById(productId)
+        .populate('author', 'name photo cover rank premium.status online')
+        .populate('buyers.user', 'name photo cover rank premium.status online')
+        .populate('reactions.user', 'name photo cover rank premium.status online')
+        .populate('comments.author', 'name photo cover rank premium.status online')
         .exec();
     }
   }
@@ -117,54 +125,54 @@ export class MarketService {
       `Obtaining data of all products with the filterOrder ${filterOrder} by the user ${idUserRequest}.`,
     );
 
+    switch (filterOrder) {
+      case 1:
+        order = '-createdAt';
+        break;
+      case 2:
+        order = '-price';
+        break;
+      case 3:
+        order = '-discount.percentage';
+        break;
+      case 3:
+        order = 'createdAt';
+        break;
+      case 4:
+        order = 'price';
+        break;
+      case 5:
+        order = 'discount.percentage';
+        break;
+    }
+
+    switch (filterMarket) {
+      case 1:
+        search = { market: 1, status: true };
+        break;
+      case 2:
+        search = { market: 2, status: true };
+        break;
+      case 3:
+        search = { market: 3, status: true };
+        break;
+      case 4:
+        search = { market: 4, status: true };
+        break;
+      case 5:
+        search = { market: 5, status: true };
+        break;
+      case 6:
+        search = { market: 6, status: true };
+        break;
+      default:
+        search = { market: 1, status: true };
+    }
+
     if (
       !rankUserRequest.includes(RanksEnum.ADMINISTRATOR) &&
       !rankUserRequest.includes(RanksEnum.MODERATOR)
     ) {
-      switch (filterOrder) {
-        case 1:
-          order = '-createdAt';
-          break;
-        case 2:
-          order = '-price';
-          break;
-        case 3:
-          order = '-discount.percentage';
-          break;
-        case 3:
-          order = 'createdAt';
-          break;
-        case 4:
-          order = 'price';
-          break;
-        case 5:
-          order = 'discount.percentage';
-          break;
-      }
-
-      switch (filterMarket) {
-        case 1:
-          search = { market: 1, status: true };
-          break;
-        case 2:
-          search = { market: 2, status: true };
-          break;
-        case 3:
-          search = { market: 3, status: true };
-          break;
-        case 4:
-          search = { market: 4, status: true };
-          break;
-        case 5:
-          search = { market: 5, status: true };
-          break;
-        case 6:
-          search = { market: 6, status: true };
-          break;
-        default:
-          search = { market: 1, status: true };
-      }
-
       return await this.marketModel
         .find(search)
         .sort(order)
@@ -183,10 +191,19 @@ export class MarketService {
           'createdAt',
           'updatedAt',
         ])
-        .populate('author', 'name photo rank premium.status')
-        .populate('buyers.user', 'name photo rank premium.status')
-        .populate('reactions.user', 'name photo rank premium.status')
-        .populate('comments.author', 'name photo rank premium.status')
+        .populate('author', 'name photo cover rank premium.status online')
+        .populate('buyers.user', 'name photo cover rank premium.status online')
+        .populate('reactions.user', 'name photo rank premium.status online')
+        .populate('comments.author', 'name photo rank premium.status online')
+        .exec();
+    } else {
+      return await this.marketModel
+        .find(search)
+        .sort(order)
+        .populate('author', 'name photo cover rank premium.status online')
+        .populate('buyers.user', 'name photo cover rank premium.status online')
+        .populate('reactions.user', 'name photo cover rank premium.status online')
+        .populate('comments.author', 'name photo cover rank premium.status online')
         .exec();
     }
   }

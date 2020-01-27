@@ -24,8 +24,6 @@ import { RankGuard } from '../../guards/rank.guard';
 import { ReactionAddMarketDto } from './dto/reaction.add.dto';
 import { ReactionRemoveMarketDto } from './dto/reaction.remove.dto';
 import { I18nService, I18nLang } from 'nestjs-i18n';
-import { UserModel } from '../user/models/user.model';
-import { Ref } from '@typegoose/typegoose';
 
 @UseGuards(AuthGuard(), RankGuard)
 @Controller('market')
@@ -33,7 +31,7 @@ export class MarketController {
   constructor(
     private readonly marketService: MarketService,
     private readonly i18nService: I18nService,
-  ) {}
+  ) { }
 
   @Rank(RanksEnum.SELLER, RanksEnum.MODERATOR, RanksEnum.ADMINISTRATOR)
   @Put('/add/product')

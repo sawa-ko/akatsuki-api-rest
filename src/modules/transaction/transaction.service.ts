@@ -24,7 +24,7 @@ export class TransactionService {
     private readonly userModel: ReturnModelType<typeof UserModel>,
     @InjectModel(MarketModel)
     private readonly marketModel: ReturnModelType<typeof MarketModel>,
-  ) {}
+  ) { }
 
   public async DeleteTransaction(transactionDeleteDto: TransactionDeleteDto) {
     return await this.marketModel
@@ -91,7 +91,8 @@ export class TransactionService {
   }
 
   public async ProcessTransaction(
-    transactionModel: TransactionModel,
+    transactionData: TransactionModel,
+    userRequestId: string,
   ): Promise<{
     market: string;
     transaction: string;
@@ -99,10 +100,14 @@ export class TransactionService {
     walletSeller: string;
     message: string;
   }> {
-    const { buyer, product, device, ip } = transactionModel;
+    const { buyer, product, device, ip } = transactionData;
     let marketTransaction;
     let userBuyer;
     let userSeller;
+
+    if (userRequestId !== `${buyer}`) {
+      throw new ConflictException();
+    }
 
     this.logger.log(
       `Starting process of a new transaction by user ${buyer} with device ${device} and with IP address ${ip}...`,
@@ -152,7 +157,7 @@ export class TransactionService {
 
     const discountTotal = Math.round(
       marketTransaction.price -
-        (marketTransaction.discount.percentage * marketTransaction.price) / 100,
+      (marketTransaction.discount.percentage * marketTransaction.price) / 100,
     );
 
     if (!userBuyer || !userSeller) {
@@ -199,7 +204,7 @@ export class TransactionService {
         ip,
         device,
       },
-      seller: marketTransaction.author,
+      seller: marketTransaction.author._id,
       product,
       type: 0,
       price: marketTransaction.price,
@@ -213,7 +218,7 @@ export class TransactionService {
         ip,
         device,
       },
-      seller: marketTransaction.author,
+      seller: marketTransaction.author._id,
       product,
       type: 1,
       price: marketTransaction.price,
@@ -232,12 +237,12 @@ export class TransactionService {
     );
 
     userBuyer.tachi = userBuyer.tachi - discountTotal;
-    userBuyer.stats.won = discountTotal;
-    userBuyer.stats.rep = userBuyer.stats.rep + (Math.floor(Math.random() * 50) + 1);
+    userBuyer.stats.spent = discountTotal;
+    userBuyer.stats.exp = userBuyer.stats.exp + (Math.floor(Math.random() * 100) + 1);
     userSeller.tachi = userSeller.tachi + discountTotal;
-    userSeller.stats.spent = discountTotal;
-    userSeller.stats.exp = userSeller.stats.exp + (Math.floor(Math.random() * 100) + 1);
-    const transaction = await this.transactionModel.create(transactionModel);
+    userSeller.stats.won = discountTotal;
+    userSeller.stats.rep = userBuyer.stats.rep + (Math.floor(Math.random() * 50) + 1);
+    const transaction = await this.transactionModel.create(transactionData);
 
     try {
       await userBuyer.save();

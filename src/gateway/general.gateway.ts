@@ -30,6 +30,7 @@ export class GeneralGateway
   }
 
   handleDisconnect(client: Socket) {
+    console.log('Disconnect')
     const timezone = momentstz()
       .tz('America/New_York')
       .utc()
@@ -38,21 +39,21 @@ export class GeneralGateway
     const time = moments(timezone).toDate();
 
     if (client.handshake.query.online === '1') {
-      this.server.emit(`USER:${client.handshake.query.USER}:ONLINE`, {
-        online: false,
-      });
-
-      this.logger.log(
-        `User ${client.handshake.query.user} with session ID ${client.handshake.query.session} and with Socket Id ${client.id} has been disconnected.`,
-      );
-
       return this.userModel.findByIdAndUpdate(client.handshake.query.user, {
         online: {
           online: false,
           mode: 1,
           last: time,
         },
-      });
+	  }).then(() => {
+		  this.server.emit(`USER:${client.handshake.query.USER}:ONLINE`, {
+			  online: false,
+		  });
+
+		  this.logger.log(
+        `User ${client.handshake.query.user} with session ID ${client.handshake.query.session} and with Socket Id ${client.id} has been disconnected.`,
+      );
+	  });
     }
   }
 
@@ -65,21 +66,21 @@ export class GeneralGateway
     const time = moments(timezone).toDate();
 
     if (client.handshake.query.online === '1') {
-      this.server.emit(`USER:${client.handshake.query.USER}:ONLINE`, {
-        online: true,
-      });
-
-      this.logger.log(
-        `User ${client.handshake.query.user} has been logged in with session ID ${client.handshake.query.session} and with Socket Id ${client.id}.`,
-      );
-
       return this.userModel.findByIdAndUpdate(client.handshake.query.user, {
         online: {
           online: true,
           mode: 1,
           last: time,
         },
-      });
+	  }).then(() => {
+  		this.server.emit(`USER:${client.handshake.query.USER}:ONLINE`, {
+  		  online: true,
+  		});
+
+  		this.logger.log(
+  		`User ${client.handshake.query.user} has been logged in with session ID ${client.handshake.query.session} and with Socket Id ${client.id}.`,
+  		);
+	  });
     }
   }
 }

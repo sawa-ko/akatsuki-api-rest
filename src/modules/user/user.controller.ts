@@ -34,7 +34,7 @@ export class UserController {
     private readonly userService: UserService,
     private readonly configService: ConfigService,
     private readonly i18nService: I18nService,
-  ) {}
+  ) { }
 
   @Get('/find/:userId')
   public getUser(
@@ -68,6 +68,11 @@ export class UserController {
   @Get()
   protected async getAllUsers() {
     return await this.userService.getUsers();
+  }
+
+  @Get('/best/sellers')
+  protected async getBestSellers() {
+    return await this.userService.getBestSellers();
   }
 
   @Post('/upload/photo/:id')
