@@ -118,12 +118,12 @@ export class AuthController {
 
   @Post('/account/password/reset')
   public async PasswordResetRequest(
-    @Body('userId') userId: string,
+    @Body('userEmail') userEmail: string,
     @Body('userIp') userIp: string,
     @I18nLang() lang: string,
     @Res() response,
   ) {
-    return await this.authService.SendPasswordReset(userId, userIp).then(() => {
+    return await this.authService.SendPasswordReset(userEmail, userIp).then(() => {
       response.status(HttpStatus.OK).json({
         statusCode: HttpStatus.OK,
         message: this.i18nService.translate(

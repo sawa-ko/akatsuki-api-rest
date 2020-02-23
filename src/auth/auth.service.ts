@@ -427,10 +427,12 @@ export class AuthService {
     }
   }
 
-  public async SendPasswordReset(userId: string, userIp: string) {
+  public async SendPasswordReset(userEmail: string, userIp: string) {
     let user;
     try {
-      user = await this.userModel.findById(userId);
+      user = await this.userModel.findOne({
+      'email.key': userEmail,
+    });
     } catch (error) {
       throw new ConflictException(
         this.i18nService.translate('translations.auth.service.user_not_found'),

@@ -1,5 +1,7 @@
-import { prop, index } from '@typegoose/typegoose';
+import { prop, Ref } from '@typegoose/typegoose';
 import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
+import { UserModel } from './user.model';
+import { MarketModel } from '../../../modules/market/models/market.model';
 
 export class Reactions {
   /*@prop({
@@ -171,11 +173,17 @@ export class Transaction extends TimeStamps {
   @prop({ default: new TransactionInfo(), _id: false })
   public buyer: TransactionInfo;
 
-  @prop({ required: true })
-  public seller: string;
+  @prop({
+    required: true,
+    ref: 'Users',
+  })
+  public seller: Ref<UserModel>;
 
-  @prop({ required: true })
-  public product: string;
+  @prop({
+    required: true,
+    ref: 'Market',
+  })
+  public product: Ref<MarketModel>;
 
   @prop({ required: true })
   public type: number;

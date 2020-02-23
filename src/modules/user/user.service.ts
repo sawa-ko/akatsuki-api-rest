@@ -37,6 +37,8 @@ export class UserService {
         );
         user = await this.userModel
           .findById(userId)
+          .populate('transactions.seller', 'name photo cover rank premium.status online')
+          .populate('transactions.product', 'author name')
           .select([
             'email.key',
             'password.key',

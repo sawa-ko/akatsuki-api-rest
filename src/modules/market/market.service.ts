@@ -25,7 +25,7 @@ export class MarketService {
     @InjectModel(MarketModel)
     private readonly marketModel: ReturnModelType<typeof MarketModel>,
     private readonly i18nService: I18nRequestScopeService,
-  ) { }
+  ) {}
 
   public async AddProduct(marketModel: MarketModel, idUserRequest: string) {
     this.logger.log(
@@ -40,16 +40,101 @@ export class MarketService {
       );
     }
 
-    this.marketModel.status = false;
-    this.marketModel.available = false;
-
-    return await this.marketModel.create(marketModel).catch((error) => {
+    return await this.marketModel.create(marketModel).catch(error => {
       this.logger.error(
         `The product with name ${marketModel.name} could not be processed by user ${marketModel.author} due to a database failure.`,
       );
 
-      throw new BadRequestException(error);
+      throw new BadRequestException(
+        this.i18nService.translate(
+          'translations.market.service.product_error_added',
+        ),
+      );
     });
+  }
+
+  public async VerifyReactionsProduct(
+    productId: string,
+    userId: string,
+    userRequestId: string,
+  ) {
+    if (userId !== userRequestId) {
+      throw new ConflictException(
+        'You do not have sufficient permission to perform this action.',
+      );
+    }
+
+    let reaction: any;
+    try {
+      reaction = await this.marketModel.findOne({
+        _id: productId,
+        'reactions.user': userId,
+      });
+    } catch (error) {
+      throw new ConflictException(
+        'You do not have sufficient permission to perform this action.',
+      );
+    }
+
+    if (!reaction) {
+      throw new ConflictException('The user has not reacted to this product.');
+    }
+  }
+
+  public async VerifyPurchaseProduct(
+    productId: string,
+    userId: string,
+    userRequestId: string,
+  ) {
+    if (userId !== userRequestId) {
+      throw new ConflictException(
+        'You do not have sufficient permission to perform this action.',
+      );
+    }
+
+    let purchase: any;
+    try {
+      purchase = await this.marketModel.findOne({
+        _id: productId,
+        'buyers.user': userId,
+      });
+    } catch (error) {
+      throw new ConflictException(
+        'You do not have sufficient permission to perform this action.',
+      );
+    }
+
+    if (!purchase) {
+      throw new ConflictException('The user has not purchased this product.');
+    }
+  }
+
+  public async VerifyCommentProduct(
+    productId: string,
+    userId: string,
+    userRequestId: string,
+  ) {
+    if (userId !== userRequestId) {
+      throw new ConflictException(
+        'You do not have sufficient permission to perform this action.',
+      );
+    }
+
+    let purchase: any;
+    try {
+      purchase = await this.marketModel.findOne({
+        _id: productId,
+        'comments.user': userId,
+      });
+    } catch (error) {
+      throw new ConflictException(
+        'You do not have sufficient permission to perform this action.',
+      );
+    }
+
+    if (!purchase) {
+      throw new ConflictException('The user has not commented this product.');
+    }
   }
 
   public async ApproveProduct(productId: string) {
@@ -79,35 +164,91 @@ export class MarketService {
       !rankUserRequest.includes(RanksEnum.ADMINISTRATOR) &&
       !rankUserRequest.includes(RanksEnum.MODERATOR)
     ) {
-      return await this.marketModel
-        .findById(productId)
-        .select([
-          'name',
-          'description',
-          'market',
-          'price',
-          'available',
-          'status',
-          'discount',
-          'author',
-          'buyers',
-          'reactions',
-          'comments',
-          'createdAt',
-          'updatedAt',
-        ])
-        .populate('author', 'name photo cover rank premium.status online')
-        .populate('buyers.user', 'name photo cover rank premium.status online')
-        .populate('reactions.user', 'name photo cover rank premium.status online')
-        .populate('comments.author', 'name photo cover rank premium.status online')
-        .exec();
+      const purchaseExists = await this.marketModel.findOne({
+        // prettier-ignore
+        '_id': productId,
+        'buyers.user': idUserRequest,
+      });
+
+      if (purchaseExists) {
+        return await this.marketModel
+          .findById(productId)
+          .select([
+            'name',
+            'description',
+            'content',
+            'market',
+            'price',
+            'available',
+            'status',
+            'discount',
+            'author',
+            'buyers',
+            'reactions',
+            'comments',
+            'createdAt',
+            'updatedAt',
+          ])
+          .populate('author', 'name photo cover rank premium.status online')
+          .populate(
+            'buyers.user',
+            'name photo cover rank premium.status online',
+          )
+          .populate(
+            'reactions.user',
+            'name photo cover rank premium.status online',
+          )
+          .populate(
+            'comments.author',
+            'name photo cover rank premium.status online',
+          )
+          .exec();
+      } else {
+        return await this.marketModel
+          .findById(productId)
+          .select([
+            'name',
+            'description',
+            'market',
+            'price',
+            'available',
+            'status',
+            'discount',
+            'author',
+            'buyers',
+            'reactions',
+            'comments',
+            'createdAt',
+            'updatedAt',
+          ])
+          .populate('author', 'name photo cover rank premium.status online')
+          .populate(
+            'buyers.user',
+            'name photo cover rank premium.status online',
+          )
+          .populate(
+            'reactions.user',
+            'name photo cover rank premium.status online',
+          )
+          .populate(
+            'comments.author',
+            'name photo cover rank premium.status online',
+          )
+          .exec();
+      }
     } else {
       return await this.marketModel
         .findById(productId)
         .populate('author', 'name photo cover rank premium.status online')
         .populate('buyers.user', 'name photo cover rank premium.status online')
-        .populate('reactions.user', 'name photo cover rank premium.status online')
-        .populate('comments.author', 'name photo cover rank premium.status online')
+        .populate(
+          'reactions.user',
+          'name photo cover rank premium.status online',
+        )
+        .populate(
+          'comments.author',
+          'name photo cover rank premium.status online',
+        )
         .exec();
     }
   }
@@ -202,8 +343,14 @@ export class MarketService {
         .sort(order)
         .populate('author', 'name photo cover rank premium.status online')
         .populate('buyers.user', 'name photo cover rank premium.status online')
-        .populate('reactions.user', 'name photo cover rank premium.status online')
-        .populate('comments.author', 'name photo cover rank premium.status online')
+        .populate(
+          'reactions.user',
+          'name photo cover rank premium.status online',
+        )
+        .populate(
+          'comments.author',
+          'name photo cover rank premium.status online',
+        )
         .exec();
     }
   }
@@ -286,7 +433,10 @@ export class MarketService {
     });
   }
 
-  public async AddComment(commentMarketDto: CommentMarketDto, idUserRequest: string) {
+  public async AddComment(
+    commentMarketDto: CommentMarketDto,
+    idUserRequest: string,
+  ) {
     let product;
 
     this.logger.log(
@@ -347,7 +497,10 @@ export class MarketService {
     });
   }
 
-  public async AddReaction(reactionAddMarketDto: ReactionAddMarketDto, idUserRequest: string) {
+  public async AddReaction(
+    reactionAddMarketDto: ReactionAddMarketDto,
+    idUserRequest: string,
+  ) {
     let product;
 
     this.logger.log(
@@ -587,7 +740,7 @@ export class MarketService {
   }
 
   public async DeleteProduct(productId: string) {
-    return this.marketModel.findByIdAndDelete(productId).catch((error) => {
+    return this.marketModel.findByIdAndDelete(productId).catch(error => {
       throw new NotFoundException(error);
     });
   }

@@ -95,6 +95,51 @@ export class MarketController {
     );
   }
 
+  @Post('/verify/reaction')
+  public async VerifyReactionProduct(
+    @Body('product') productId: string,
+    @Body('user') userId: string,
+    @GetUser('id') userRequestId: string,
+    @Res() response,
+  ) {
+    return await this.marketService.VerifyReactionsProduct(productId, userId, userRequestId).then(() => {
+      response.status(HttpStatus.OK).json({
+        statusCode: HttpStatus.OK,
+        message: 'The user has already reacted to this product.',
+      });
+    });
+  }
+
+  @Post('/verify/purchase')
+  public async VerifyPurchaseProduct(
+    @Body('product') productId: string,
+    @Body('user') userId: string,
+    @GetUser('id') userRequestId: string,
+    @Res() response,
+  ) {
+    return await this.marketService.VerifyPurchaseProduct(productId, userId, userRequestId).then(() => {
+      response.status(HttpStatus.OK).json({
+        statusCode: HttpStatus.OK,
+        message: 'The user has already bought this product. ',
+      });
+    });
+  }
+  
+  @Post('/verify/comment')
+  public async VerifyCommentProduct(
+    @Body('product') productId: string,
+    @Body('user') userId: string,
+    @GetUser('id') userRequestId: string,
+    @Res() response,
+  ) {
+    return await this.marketService.VerifyCommentProduct(productId, userId, userRequestId).then(() => {
+      response.status(HttpStatus.OK).json({
+        statusCode: HttpStatus.OK,
+        message: 'The user has already commented to this product.',
+      });
+    });
+  }
+
   @Get('/get/products/:filter/:market')
   public async GetAllProducts(
     @Param('filter', ParseIntPipe) productId: number,

@@ -35,11 +35,11 @@ export class MarketModel extends TimeStamps {
   @prop({ required: true, min: 1, max: 9999 })
   public price: number;
 
-  @prop()
-  public available?: boolean;
+  @prop({ required: true, default: false })
+  public available: boolean;
 
-  @prop()
-  public status?: boolean;
+  @prop({ required: true, default: false })
+  public status: boolean;
 
   @prop({ required: true, _id: false })
   public discount: DiscountMarket;
